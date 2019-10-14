@@ -17,9 +17,10 @@ namespace Utils {
             int i = 0;
             foreach (Vector2 prob in probabilitiesOfSpawnableObjects)
             {
-                if (prob.x >= RandomProbability && RandomProbability <= prob.y)
+                if ( RandomProbability >= prob.x && RandomProbability <= prob.y)
                 {
                     Instantiate(spawnables[i].prefab, transform.position, Quaternion.identity);
+                    break;
                 }
                 i++;
             }
@@ -34,7 +35,7 @@ namespace Utils {
             {
                 float endingProb = startingProb + s.probability;
                 probabilitiesOfSpawnableObjects.Add(new Vector2(startingProb, endingProb));
-                startingProb += s.probability + 1;
+                startingProb += s.probability;
             }
         }
     }
