@@ -49,8 +49,10 @@ namespace Events {
             StopTimer();
             onFinish?.Invoke();
 
-            if ( loopingTimer )
+            if ( loopingTimer ) {
                 ResetTimer();
+                StartTimer();
+            }
         }
 
 
