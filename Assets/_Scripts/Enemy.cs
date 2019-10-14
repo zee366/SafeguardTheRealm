@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 	[SerializeField]
-	int mHealth;
+	int health;
 	[SerializeField]
-	int mMoveSpeed;
+	int moveSpeed;
 	[SerializeField]
-	int mAttackDamage;
+	int attackDamage;
+    [SerializeField]
+    int xpValue;
+    [SerializeField]
+    int goldValue;
 	
-	GameObject mCastle;
-    SplineFollower mSplineFollower;
+	GameObject _castle;
+    GameObject _player;
+    SplineFollower _splineFollower;
 	
 	const float EPSILON = 0.0001f;
 	
 	void Start() {
-		mCastle = GameObject.Find("Castle");
-		mSplineFollower = GetComponent<SplineFollower>();
+		_castle = GameObject.Find("Castle");
+        _player = GameObject.Find("Player");
+		_splineFollower = GetComponent<SplineFollower>();
 	}
 	
 	void Update() {
@@ -26,25 +32,32 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	public void TakeDamage(int value) {
-		mHealth -= value;
+		health -= value;
 	}
 	
 	void CheckProgress() {
-		if(Mathf.Abs(mSplineFollower.GetProgress() - 1.0f) < EPSILON) {
-			mCastle.GetComponent<Castle>().TakeDamage(mAttackDamage);
-			mHealth = 0;
+		if(Mathf.Abs(_splineFollower.GetProgress() - 1.0f) < EPSILON) {
+			_castle.GetComponent<Castle>().TakeDamage(attackDamage);
+			health = 0;
 		}
 	}
 	
 	void CheckHealth() {
-		if(mHealth <= 0)
-			Destroy(this.gameObject);
+        if(health <= 0) {
+            Die();
+            Destroy(this.gameObject);
+        }
 	}
 	
 	void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Castle") {
-            other.GetComponent<Castle>().TakeDamage(mAttackDamage);
+            other.GetComponent<Castle>().TakeDamage(attackDamage);
         }
+    }
+
+    void Die() {
+        _player.GetComponent<Player>().GainXP(xpValue);
+        _player.GetComponent<Player>().GainGold(goldValue);
     }
 }
