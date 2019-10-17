@@ -26,8 +26,6 @@ namespace Behavioral {
             _posOnSpline += Time.deltaTime * (speedInUnitsPerSecond / _splineRef.Length);
             CurveSample sample = _splineRef.GetSample(_posOnSpline * (_splineRef.nodes.Count-1));
             transform.position = sample.location;
-
-            Debug.Log(_posOnSpline * (_splineRef.nodes.Count-1));
         }
 
 
