@@ -24,6 +24,10 @@ namespace Behavioral {
 
         void Update() {
             _posOnSpline += Time.deltaTime * (speedInUnitsPerSecond / _splineRef.Length);
+
+            // Don't query for position outside curve bounds
+            _posOnSpline = Mathf.Clamp(_posOnSpline, 0.0f, 1.0f);
+
             CurveSample sample = _splineRef.GetSample(_posOnSpline * (_splineRef.nodes.Count-1));
             transform.position = sample.location;
         }
