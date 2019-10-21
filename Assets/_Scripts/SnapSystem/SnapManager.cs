@@ -4,7 +4,8 @@ using UnityEngine.Events;
 namespace SnapSystem {
     public class SnapManager : MonoBehaviour {
 
-        [SerializeField] private LayerMask selectableLayerMask;
+        [SerializeField] private LayerMask  selectableLayerMask;
+        [SerializeField] private GameObject inBetweenSelectionVisual;
 
         public UnityEvent onSelect;
         public UnityEvent onUndefinedSelection;
@@ -15,7 +16,15 @@ namespace SnapSystem {
         private SnapLocation _currentTarget;
         private SnapLocation _lastSelected;
 
-        private void Awake() { _cam = Camera.main; }
+        private Transform _inBetweenRef;
+
+        private void Awake() {
+            _cam = Camera.main;
+
+            // Create between selection panel right away
+            _inBetweenRef = Instantiate(inBetweenSelectionVisual, transform.position, Quaternion.identity, transform).transform;
+            _inBetweenRef.gameObject.SetActive(false);
+        }
 
 
         private void Update() {
@@ -66,7 +75,10 @@ namespace SnapSystem {
                 if ( _currentTarget == null )
                     return;
 
+                // Here the current target is a valid SnapLocation
                 _currentTarget.IsLit = true;
+                UpdateInBetween();
+
             } else {
                 // We didn't hit this layer
                 if ( _currentTarget != null ) {
@@ -74,6 +86,31 @@ namespace SnapSystem {
                     _currentTarget       = null;
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Maybe update position, scale & rotation of the inBetween panel
+        /// </summary>
+        private void UpdateInBetween() {
+            if ( !HasOneSelected() ) {
+                _inBetweenRef.gameObject.SetActive(false);
+                return;
+            }
+
+            // Position it in the middle, and as a flat Quad, change orientation.
+            Vector3 lastPos = _lastSelected.transform.position;
+            Vector3 diff = _currentTarget.transform.position - lastPos;
+
+            _inBetweenRef.position = lastPos + (diff / 2) + Vector3.one/2;
+            _inBetweenRef.localScale = Vector3.one * diff.magnitude;
+
+            Vector3 norm = Vector3.Cross(Vector3.up, diff).normalized;
+
+            if(norm.magnitude > 0)
+                _inBetweenRef.rotation = Quaternion.LookRotation(norm, Vector3.up);
+
+            _inBetweenRef.gameObject.SetActive(true);
         }
 
 
