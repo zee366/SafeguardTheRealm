@@ -77,7 +77,6 @@ namespace SnapSystem {
 
                 // Here the current target is a valid SnapLocation
                 _currentTarget.IsLit = true;
-                UpdateInBetween();
 
             } else {
                 // We didn't hit this layer
@@ -86,6 +85,8 @@ namespace SnapSystem {
                     _currentTarget       = null;
                 }
             }
+
+            UpdateInBetween();
         }
 
 
@@ -93,7 +94,7 @@ namespace SnapSystem {
         /// Maybe update position, scale & rotation of the inBetween panel
         /// </summary>
         private void UpdateInBetween() {
-            if ( !HasOneSelected() ) {
+            if ( !HasOneSelected() || _currentTarget == null ) {
                 _inBetweenRef.gameObject.SetActive(false);
                 return;
             }
