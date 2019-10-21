@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace SnapSystem {
     public class SnapManager : MonoBehaviour {
 
         [SerializeField] private LayerMask selectableLayerMask;
+
+        public UnityEvent onSelect;
+        public UnityEvent onUndefinedSelection;
+        public UnityEvent onTransfer;
+        public UnityEvent onCancel;
 
         private Camera       _cam;
         private SnapLocation _currentTarget;
@@ -17,11 +23,24 @@ namespace SnapSystem {
             CheckCurrentTarget(Input.mousePosition);
 
             // Left click
-            if ( Input.GetMouseButtonDown(0) ) {
-
+            if ( Input.GetMouseButtonDown(0) )
                 CheckLocationSelection();
-            }
 
+            // Player may cancel an action with the Esc. Button or the right mouse button right now
+            if ( Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape) )
+                CancelAction();
+        }
+
+
+        /// <summary>
+        /// Cancel current movement action
+        /// </summary>
+        public void CancelAction() {
+            if ( _lastSelected != null ) {
+                _lastSelected.IsSelected = false;
+                _lastSelected            = null;
+                onCancel?.Invoke();
+            }
         }
 
 
@@ -48,12 +67,11 @@ namespace SnapSystem {
                     return;
 
                 _currentTarget.IsLit = true;
-
             } else {
                 // We didn't hit this layer
                 if ( _currentTarget != null ) {
                     _currentTarget.IsLit = false;
-                    _currentTarget = null;
+                    _currentTarget       = null;
                 }
             }
         }
@@ -62,7 +80,43 @@ namespace SnapSystem {
         /// <summary>
         /// Selectable selection logic
         /// </summary>
-        private void CheckLocationSelection() { _lastSelected = _currentTarget; }
+        private void CheckLocationSelection() {
+            if ( _currentTarget == null ) {
+                onUndefinedSelection?.Invoke();
+                return;
+            }
+
+            // If we already have a selection => MoveAction
+            if ( HasOneSelected() && !_lastSelected.IsEmpty && _currentTarget.IsEmpty ) {
+                TransferAction(_currentTarget);
+                return;
+            }
+
+            // Check if we can select it..
+            if ( !_currentTarget.IsEmpty ) {
+                _lastSelected            = _currentTarget;
+                _lastSelected.IsSelected = true;
+                onSelect?.Invoke();
+            } else {
+                onUndefinedSelection?.Invoke();
+            }
+        }
+
+
+        /// <summary>
+        /// Moving objects from one tile to another
+        /// </summary>
+        /// <param name="moveToTarget"></param>
+        private void TransferAction(SnapLocation moveToTarget) {
+            _currentTarget.ReplaceObject(_lastSelected.GetObject());
+
+            _lastSelected.IsSelected = false;
+            _lastSelected            = null;
+            onTransfer?.Invoke();
+        }
+
+
+        private bool HasOneSelected() { return _lastSelected != null; }
 
     }
 }
