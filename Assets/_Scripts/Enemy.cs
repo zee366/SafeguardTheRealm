@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour {
 	void CheckProgress() {
 		if(Mathf.Abs(_splineFollower.GetProgress() - 1.0f) < EPSILON) {
 			_castle.GetComponent<Castle>().TakeDamage(attackDamage);
-			health = 0;
+            Destroy(this.gameObject);
 		}
 	}
 	
