@@ -6,10 +6,6 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     int health;
     [SerializeField]
-    int moveSpeed;
-    [SerializeField]
-    float angularSpeed;
-    [SerializeField]
     int attackDamage;
     [SerializeField]
     int xpValue;
@@ -29,7 +25,6 @@ public class Enemy : MonoBehaviour {
     }
 
     void LateUpdate() {
-        Move();
         CheckProgress();
         CheckHealth();
     }
@@ -38,19 +33,10 @@ public class Enemy : MonoBehaviour {
         health -= value;
     }
 
-    void Move() {
-        Vector3 target = _splineFollower.transform.position - transform.position;
-	float step = angularSpeed * Time.deltaTime;
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, target, step, 0.0f);
-	
-	transform.rotation = Quaternion.LookRotation(newDir);
-        transform.Translate(target.x, target.y, target.z);
-    }
-
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
             _castle.GetComponent<Castle>().TakeDamage(attackDamage);
-            health = 0;
+            Destroy(this.GameObject);
         }
     }
 
