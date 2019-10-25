@@ -1,5 +1,6 @@
 ﻿using SnapSystem;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Simple container of snap locations to keep track of different inventory slots and capacity
@@ -9,6 +10,8 @@ public class Inventory : MonoBehaviour {
     private SnapLocation[] _locations;
     private int            _capacity; // The number of available slots
     private int            _size;     // The number of taken slots
+
+    public UnityEvent onSizeChanged;
 
 
     private void Awake() {
@@ -54,6 +57,8 @@ public class Inventory : MonoBehaviour {
             _size--;
         else
             _size++;
+
+        onSizeChanged?.Invoke();
     }
 
 
