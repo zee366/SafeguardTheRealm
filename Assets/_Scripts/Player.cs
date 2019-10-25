@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour
@@ -21,20 +19,17 @@ public class Player : MonoBehaviour
     }
 
     //Gain level
-    public void gainLevel(int gold)
+    public void gainLevel(int cost)
     {
         //Check if Player's level is MAX
-        if (playerLevel < maxLevel)
+        if (checkLevel())
         {
             //Check if Player's gold is enough or not
-            if (playerGold >= gold) //If enough gold, take gold off from Player
+            if (checkGold(cost)) //If enough gold, take gold off from Player
             {
-                playerGold -= gold;
-                
-                playerLevel++;
-             
+                removeGold(cost);
+                addOneLevel();            
                 OnLevelUp.Invoke();
-
             }
             else
             {
@@ -51,12 +46,39 @@ public class Player : MonoBehaviour
         }          
     }
 
-    //Gain gold
+    //method: Gain gold
     public void gainGold(int gold)
     {
         playerGold += gold;
     }
 
+    //method: check if gold is enough 
+    public bool checkGold(int gold)
+    {
+        if (playerGold >= gold)
+            return true;
+
+        return false;
+    }
+
+    //method: remove gold 
+    public void removeGold(int gold)
+    {
+        playerGold -= gold;
+    }
+    //method: check is player level is max
+    public bool checkLevel()
+    {
+        if (playerLevel < maxLevel)
+            return true;
+
+        return false;
+    }
+    //method: increase level by 1
+    public void addOneLevel()
+    {
+        playerLevel++;
+    }
     //gainLevel event
     void levelUp()
     {
@@ -69,8 +91,8 @@ public class Player : MonoBehaviour
         Debug.Log("Gold changes");
     }
 
-    //Return Player's level
-    private int getPlayer_Level()
+    //Getter for Return Player's level
+    public int getPlayer_Level()
     {
         return playerLevel;
     }
