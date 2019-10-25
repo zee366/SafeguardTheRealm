@@ -8,23 +8,22 @@ public class Tower : MonoBehaviour {
 
     [Range(2f, 20f)]
     public float radius;
-    [Range(0.1f, 4f)]
-    public float attackSpeed;
-    public Projectile projectile;
-    public List<Transform> _towerWeaponPosition;
-
+    
+    private List<Attacker> _attackers;
     private GameObject _enemyBeingTargetted;
     private GameObject _radiusObjet;
     private Dictionary< int , GameObject> _enemyInRange;
     private List<Transform> _towerWeaponVisuals;
     
-    private bool projectileCoroutineStarted = false;
     private Timer _timer;
 
-    void Start() {
-        _radiusObjet = transform.Find("Range").gameObject;
+
+    void Awake() {
+        
+        _attackers = new List<Attacker>(GetComponentsInChildren<Attacker>());
+        _radiusObjet                      = transform.Find("Range").gameObject;
         _radiusObjet.transform.localScale = new Vector3(radius, 0.1f, radius);
-        _enemyInRange = new Dictionary<int, GameObject>();
+        _enemyInRange                     = new Dictionary<int, GameObject>();
         
         //Find all the tower's weapon
         _towerWeaponVisuals = new List<Transform>();
@@ -33,42 +32,33 @@ public class Tower : MonoBehaviour {
                 _towerWeaponVisuals.Add(child);
             }
         }
-        
     }
     
 
     // Update is called once per frame
     void Update() {
-        if ( _enemyInRange.Count > 0 ) {
-            GameObject enemy = findClosestEnemy();
-           _enemyBeingTargetted = enemy;
-           LookAtEnemy();
-           if (!projectileCoroutineStarted) StartCoroutine(ProjectileCoroutine());
-        } else {
-            StopAllCoroutines();
-        }
-    }
+        if ( _enemyInRange.Count <= 0 ) return; // if there is no enemy
 
-
-    IEnumerator ProjectileCoroutine() {
-        projectileCoroutineStarted = true;
-        sendProjectile(_enemyBeingTargetted);
-        while ( true ) {
-            yield return new WaitForSeconds(attackSpeed);
-            sendProjectile(_enemyBeingTargetted);
+        GameObject enemy = FindClosestEnemy();
+        if ( enemy != _enemyBeingTargetted ) {
+            AlertAttacker(enemy);
+            _enemyBeingTargetted = enemy;
         }
+        LookAtEnemy();
     }
+    
     public void AddEnemyToMemory(Transform t) {
         _enemyInRange.Add(t.gameObject.GetInstanceID(), t.gameObject);
     }
 
 
     public void RemoveEnemyFromMemory(Transform t) {
+        StopAttacker(t.gameObject);
         _enemyInRange.Remove(t.gameObject.GetInstanceID()); 
     }
 
 
-    GameObject findClosestEnemy() {
+    GameObject FindClosestEnemy() {
         GameObject target = null;
         
         foreach ( KeyValuePair<int, GameObject> idEnemyPair in _enemyInRange ) {
@@ -80,14 +70,20 @@ public class Tower : MonoBehaviour {
         
         return target;
     }
-    
-    private void sendProjectile(GameObject enemy) {
-        foreach ( Transform weaponPosition in _towerWeaponPosition ) {
-            Projectile _projectile = Instantiate(projectile, weaponPosition.position, weaponPosition.rotation);
-            _projectile.setEnemy(enemy);
+
+    private void AlertAttacker(GameObject enemy) {
+        foreach (Attacker attacker in _attackers ) {
+            attacker.Attack(enemy);
         }
     }
 
+
+    private void StopAttacker(GameObject enemy) {
+        foreach (Attacker attacker in _attackers ) {
+            attacker.Stop(enemy);
+        }
+    }
+    
     private void LookAtEnemy() {
         Vector3 enemyPosition = _enemyBeingTargetted.transform.position;
         foreach ( Transform weapon in _towerWeaponVisuals ) {
