@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
     public int maxLevel = 5;
     public int playerLevel = 1;
     public int playerGold = 0;
-    public UnityEvent OnLevelUp;
+    public UnityEvent OnLevelUp; //On level Up event
+    public UnityEvent OnGoldChange; //On player's gold Changes event
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,7 @@ public class Player : MonoBehaviour
             if (checkGold(cost)) //If enough gold, take gold off from Player
             {
                 removeGold(cost);
-                addOneLevel();            
-                OnLevelUp.Invoke();
+                addOneLevel();
             }
             else
             {
@@ -46,12 +46,6 @@ public class Player : MonoBehaviour
         }          
     }
 
-    //method: Gain gold
-    public void gainGold(int gold)
-    {
-        playerGold += gold;
-    }
-
     //method: check if gold is enough 
     public bool checkGold(int gold)
     {
@@ -61,11 +55,20 @@ public class Player : MonoBehaviour
         return false;
     }
 
+    //method: Gain gold
+    public void gainGold(int gold)
+    {
+        playerGold += gold;
+        OnGoldChange.Invoke();
+    }   
+
     //method: remove gold 
     public void removeGold(int gold)
     {
         playerGold -= gold;
+        OnGoldChange.Invoke();
     }
+
     //method: check is player level is max
     public bool checkLevel()
     {
@@ -74,21 +77,12 @@ public class Player : MonoBehaviour
 
         return false;
     }
+
     //method: increase level by 1
     public void addOneLevel()
     {
         playerLevel++;
-    }
-    //gainLevel event
-    void levelUp()
-    {
-        Debug.Log("Player levels up");
-    }
-
-    //gainGold event
-    void goldChange()
-    {
-        Debug.Log("Gold changes");
+        OnLevelUp.Invoke();
     }
 
     //Getter for Return Player's level
