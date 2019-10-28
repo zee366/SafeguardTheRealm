@@ -148,12 +148,19 @@ namespace SnapSystem {
         private void TransferAction(SnapLocation moveToTarget) {
             _currentTarget.ReplaceObject(_lastSelected.GetObject());
 
+            // Simply for good practice... this will trigger some event as well
+            _lastSelected.Clear();
+
             _lastSelected.IsSelected = false;
             _lastSelected            = null;
             onTransfer?.Invoke();
         }
 
 
+        /// <summary>
+        /// Defines if one location is already selected to do an action with it.
+        /// </summary>
+        /// <returns></returns>
         private bool HasOneSelected() { return _lastSelected != null; }
 
     }
