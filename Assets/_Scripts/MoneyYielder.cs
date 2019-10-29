@@ -15,7 +15,7 @@ public class MoneyYielder : MonoBehaviour
     }
 
     public void GiveGoldToPlayer(int value) {
-        _player.GetComponent<Player>().gainGold(value);
+        _player.GetComponent<Player>().GainGold(value);
     }
 
     public void ResetWinStreak() {

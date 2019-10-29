@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using SplineMesh;
 
 namespace Utils {
     public class Spawner : MonoBehaviour {
 
         public List<Spawnable> spawnables;
         public Transform       spawnParent;
+        public SplineNode      firstNode;
 
         List<Vector2> probabilitiesOfSpawnableObjects = new List<Vector2>();
 
@@ -18,7 +20,8 @@ namespace Utils {
             int i = 0;
             foreach ( Vector2 prob in probabilitiesOfSpawnableObjects ) {
                 if ( RandomProbability >= prob.x && RandomProbability <= prob.y ) {
-                    Instantiate(spawnables[i].prefab, spawnParent.position, Quaternion.identity, spawnParent);
+                    //Instantiate(spawnables[i].prefab, spawnParent.position, Quaternion.identity, spawnParent);
+                    Instantiate(spawnables[i].prefab, firstNode.Position, Quaternion.identity, spawnParent);
                     break;
                 }
 
@@ -35,6 +38,9 @@ namespace Utils {
                 probabilitiesOfSpawnableObjects.Add(new Vector2(startingProb, endingProb));
                 startingProb += s.probability;
             }
+
+            firstNode = GetComponentInParent<Spline>().nodes[0];
+
         }
 
     }

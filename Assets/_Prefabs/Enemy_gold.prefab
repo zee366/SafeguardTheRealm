@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5516408065107374872}
   - component: {fileID: 5846752438214418278}
+  - component: {fileID: -7312354835905673787}
   m_Layer: 0
   m_Name: Enemy_gold
   m_TagString: Untagged
@@ -49,6 +50,25 @@ MonoBehaviour:
   _xpValue: 0
   _goldValue: 1
   _golden: 1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onCastleHit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-7312354835905673787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217861278865494892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af98279177834191a74800374dfc2b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedInUnitsPerSecond: 1
 --- !u!1 &4928933419817215667
 GameObject:
   m_ObjectHideFlags: 0
