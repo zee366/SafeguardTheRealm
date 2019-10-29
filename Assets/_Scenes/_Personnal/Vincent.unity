@@ -996,5 +996,10 @@ PrefabInstance:
       propertyPath: mMarket
       value: 
       objectReference: {fileID: 1073507684}
+    - target: {fileID: 5767104169796231335, guid: 973f63b92befb4046aeb994d543560d8,
+        type: 3}
+      propertyPath: mInventory
+      value: 
+      objectReference: {fileID: 202656837}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 973f63b92befb4046aeb994d543560d8, type: 3}
