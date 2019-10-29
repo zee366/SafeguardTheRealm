@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour {
     GameObject _castle;
     GameObject _player;
     SplineFollower _splineFollower;
-	
+    
+    public UnityEvent onDeath;
+    
     const float EPSILON = 0.0001f;
 	
     void Start() {
@@ -53,5 +55,6 @@ public class Enemy : MonoBehaviour {
     void Die() {
         if(_golden)
             _player.GetComponent<Player>().GainGold(_goldValue);
+	onDeath?.Invoke();
     }
 }
