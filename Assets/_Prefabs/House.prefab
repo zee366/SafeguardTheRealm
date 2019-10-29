@@ -42,6 +42,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6564497610838633755}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 248ed8e88235b4539b7b02ddb0cebead,
+        type: 3}
+      propertyPath: m_Name
+      value: wallWoodDoor (1)
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 248ed8e88235b4539b7b02ddb0cebead,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -97,11 +102,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 248ed8e88235b4539b7b02ddb0cebead,
-        type: 3}
-      propertyPath: m_Name
-      value: wallWoodDoor (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248ed8e88235b4539b7b02ddb0cebead, type: 3}
 --- !u!4 &6533848276225501006 stripped
@@ -117,10 +117,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6564497610838633755}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: c8432a05583964d6c8622c4d0a1ef2e6,
+        type: 3}
+      propertyPath: m_Name
+      value: roofHighGableTop
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c8432a05583964d6c8622c4d0a1ef2e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6635643
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c8432a05583964d6c8622c4d0a1ef2e6,
         type: 3}
@@ -130,7 +135,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c8432a05583964d6c8622c4d0a1ef2e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.8904533
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c8432a05583964d6c8622c4d0a1ef2e6,
         type: 3}
@@ -176,11 +181,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2872264
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: c8432a05583964d6c8622c4d0a1ef2e6,
-        type: 3}
-      propertyPath: m_Name
-      value: roofHighGableTop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8432a05583964d6c8622c4d0a1ef2e6, type: 3}
@@ -272,6 +272,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6564497610838633755}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 248ed8e88235b4539b7b02ddb0cebead,
+        type: 3}
+      propertyPath: m_Name
+      value: wallWoodDoor
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 248ed8e88235b4539b7b02ddb0cebead,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -326,11 +331,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 248ed8e88235b4539b7b02ddb0cebead,
-        type: 3}
-      propertyPath: m_Name
-      value: wallWoodDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248ed8e88235b4539b7b02ddb0cebead, type: 3}
