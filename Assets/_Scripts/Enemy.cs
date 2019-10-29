@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
     SplineFollower _splineFollower;
     
     public UnityEvent onDeath;
+    public UnityEvent onCastleHit;
     
     const float EPSILON = 0.0001f;
 	
@@ -34,7 +35,8 @@ public class Enemy : MonoBehaviour {
 
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
-           _castle.GetComponent<Castle>().TakeDamage(_attackDamage);
+            _castle.GetComponent<Castle>().TakeDamage(_attackDamage);
+	    OnCastleHit?.Invoke();
             Destroy(this.GameObject);
         }
     }
