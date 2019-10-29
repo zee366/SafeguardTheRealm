@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
     int xpValue;
     [SerializeField]
     int goldValue;
+    [SerializeField]
+    bool golden;
 	
 	GameObject _castle;
     GameObject _player;
@@ -57,7 +59,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void Die() {
-        _player.GetComponent<Player>().GainXP(xpValue);
+        //_player.GetComponent<Player>().GainXP(xpValue);
         _player.GetComponent<Player>().GainGold(goldValue);
     }
 }
