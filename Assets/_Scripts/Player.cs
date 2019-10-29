@@ -20,16 +20,16 @@ public class Player : MonoBehaviour
     }
 
     //Gain level
-    public void gainLevel(int cost)
+    public void GainLevel(int cost)
     {
         //Check if Player's level is MAX
-        if (checkLevel())
+        if (CheckLevel())
         {
             //Check if Player's gold is enough or not
-            if (checkGold(cost)) //If enough gold, take gold off from Player
+            if (CheckGold(cost)) //If enough gold, take gold off from Player
             {
-                removeGold(cost);
-                addOneLevel();
+                RemoveGold(cost);
+                AddOneLevel();
             }
             else
             {
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     }
 
     //method: check if gold is enough 
-    public bool checkGold(int gold)
+    public bool CheckGold(int gold)
     {
         if (playerGold >= gold)
             return true;
@@ -56,21 +56,21 @@ public class Player : MonoBehaviour
     }
 
     //method: Gain gold
-    public void gainGold(int gold)
+    public void GainGold(int gold)
     {
         playerGold += gold;
         OnGoldChange.Invoke();
     }   
 
     //method: remove gold 
-    public void removeGold(int gold)
+    public void RemoveGold(int gold)
     {
         playerGold -= gold;
         OnGoldChange.Invoke();
     }
 
     //method: check is player level is max
-    public bool checkLevel()
+    public bool CheckLevel()
     {
         if (playerLevel < maxLevel)
             return true;
@@ -79,20 +79,20 @@ public class Player : MonoBehaviour
     }
 
     //method: increase level by 1
-    public void addOneLevel()
+    public void AddOneLevel()
     {
         playerLevel++;
         OnLevelUp.Invoke();
     }
 
     //Getter for Return Player's level
-    public int getPlayer_Level()
+    public int GetPlayerLevel()
     {
         return playerLevel;
     }
 
     //Getter for Return Player's gold
-    public int getPlayer_Gold()
+    public int GetPlayerGold()
     {
         return playerGold;
     }
