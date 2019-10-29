@@ -9,18 +9,19 @@ public class MarketScript : MonoBehaviour
     Player player;
     
    
-
+    // It will define the probability to all the player levels and will be accessed by the inspector
     [SerializeField]
     List<Vector3> playerLevelTiersProbabilities = new List<Vector3>();
-
+    // the tier struct with the price and the tower list
     [SerializeField]
     List<TowerTier> tiers = new List<TowerTier>();
-
+    // the towers game objects
     [SerializeField]
     List<GameObject> towers = new List<GameObject>();
 
     System.Random rand = new System.Random();
 
+    // used for testing
     private float _t = 0;
     List<GameObject> instances = new List<GameObject>();
 
@@ -34,7 +35,7 @@ public class MarketScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        /* used for testing
         if (_t > 3f)
         {
             addTowers();
@@ -45,13 +46,15 @@ public class MarketScript : MonoBehaviour
         */
     }
 
+    // will add the towers 
     private void addTowers()
     {
-        /*
+        /* used for testing
         foreach (var inst in instances)
             Destroy(inst);
             */
 
+        
         towers = new List<GameObject>();
         for (int i = 0; i < 3; i++)
         {
@@ -61,7 +64,7 @@ public class MarketScript : MonoBehaviour
         }
 
     }
-
+    // spawn the towers in the scene
     private void spawnTowers() {
         int x = 2;
         int y = 2;
@@ -72,7 +75,7 @@ public class MarketScript : MonoBehaviour
             y++;
         }
     }
-
+    // tells which tower tier was weighted choosen
     private int getTowerLevel() {
         int playaLevel = getPlayerLevel();
         int wRandomNumber = randomValue();
