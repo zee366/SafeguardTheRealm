@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    [SerializeField]
-    int health;
-    [SerializeField]
-    int attackDamage;
-    [SerializeField]
-    int xpValue;
-    [SerializeField]
-    int goldValue;
-    [SerializeField]
-    bool golden;
-	
+    [SerializeField] int _health;
+    [SerializeField] int _attackDamage;
+    [SerializeField] int _xpValue;
+    [SerializeField] int _goldValue;
+    [SerializeField] bool _golden;
+
     GameObject _castle;
     GameObject _player;
     SplineFollower _splineFollower;
@@ -32,18 +27,18 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(int value) {
-        health -= value;
+        _health -= value;
     }
 
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
-            _castle.GetComponent<Castle>().TakeDamage(attackDamage);
+           _castle.GetComponent<Castle>().TakeDamage(_attackDamage);
             Destroy(this.GameObject);
         }
     }
 
     void CheckHealth() {
-        if(health <= 0) {
+        if(_health <= 0) {
             Die();
             Destroy(this.gameObject);
         }
@@ -51,12 +46,12 @@ public class Enemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Castle") {
-            other.GetComponent<Castle>().TakeDamage(attackDamage);
+            other.GetComponent<Castle>().TakeDamage(_attackDamage);
         }
     }
 
     void Die() {
-        //_player.GetComponent<Player>().GainXP(xpValue);
-        _player.GetComponent<Player>().GainGold(goldValue);
+        if(_golden)
+            _player.GetComponent<Player>().GainGold(_goldValue);
     }
 }
