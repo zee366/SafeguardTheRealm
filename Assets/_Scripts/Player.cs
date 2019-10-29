@@ -90,4 +90,10 @@ public class Player : MonoBehaviour
     {
         return playerLevel;
     }
+
+    //Getter for Return Player's gold
+    public int getPlayer_Gold()
+    {
+        return playerGold;
+    }
 }
