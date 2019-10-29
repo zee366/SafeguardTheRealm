@@ -2,86 +2,103 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MarketScript : MonoBehaviour
 {
+   
+    Player player;
+    
+   
+
     [SerializeField]
-    GameObject player;
+    List<Vector3> playerLevelTiersProbabilities = new List<Vector3>();
 
-    # mocking the player level
-    int playerLevel = 1;
-    # mocking the tower tier
-    char towerLevel;
+    [SerializeField]
+    List<TowerTier> tiers = new List<TowerTier>();
 
-    # probability to show the towers
-    List<int> level1 = new List<int> { 75, 25, 0 };
-    List<int> level2 = new List<int> { 50, 45, 5 };
-    List<int> level3 = new List<int> { 30, 55, 15 };
-    List<int> level4 = new List<int> { 25, 45, 30 };
-    List<int> level5 = new List<int> { 15, 40, 45 };
+    [SerializeField]
+    List<GameObject> towers = new List<GameObject>();
 
+    System.Random rand = new System.Random();
 
-    List<GameObject> towersA;
-    List<GameObject> towersB;
-    List<GameObject> towersC;
-
+    private float _t = 0;
+    List<GameObject> instances = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        addTowers();
+        spawnTowers();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (_t > 3f)
+        {
+            addTowers();
+            spawnTowers();
+            _t = 0;
+        }
+        _t += Time.deltaTime;
+        */
     }
 
-    private void getTowerLevel() {
-        int playaLevel = getPlayerLevel();
-        int wRandomNumber = randomValue();
+    private void addTowers()
+    {
+        /*
+        foreach (var inst in instances)
+            Destroy(inst);
+            */
 
-        switch (playaLevel) {
-            case 1:
-                if (wRandomNumber <= level1[0]) { towerLevel = 'A'; }
-                if (wRandomNumber > level1[0]) { towerLevel = 'B'; }
-                break;
-            case 2:
-                if (wRandomNumber <= level2[0]) { towerLevel = 'A'; }
-                if ((wRandomNumber > level2[0]) && (randomValue() <= level2[1]) { towerLevel = 'B'; }
-                if (wRandomNumber > level2[1]) { towerLevel = 'C'; }
-                break;
-            case 3:
-                if (wRandomNumber <= level3[0]) { towerLevel = 'A'; }
-                if ((wRandomNumber > level3[0]) && (randomValue() <= level3[1])) { towerLevel = 'B'; }
-                if (wRandomNumber > level3[1]) { towerLevel = 'C'; }
-                break;
-            case 4:
-                if (wRandomNumber <= level4[0]) { towerLevel = 'A'; }
-                if ((wRandomNumber > level4[0]) && (randomValue() <= level4[1])) { towerLevel = 'B'; }
-                if (wRandomNumber > level4[1]) { towerLevel = 'C'; }
-                break;
-            case 5:
-                if (wRandomNumber <= level5[0]) { towerLevel = 'A'; }
-                if ((wRandomNumber > level5[0]) && (randomValue() <= level5[1])) { towerLevel = 'B'; }
-                if (wRandomNumber > level5[1]) { towerLevel = 'C'; }
-                break;
+        towers = new List<GameObject>();
+        for (int i = 0; i < 3; i++)
+        {
+            int index = getTowerLevel();
+            int tiersTowerRandom = Random.Range(0, tiers[index].towers.Count);
+            towers.Add(tiers[index].towers[tiersTowerRandom]);
+        }
+
+    }
+
+    private void spawnTowers() {
+        int x = 2;
+        int y = 2;
+        foreach (GameObject tower in towers) {
+            Instantiate(tower, new Vector2(x, y), Quaternion.identity);
+            //instances.Add(Instantiate(tower, new Vector2(x, y), Quaternion.identity));
+            x++;
+            y++;
         }
     }
 
-    private int whichTower() {
-        System.Random rand = new System.Random();
-        int x = rand.Next(1);
-        return x;
+    private int getTowerLevel() {
+        int playaLevel = getPlayerLevel();
+        int wRandomNumber = randomValue();
+        //Debug.Log(wRandomNumber);
+
+        float tierOneEndPointProbability = playerLevelTiersProbabilities[playaLevel].x;
+        float tierTwoEndPointProbability = tierOneEndPointProbability + playerLevelTiersProbabilities[playaLevel].y;
+        
+
+        if (wRandomNumber <= tierOneEndPointProbability)
+            return 0;
+        if (wRandomNumber > tierOneEndPointProbability && wRandomNumber <= tierTwoEndPointProbability) 
+            return 1;
+        if (wRandomNumber > tierTwoEndPointProbability)
+            return 2;
+
+        return 0;
     }
 
     private int randomValue() {
-        System.Random random = new System.Random();
-        int x = random.Next(101);
+        int x = rand.Next(101);
         return x;
     }
-
+    //WIP
     private int getPlayerLevel() {
-        return playerLevel;
+        //Player.level;
+        return 3;
     }
 }

@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165953639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -2.5005522, z: -1.7}
+  m_LocalPosition: {x: -5.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1218026612}
@@ -175,7 +175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218865798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.9, y: -2.5005522, z: -1.72}
+  m_LocalPosition: {x: 5.44, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441249483}
@@ -211,7 +211,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4c922f5cba14b66b779acfe3f7a01a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformation: {fileID: 0}
+  playerLevelTiersProbabilities:
+  - {x: 75, y: 25, z: 0}
+  - {x: 50, y: 45, z: 5}
+  - {x: 30, y: 55, z: 15}
+  - {x: 25, y: 45, z: 30}
+  - {x: 15, y: 40, z: 45}
+  tiers:
+  - towers:
+    - {fileID: 165953639}
+    - {fileID: 165953639}
+    price: 1
+  - towers:
+    - {fileID: 887406073}
+    - {fileID: 887406073}
+    price: 2
+  - towers:
+    - {fileID: 218865798}
+    - {fileID: 218865798}
+    price: 3
+  towers: []
 --- !u!4 &277871850
 Transform:
   m_ObjectHideFlags: 0
@@ -517,7 +536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887406073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13263375, y: -2.5005522, z: -1.8135405}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 629870420}
