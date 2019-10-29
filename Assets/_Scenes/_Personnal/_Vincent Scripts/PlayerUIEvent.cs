@@ -1,0 +1,36 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerUIEvent : MonoBehaviour
+{
+    // Associated game attribute value members
+    int mGameRound;
+    int mPlayerLevel;
+    int mPlayerGold;
+
+    // Associated game attribute text members in actual UI
+    public Text mGameRoundText;
+    public Text mPlayerLevelText;
+    public Text mPlayerGoldText;
+
+    // Changes game UI's round to match the GameController's attribute when it changes
+    public void ChangeGameRound(TestingGameController gameControllerRef)
+    {
+        mGameRound = gameControllerRef.GetGameRound();
+        mGameRoundText.text = mGameRound.ToString();
+    }
+
+    // Changes player UI's level to match the Player's attribute when it changes
+    public void ChangePlayerLevel(TestingPlayer playerRef) //TODO change to actual player class name
+    {
+        mPlayerLevel = playerRef.GetPlayerLevel();
+        mPlayerLevelText.text = mPlayerLevel.ToString();
+    }
+
+    // Changes player UI's gold to match the Player's attribute when it changes
+    public void ChangePlayerGold(TestingPlayer playerRef) //TODO change to actual player class name
+    {
+        mPlayerGold = playerRef.GetPlayerGold();
+        mPlayerGoldText.text = mPlayerGold.ToString();
+    }
+}

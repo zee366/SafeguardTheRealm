@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SnapSystem {
+    [Serializable]
+    public class SnapEvent : UnityEvent<SnapLocation> { }
+
     public class SnapLocation : MonoBehaviour {
 
         public float selectedObjectHeight        = 2f;
@@ -11,11 +15,16 @@ namespace SnapSystem {
         [SerializeField] private GameObject highlightGameObject;
         [SerializeField] private Transform  container;
 
+        public SnapEvent onContentChange;
+
         private bool _isLit      = false;
         private bool _isSelected = false;
 
         private Transform _innerObjectTransform;
 
+        /// <summary>
+        /// Defines if the location if currently highlighted
+        /// </summary>
         public bool IsLit {
             get { return _isLit; }
             set {
@@ -24,6 +33,9 @@ namespace SnapSystem {
             }
         }
 
+        /// <summary>
+        /// Defines if the location if selected for action
+        /// </summary>
         public bool IsSelected {
             get { return _isSelected; }
             set {
@@ -38,8 +50,7 @@ namespace SnapSystem {
 
 
         private void Start() {
-            if ( container.childCount > 0 )
-                _innerObjectTransform = container.GetChild(0);
+            if ( container.childCount > 0 ) _innerObjectTransform = container.GetChild(0);
 
             OnHighlightStateChange();
         }
@@ -48,7 +59,8 @@ namespace SnapSystem {
         private void Update() {
             // Animate if selected tile
             if ( !IsEmpty && IsSelected ) {
-                _innerObjectTransform.position = container.position + Vector3.up * selectedObjectHeight; Vector3 prevEuler = _innerObjectTransform.rotation.eulerAngles;
+                _innerObjectTransform.position = container.position + Vector3.up * selectedObjectHeight;
+                Vector3 prevEuler = _innerObjectTransform.rotation.eulerAngles;
                 _innerObjectTransform.rotation = Quaternion.Euler(prevEuler.x,
                                                                   prevEuler.y + selectedObjectRotationSpeed * Time.deltaTime,
                                                                   prevEuler.z);
@@ -76,14 +88,28 @@ namespace SnapSystem {
         /// </summary>
         /// <param name="toAdd"></param>
         public void ReplaceObject(GameObject toAdd) {
-            // Remove
-            if ( !IsEmpty )
-                Destroy(_innerObjectTransform);
+            // Remove if one
+            if ( !IsEmpty ) Destroy(_innerObjectTransform);
 
             _innerObjectTransform          = toAdd.transform;
             _innerObjectTransform.position = container.position;
             _innerObjectTransform.rotation = Quaternion.identity;
             _innerObjectTransform.parent   = container;
+
+            onContentChange?.Invoke(this);
+        }
+
+
+        /// <summary>
+        /// Remove objects that might be present in that location container
+        /// </summary>
+        public void Clear() {
+            if ( !IsEmpty )
+                foreach ( Transform t in transform )
+                    Destroy(t);
+
+            _innerObjectTransform = null;
+            onContentChange?.Invoke(this);
         }
 
 
