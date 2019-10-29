@@ -24,7 +24,7 @@ public class MarketUIEvent : MonoBehaviour
     public Text mLevelUpAmountText;
 
     // Attributes associated with cost of gaining a level
-    int mGainLevelCost = 2;
+    int mGainLevelCost = -2;
 
 
     // Attributes for storing the tower type and level
@@ -52,7 +52,7 @@ public class MarketUIEvent : MonoBehaviour
     {
         // Initialize the chosen towers and the associated cost texts of the buttons
         mChosenTowers = mMarket.GetThreeChosenTowers();
-        mRerollButtonText.text = REROLL_COST.ToString();
+        mRerollButtonText.text = "REROLL: " + REROLL_COST.ToString();
         mLevelUpAmountText.text = mGainLevelCost.ToString();
         DisplayTowerSlotsInfo();
         DisplayTowerCostForButtons();
@@ -119,7 +119,7 @@ public class MarketUIEvent : MonoBehaviour
         if (mPlayer.checkGold(mGainLevelCost))    //check if player has enough gold to do this, if not, do nothing
         {
             mPlayer.gainLevel(mGainLevelCost);
-            mGainLevelCost++;
+            mGainLevelCost--;
         }
     }
 
