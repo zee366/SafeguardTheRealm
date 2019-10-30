@@ -15,8 +15,8 @@ public class PlayerUIEvent : MonoBehaviour {
 
 
     // Changes game UI's round to match the GameController's attribute when it changes
-    public void ChangeGameRound(TestingGameController gameControllerRef) {
-        mGameRound          = gameControllerRef.GetGameRound();
+    public void ChangeGameRound(WaveManager waveManagerRef) {
+        mGameRound          = waveManagerRef.GetWaveNumber();
         mGameRoundText.text = mGameRound.ToString();
     }
 

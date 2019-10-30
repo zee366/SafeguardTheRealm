@@ -30,7 +30,9 @@ namespace Behavioral {
             _posOnSpline = Mathf.Clamp(_posOnSpline, 0.0f, 1.0f);
 
             CurveSample sample = _splineRef.GetSampleAtDistance(_posOnSpline * _splineRef.Length);
-            transform.position = sample.location;
+
+            // Add Spline object position offset
+            transform.position = sample.location + _splineRef.transform.position;
         }
 
 

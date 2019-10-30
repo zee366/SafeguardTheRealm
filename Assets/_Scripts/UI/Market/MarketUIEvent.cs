@@ -9,19 +9,9 @@ public class MarketUIEvent : MonoBehaviour {
     public Inventory    inventory;
     public MarketScript market;
 
-    // Containers for chosen tower objects and their info
-    List<MarketProduct> mChosenTowers;
-    List<string>        mChosenTowersNames;
-    List<int>           mChosenTowersCosts;
-
     // Cost of a reroll is always 1 gold
     const  int  REROLL_COST = 1;
     public Text mRerollButtonText;
-
-    // Get associated gain level button and its associated level cost text
-    public Button mLevelUpButton;
-
-    //public Button MLevelUpButton { get => mLevelUpButton; set => mLevelUpButton = value; }    //better?
     public Text mLevelUpAmountText;
 
     // Attributes associated with cost of gaining a level
@@ -38,8 +28,7 @@ public class MarketUIEvent : MonoBehaviour {
             slot.onTryBuying.AddListener(OnSlotClicked);
         }
 
-        mChosenTowers           = market.GetTowers();
-        mRerollButtonText.text  = "REROLL: " + REROLL_COST;
+        mRerollButtonText.text  = REROLL_COST.ToString();
         mLevelUpAmountText.text = _gainLevelCost.ToString();
 
         market.GenerateTowersList();

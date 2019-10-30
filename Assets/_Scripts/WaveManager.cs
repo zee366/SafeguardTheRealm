@@ -11,10 +11,11 @@ public class WaveManager : MonoBehaviour {
 
     GameObject        _spawner;
     GameObject        _spline;
+    public UnityEvent onWaveStart;
     public UnityEvent onWaveEnd;
     public UnityEvent onRoundEnd;
 
-    private int _waveNumber = 0;
+    private int _waveNumber = 1;
     private int _unitsSpawned;
     bool        waveStopped;
 
@@ -43,6 +44,9 @@ public class WaveManager : MonoBehaviour {
     }
 
 
+    public int GetWaveNumber() { return _waveNumber; }
+
+
     public void SpawnEnemy() {
         _spawner.GetComponent<Spawner>().SpawnOne();
         _unitsSpawned++;
@@ -53,6 +57,7 @@ public class WaveManager : MonoBehaviour {
         _waveNumber++;
         _maxUnitsPerWave += unitsPerWaveIncrement;
         waveStopped      =  false;
+        onWaveStart?.Invoke();
         InvokeRepeating("SpawnEnemy", 0f, 1f);
     }
 
