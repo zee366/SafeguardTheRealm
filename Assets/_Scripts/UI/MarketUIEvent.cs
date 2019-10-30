@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class MarketUIEvent : MonoBehaviour {
 
     // Get associated player, inventory, and market objects
-    public Player       player;    //TODO change to actual class
-    public Inventory    inventory; //TODO change to actual class
-    public MarketScript market;    //TODO change to actual class
+    public Player       player;
+    public Inventory    inventory;
+    public MarketScript market;
 
     // Containers for chosen tower objects and their info
     List<GameObject> mChosenTowers;

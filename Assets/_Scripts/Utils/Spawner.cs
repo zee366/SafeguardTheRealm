@@ -5,9 +5,9 @@ using SplineMesh;
 namespace Utils {
     public class Spawner : MonoBehaviour {
 
-        public List<Spawnable> spawnables;
-        public Transform       spawnParent;
-        public SplineNode      firstNode;
+        public  List<Spawnable> spawnables;
+        public  Transform       spawnParent;
+        private SplineNode      _firstNode;
 
         List<Vector2> probabilitiesOfSpawnableObjects = new List<Vector2>();
 
@@ -21,7 +21,7 @@ namespace Utils {
             foreach ( Vector2 prob in probabilitiesOfSpawnableObjects ) {
                 if ( RandomProbability >= prob.x && RandomProbability <= prob.y ) {
                     //Instantiate(spawnables[i].prefab, spawnParent.position, Quaternion.identity, spawnParent);
-                    Instantiate(spawnables[i].prefab, firstNode.Position, Quaternion.identity, spawnParent);
+                    Instantiate(spawnables[i].prefab, _firstNode.Position, Quaternion.identity, spawnParent);
                     break;
                 }
 
@@ -39,8 +39,7 @@ namespace Utils {
                 startingProb += s.probability;
             }
 
-            firstNode = GetComponentInParent<Spline>().nodes[0];
-
+            _firstNode = spawnParent.GetComponent<Spline>().nodes[0];
         }
 
     }

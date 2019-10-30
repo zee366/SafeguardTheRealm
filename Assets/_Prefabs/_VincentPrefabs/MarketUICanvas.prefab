@@ -1,5 +1,73 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &989757149059515062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7647905664754296321}
+  - component: {fileID: 7504368401976819149}
+  m_Layer: 5
+  m_Name: MarketLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7647905664754296321
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989757149059515062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5767104169796231334}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7504368401976819149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989757149059515062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4c922f5cba14b66b779acfe3f7a01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevelTiersProbabilities:
+  - {x: 75, y: 25, z: 0}
+  - {x: 50, y: 45, z: 5}
+  - {x: 30, y: 55, z: 15}
+  - {x: 25, y: 45, z: 30}
+  - {x: 15, y: 40, z: 45}
+  tiers:
+  - towers:
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    price: 1
+  - towers:
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    price: 2
+  - towers:
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    - {fileID: 3565099394172681925, guid: f7ab5ac4c677d334188c2bd168278963, type: 3}
+    price: 3
+  towers: []
 --- !u!1 &1194264112122302460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1774,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5767104169185010031}
+  - {fileID: 7647905664754296321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1786,9 +1855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c59beb6f31728f49b65978e7c0d93db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlayer: {fileID: 0}
-  mInventory: {fileID: 0}
-  mMarket: {fileID: 0}
+  player: {fileID: 0}
+  inventory: {fileID: 0}
+  market: {fileID: 7504368401976819149}
   mRerollButtonText: {fileID: 0}
   mLevelUpButton: {fileID: 0}
   mLevelUpAmountText: {fileID: 0}
