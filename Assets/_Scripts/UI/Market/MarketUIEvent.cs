@@ -15,7 +15,7 @@ public class MarketUIEvent : MonoBehaviour {
     List<int>           mChosenTowersCosts;
 
     // Cost of a reroll is always 1 gold
-    const  int  REROLL_COST = -1;
+    const  int  REROLL_COST = 1;
     public Text mRerollButtonText;
 
     // Get associated gain level button and its associated level cost text
@@ -25,7 +25,7 @@ public class MarketUIEvent : MonoBehaviour {
     public Text mLevelUpAmountText;
 
     // Attributes associated with cost of gaining a level
-    int mGainLevelCost = -2;
+    int _gainLevelCost = 2;
 
     private MarketSlot[] _slots;
 
@@ -40,7 +40,7 @@ public class MarketUIEvent : MonoBehaviour {
 
         mChosenTowers           = market.GetTowers();
         mRerollButtonText.text  = "REROLL: " + REROLL_COST;
-        mLevelUpAmountText.text = mGainLevelCost.ToString();
+        mLevelUpAmountText.text = _gainLevelCost.ToString();
 
         market.GenerateTowersList();
         UpdateMarketSlots(market.GetTowers());
@@ -88,12 +88,13 @@ public class MarketUIEvent : MonoBehaviour {
         }
     }
 
+
     // Allows player to buy a new level
     public void BuyPlayerLevel() {
-        if ( player.CheckGold(mGainLevelCost) ) //check if player has enough gold to do this, if not, do nothing
+        if ( player.CheckGold(_gainLevelCost) ) //check if player has enough gold to do this, if not, do nothing
         {
-            player.GainLevel(mGainLevelCost);
-            mGainLevelCost--;
+            player.GainLevel(_gainLevelCost);
+            _gainLevelCost++;
         }
     }
 
