@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+using Behavioral;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] int _health;
@@ -36,8 +37,8 @@ public class Enemy : MonoBehaviour {
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
             _castle.GetComponent<Castle>().TakeDamage(_attackDamage);
-	    OnCastleHit?.Invoke();
-            Destroy(this.GameObject);
+	        onCastleHit?.Invoke();
+            Destroy(gameObject);
         }
     }
 
@@ -57,6 +58,6 @@ public class Enemy : MonoBehaviour {
     void Die() {
         if(_golden)
             _player.GetComponent<Player>().GainGold(_goldValue);
-	onDeath?.Invoke();
+	    onDeath?.Invoke();
     }
 }

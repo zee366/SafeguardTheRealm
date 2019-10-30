@@ -7,7 +7,7 @@ public class Castle : MonoBehaviour
 
     public UnityEvent onCastleHit;
 
-    void TakeDamage(int value) {
+    public void TakeDamage(int value) {
         _health -= value;
         onCastleHit?.Invoke();
     }

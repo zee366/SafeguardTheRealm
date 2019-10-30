@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b522f48b58ca684299e2055dd4a493d, type: 2}
+  - {fileID: 2100000, guid: 2ecbaf6dbbdde4705aeb7f30f926485d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +102,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5734303169008001381}
-  - component: {fileID: 1741684487161485866}
+  - component: {fileID: 1798863198406611205}
+  - component: {fileID: -1739012445784307635}
   m_Layer: 0
   m_Name: Enemy_regular
   m_TagString: Untagged
@@ -125,7 +126,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1741684487161485866
+--- !u!114 &1798863198406611205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,3 +143,22 @@ MonoBehaviour:
   _xpValue: 0
   _goldValue: 0
   _golden: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onCastleHit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1739012445784307635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734303169008001383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af98279177834191a74800374dfc2b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedInUnitsPerSecond: 1
