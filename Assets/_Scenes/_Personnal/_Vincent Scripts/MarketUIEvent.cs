@@ -7,11 +7,11 @@ public class MarketUIEvent : MonoBehaviour
     // Get associated player, inventory, and market objects
     public TestingPlayer mPlayer;           //TODO change to actual class
     public TestingInventory mInventory;     //TODO change to actual class
-    public TestingMarket mMarket;           //TODO change to actual class
+    public MarketScript mMarket;           //TODO change to actual class
+    
 
     // Containers for chosen tower objects and their info
-    List<GameObject> mChosenTowers;         
-    List<string> mChosenTowersNames;
+    List<Tower> mChosenTowers;
     List<int> mChosenTowersCosts;
     
     // Cost of a reroll is always 1 gold
@@ -48,22 +48,33 @@ public class MarketUIEvent : MonoBehaviour
     public Text mTowerSlot3CostText;
 
     // Start is called before the first frame update
-    private void Awake()
+    void Start()
     {
-        // Initialize the chosen towers and the associated cost texts of the buttons
-        mChosenTowers = mMarket.GetThreeChosenTowers();
+        /* Initialize the chosen towers and the associated cost texts of the buttons
+        mChosenTowers = mMarket.GetTowers();
         mRerollButtonText.text = "REROLL: " + REROLL_COST.ToString();
         mLevelUpAmountText.text = mGainLevelCost.ToString();
+        mChosenTowersCosts = mMarket.GetTowerTiers(); */
+        
+    }
+
+    private void Update()
+    {
+        // Initialize the chosen towers and the associated cost texts of the buttons
+        mChosenTowers = mMarket.GetTowers();
+        mRerollButtonText.text = "REROLL: " + REROLL_COST.ToString();
+        mLevelUpAmountText.text = mGainLevelCost.ToString();
+        mChosenTowersCosts = mMarket.GetTowerTiers();
         DisplayTowerSlotsInfo();
-        DisplayTowerCostForButtons();
+        DisplayTowerCostForButtons(); 
     }
 
     // Shows the info of each chosen tower in format of type and level
     public void DisplayTowerSlotsInfo()
     {
-        mTowerSlot1InfoText.text = mChosenTowersNames[0] + " " + mChosenTowersCosts[0].ToString();
-        mTowerSlot1InfoText.text = mChosenTowersNames[1] + " " + mChosenTowersCosts[1].ToString();
-        mTowerSlot1InfoText.text = mChosenTowersNames[2] + " " + mChosenTowersCosts[2].ToString();
+        mTowerSlot1InfoText.text = mChosenTowers[0].towerName;
+        mTowerSlot2InfoText.text = mChosenTowers[1].towerName;
+        mTowerSlot3InfoText.text = mChosenTowers[2].towerName;
     }
 
     // Shows the info of each chosen tower's cost for their appropriate button
@@ -80,7 +91,9 @@ public class MarketUIEvent : MonoBehaviour
         if (mPlayer.checkGold(REROLL_COST))     //check if player has enough gold to do this, if not, do nothing
         {
             mPlayer.removeGold(REROLL_COST);
-            mMarket.GenerateNewListOfTowers(ref mChosenTowers);
+            mMarket.AddTowers();
+            mChosenTowers = mMarket.GetTowers();
+            mChosenTowersCosts = mMarket.GetTowerTiers();
             DisplayTowerSlotsInfo();
             DisplayTowerCostForButtons();
         }

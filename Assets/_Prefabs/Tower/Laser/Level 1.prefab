@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
+  towerName: Laser
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0

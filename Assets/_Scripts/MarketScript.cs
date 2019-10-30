@@ -17,7 +17,9 @@ public class MarketScript : MonoBehaviour
     List<TowerTier> tiers = new List<TowerTier>();
     // the towers game objects
     [SerializeField]
-    List<GameObject> towers = new List<GameObject>();
+    List<Tower> towers = new List<Tower>();
+
+    List<int> tiersIndex = new List<int>();
 
     System.Random rand = new System.Random();
 
@@ -28,8 +30,8 @@ public class MarketScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addTowers();
-        spawnTowers();
+        AddTowers();
+        //SpawnTowers();
     }
 
     // Update is called once per frame
@@ -45,30 +47,38 @@ public class MarketScript : MonoBehaviour
         _t += Time.deltaTime;
         */
     }
-
+    public List<Tower> GetTowers() {
+        return this.towers;
+    }
+    public List<int> GetTowerTiers() {
+        return this.tiersIndex;
+    }
     // will add the towers 
-    private void addTowers()
+    public void AddTowers()
     {
         /* used for testing
         foreach (var inst in instances)
             Destroy(inst);
             */
 
-        
-        towers = new List<GameObject>();
+        tiersIndex = new List<int>();
+        towers = new List<Tower>();
         for (int i = 0; i < 3; i++)
         {
-            int index = getTowerLevel();
+            int index = GetTowerLevel();
             int tiersTowerRandom = Random.Range(0, tiers[index].towers.Count);
             towers.Add(tiers[index].towers[tiersTowerRandom]);
+            tiersIndex.Add(index+1);
         }
 
     }
+
+
     // spawn the towers in the scene
-    private void spawnTowers() {
+    private void SpawnTowers() {
         int x = 2;
         int y = 2;
-        foreach (GameObject tower in towers) {
+        foreach (Tower tower in towers) {
             Instantiate(tower, new Vector2(x, y), Quaternion.identity);
             //instances.Add(Instantiate(tower, new Vector2(x, y), Quaternion.identity));
             x++;
@@ -76,9 +86,9 @@ public class MarketScript : MonoBehaviour
         }
     }
     // tells which tower tier was weighted choosen
-    private int getTowerLevel() {
-        int playaLevel = getPlayerLevel();
-        int wRandomNumber = randomValue();
+    private int GetTowerLevel() {
+        int playaLevel = GetPlayerLevel();
+        int wRandomNumber = RandomValue();
         //Debug.Log(wRandomNumber);
 
         float tierOneEndPointProbability = playerLevelTiersProbabilities[playaLevel].x;
@@ -95,13 +105,13 @@ public class MarketScript : MonoBehaviour
         return 0;
     }
 
-    private int randomValue() {
+    private int RandomValue() {
         int x = rand.Next(101);
         return x;
     }
     //WIP
-    private int getPlayerLevel() {
+    private int GetPlayerLevel() {
         //Player.level;
-        return 3;
+        return 0;
     }
 }
