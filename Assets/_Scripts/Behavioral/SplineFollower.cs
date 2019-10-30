@@ -6,7 +6,6 @@ namespace Behavioral {
 
         public float speedInUnitsPerSecond = 1.0f;
 
-
         private Spline _splineRef;
         private float  _posOnSpline = 0.0f;
         private bool   _isOk        = true;
@@ -23,12 +22,14 @@ namespace Behavioral {
 
 
         void Update() {
+            if ( !_isOk ) return;
+
             _posOnSpline += Time.deltaTime * (speedInUnitsPerSecond / _splineRef.Length);
 
             // Don't query for position outside curve bounds
             _posOnSpline = Mathf.Clamp(_posOnSpline, 0.0f, 1.0f);
 
-            CurveSample sample = _splineRef.GetSample(_posOnSpline * (_splineRef.nodes.Count-1));
+            CurveSample sample = _splineRef.GetSampleAtDistance(_posOnSpline * _splineRef.Length);
             transform.position = sample.location;
         }
 
