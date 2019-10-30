@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour {
     public UnityEvent onWaveEnd;
     public UnityEvent onRoundEnd;
 
-    private int _waveNumber;
+    private int _waveNumber = 0;
     private int _unitsSpawned;
     bool        waveStopped;
 
@@ -22,9 +22,6 @@ public class WaveManager : MonoBehaviour {
     void Start() {
         _spawner = GameObject.Find("Spawner");
         _spline  = GameObject.Find("Spline");
-        InvokeRepeating("SpawnEnemy", 0f, 1f);
-        _waveNumber = 1;
-        waveStopped = false;
     }
 
 
