@@ -10,4 +10,7 @@ namespace Events {
 
     [System.Serializable]
     public class SUnityEvent : UnityEvent<ScriptableObject> { }
+
+    [System.Serializable]
+    public class MarketSlotEvent : UnityEvent<MarketSlot> { }
 }
