@@ -8,7 +8,8 @@ public class Tower : MonoBehaviour {
 
     [Range(2f, 20f)]
     public float radius;
-    
+    public Sprite thumbnail;
+
     private List<Attacker> _attackers;
     private GameObject _enemyBeingTargetted;
     private GameObject _radiusObjet;

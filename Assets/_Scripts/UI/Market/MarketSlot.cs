@@ -36,8 +36,11 @@ public class MarketSlot : MonoBehaviour {
         _product        = product;
         _priceText.text = _product.price.ToString();
 
-        // TODO: Add image to products
-        // _image.sprite = _product.image;
+        // Tower image
+        Tower tower = _product.product.GetComponent<Tower>();
+        if ( tower != null && tower.thumbnail != null ) {
+            _image.sprite = tower.thumbnail;
+        }
 
         // Apply tint to self for now
         GetComponent<Image>().color = rarityColor[_product.rarity];
