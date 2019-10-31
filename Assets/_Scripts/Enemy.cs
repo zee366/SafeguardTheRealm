@@ -17,11 +17,12 @@ public class Enemy : MonoBehaviour {
     
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
+    public UnityEvent onBulletHit;
 
     private const float EPSILON = 0.0001f;
 	
     void Awake() {
-        _castle = GetComponent<Castle>();
+        _castle = transform.parent.GetComponent<Castle>();
         _player = GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
     }
