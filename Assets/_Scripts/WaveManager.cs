@@ -54,6 +54,7 @@ public class WaveManager : MonoBehaviour {
 
 
     public void StartWave() {
+        _unitsSpawned = 0;
         _waveNumber++;
         _maxUnitsPerWave += unitsPerWaveIncrement;
         waveStopped      =  false;

@@ -407,11 +407,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7312439908863228122}
     m_Modifications:
-    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker Right
-      objectReference: {fileID: 0}
     - target: {fileID: 6296000620147951571, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,6 +461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker Right
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
@@ -542,6 +542,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: onEnter2D.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3565099394172681923}
+    - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: onEnter2D.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddEnemyToMemory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: onExit2D.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3565099394172681923}
+    - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: onExit2D.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveEnemyFromMemory
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9c61004d54b72341ada963d2316caad, type: 3}
 --- !u!4 &9051418791891246670 stripped
@@ -557,11 +577,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7312439908863228122}
     m_Modifications:
-    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker Left
-      objectReference: {fileID: 0}
     - target: {fileID: 6296000620147951571, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -616,6 +631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker Left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
