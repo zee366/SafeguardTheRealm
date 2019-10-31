@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: c667c18da50f34eb49f5442da1886ee7, type: 3}
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}

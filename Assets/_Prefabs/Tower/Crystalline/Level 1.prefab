@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
+  thumbnail: {fileID: 21300000, guid: 08de1655aa3664194b1c364595af5cf4, type: 3}
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0
