@@ -249,6 +249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Range
       objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -314,6 +319,11 @@ PrefabInstance:
       propertyPath: onExit2D.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3565099394172681923}
+    - target: {fileID: 1660913033763128159, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9c61004d54b72341ada963d2316caad, type: 3}
 --- !u!4 &2244721345010498376 stripped
