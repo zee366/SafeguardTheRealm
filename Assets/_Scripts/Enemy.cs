@@ -17,23 +17,23 @@ public class Enemy : MonoBehaviour {
     
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
-    public UnityEvent onBulletHit;
 
     private const float EPSILON = 0.0001f;
 	
     void Awake() {
-        _castle = transform.parent.GetComponent<Castle>();
-        _player = GetComponent<Player>();
+        _castle = GameObject.Find("Castle").GetComponent<Castle>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
     }
 
     void LateUpdate() {
         CheckProgress();
-        CheckHealth();
     }
+
 
     public void TakeDamage(int value) {
         _health -= value;
+        CheckHealth();
     }
 
     void CheckProgress() {
@@ -44,15 +44,19 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+
+    public float GetProgress() {
+        return Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f);
+    }
+
     void CheckHealth() {
         if(_health <= 0) {
             Die();
-            Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Castle")) {
+        if ( other.gameObject.CompareTag("Castle") ) {
             _castle.TakeDamage(_attackDamage);
         }
     }
@@ -61,5 +65,6 @@ public class Enemy : MonoBehaviour {
         if(_golden)
             _player.GainGold(_goldValue);
         onDeath?.Invoke();
+        Destroy(gameObject);
     }
 }
