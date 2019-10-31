@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
@@ -8,6 +9,12 @@ public class Player : MonoBehaviour {
     public int        playerGold  = 0;
     public UnityEvent onLevelUp;    //On level Up event
     public UnityEvent onGoldChange; //On player's gold Changes event
+
+
+    private void Start() {
+        // Trigger some of of the events to update UI
+        onGoldChange.Invoke();
+    }
 
 
     //Gain level
