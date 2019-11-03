@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using Behavioral;
 using UnityEngine;
+using UnityEngine.Events;
+
+using Behavioral;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] int _health;
@@ -9,54 +11,60 @@ public class Enemy : MonoBehaviour {
     [SerializeField] int _goldValue;
     [SerializeField] bool _golden;
 
-    GameObject _castle;
-    GameObject _player;
+    Castle _castle;
+    Player _player;
     SplineFollower _splineFollower;
     
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
-    
-    const float EPSILON = 0.0001f;
+
+    private const float EPSILON = 0.0001f;
 	
-    void Start() {
-        _castle = GameObject.Find("Castle");
-        _player = GameObject.Find("Player");
+    void Awake() {
+        _castle = GameObject.Find("Castle").GetComponent<Castle>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
     }
 
     void LateUpdate() {
         CheckProgress();
-        CheckHealth();
     }
+
 
     public void TakeDamage(int value) {
         _health -= value;
+        CheckHealth();
     }
 
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
-            _castle.GetComponent<Castle>().TakeDamage(_attackDamage);
-	    OnCastleHit?.Invoke();
-            Destroy(this.GameObject);
+            _castle.TakeDamage(_attackDamage);
+            onCastleHit?.Invoke();
+            Destroy(this.gameObject);
         }
+    }
+
+
+    public float GetProgress() {
+        return Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f);
     }
 
     void CheckHealth() {
         if(_health <= 0) {
             Die();
-            Destroy(this.gameObject);
         }
     }
 
     void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "Castle") {
-            other.GetComponent<Castle>().TakeDamage(_attackDamage);
+        if ( other.gameObject.CompareTag("Castle") ) {
+            _castle.TakeDamage(_attackDamage);
         }
     }
 
     void Die() {
         if(_golden)
-            _player.GetComponent<Player>().GainGold(_goldValue);
-	onDeath?.Invoke();
+            _player.GainGold(_goldValue);
+        onDeath?.Invoke();
+        Destroy(gameObject);
     }
 }

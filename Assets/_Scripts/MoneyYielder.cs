@@ -5,17 +5,17 @@ public class MoneyYielder : MonoBehaviour
     int _winStreak { get; set; } = 0;
     int _loseStreak { get; set; } = 0;
 
-    GameObject _player;
+    Player _player;
 
     const int END_OF_ROUND_WINNINGS = 1;
 
     void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GetComponent<Player>();
     }
 
     public void GiveGoldToPlayer(int value) {
-        _player.GetComponent<Player>().gainGold(value);
+        _player.GainGold(value);
     }
 
     public void ResetWinStreak() {
