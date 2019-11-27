@@ -1,42 +1,81 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    public float translationSpeed;
+    public float translationSpeed = 12;
     [SerializeField]
-    public float rotationSpeed;
+    public float rotationSpeed = 1;
 
-    private Vector3 mViewTarget;
+    private float mRotationMax = 90.0f;
     private float t;
-    private float transitionTime = 1.5f;
+    private Quaternion mTargetRot;
+    private Coroutine mCoroutine;
+    private float transitionTime = 1f;
     private bool mRotating;
 
-    // Start is called before the first frame update
+    private Vector3 mRight;
+    private Vector3 mForward;
+
+    private const float MIN_X = -10f;
+    private const float MAX_X = 10f;
+    private const float MIN_Z = -10f;
+    private const float MAX_Z = 10f;
+
     void Start()
     {
-        mViewTarget = Vector3.zero;
-        transform.LookAt(mViewTarget);
+        mRotating = false;
+        mRight = transform.GetChild(0).transform.right;
+        mForward = Vector3.Cross(mRight, Vector3.up);
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R)) {
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if(!mRotating) {
+            if(Input.GetKeyDown(KeyCode.Q)) {
+                mRotating = true;
+                float currentRotation = transform.rotation.eulerAngles.y;
+                mTargetRot = Quaternion.Euler(0, currentRotation + mRotationMax, 0);
+                mCoroutine = StartCoroutine(Rotate());
+            }
+            else if(Input.GetKeyDown(KeyCode.E)) {
+                mRotating = true;
+                float currentRotation = transform.rotation.eulerAngles.y;
+                mTargetRot = Quaternion.Euler(0, currentRotation - mRotationMax, 0);
+                mCoroutine = StartCoroutine(Rotate());
+            }
+        }
+        Translate();
+    }
+
+    private IEnumerator Rotate() {
+        t = 0.0f;
+        while(t < transitionTime) {
+            t += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, mTargetRot, t / transitionTime);
+
+            yield return null;
+        }
+        transform.rotation = mTargetRot;
         mRotating = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q)) {
-            mRotating = true;
-            t = 0.0f;
-        }
-        if(mRotating) {
-            t += 90.0f * Time.deltaTime;
-            if(t <90.0f) {
-                transform.Rotate(Vector3.up, t, Space.World);
-            }
-            else {
-                mRotating = false;
-            }
-        }
+    private void Translate() {
+        Vector3 move = Vector3.zero;
+        if(Input.GetKey(KeyCode.W))
+            move += mForward;
+        if(Input.GetKey(KeyCode.A))
+            move += -mRight;
+        if(Input.GetKey(KeyCode.S))
+            move += -mForward;
+        if(Input.GetKey(KeyCode.D))
+            move += mRight;
+        transform.Translate(translationSpeed * move.normalized * Time.deltaTime);
     }
 }
