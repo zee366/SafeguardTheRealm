@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SnapSystem;
+using UnityEngine;
 using UnityEngine.Events;
 using Utils;
 using SplineMesh;
@@ -37,8 +38,9 @@ public class WaveManager : MonoBehaviour {
 
         // if no enemies left on the map, end the round -> go to market phase
         if ( waveStopped ) {
-            if ( (_spline.transform.childCount - 1) == 0 ) {
+            if ( _spline.transform.childCount == 0 ) {
                 onRoundEnd?.Invoke();
+                SnapManager.UnlockGrid();
             }
         }
     }
@@ -59,6 +61,7 @@ public class WaveManager : MonoBehaviour {
         _maxUnitsPerWave += unitsPerWaveIncrement;
         waveStopped      =  false;
         onWaveStart?.Invoke();
+        SnapManager.LockGrid();
         InvokeRepeating("SpawnEnemy", 0f, 1f);
     }
 

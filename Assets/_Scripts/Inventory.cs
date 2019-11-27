@@ -20,7 +20,11 @@ public class Inventory : MonoBehaviour {
         _capacity  = _locations.Length;
 
         // Register events to all of the child Locations
-        foreach ( SnapLocation location in _locations ) location.onContentChange.AddListener(OnLocationContentChanged);
+        foreach ( SnapLocation location in _locations ) {
+            if ( !location.IsEmpty )
+                _size++;// Starting size while testing
+            location.onContentChange.AddListener(OnLocationContentChanged);
+        }
     }
 
 
