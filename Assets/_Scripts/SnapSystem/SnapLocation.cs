@@ -107,9 +107,7 @@ namespace SnapSystem {
         /// Remove objects that might be present in that location container
         /// </summary>
         public void Clear() {
-            if ( !IsEmpty )
-                foreach ( Transform t in transform )
-                    Destroy(t);
+            if ( !IsEmpty ) Destroy(_innerObjectTransform.gameObject);
 
             _innerObjectTransform = null;
             onContentChange?.Invoke(this);
