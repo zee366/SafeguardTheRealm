@@ -99,6 +99,8 @@ public class Tower : MonoBehaviour {
     }
     
     private void LookAtEnemy() {
+        if ( _enemyBeingTargetted == null ) return;
+
         Vector3 enemyPosition = _enemyBeingTargetted.transform.position;
         foreach ( Transform weapon in _towerWeaponVisuals ) {
             Vector3 targetPostition = new Vector3( enemyPosition.x, 

@@ -3,7 +3,7 @@
 public class Projectile : MonoBehaviour {
 
     public float speed;
-    public int damage =1 ;
+    public int damage = 1;
     private Enemy _enemy;
     private Vector3 _lastEnemyPosition;
     public void SetEnemy(Enemy go) { _enemy = go; }
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
     private void MoveTowardsEnemy() {
         float step = 0.1f;
         _lastEnemyPosition = _enemy.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, _enemy.transform.position, step);
+        transform.position = Vector3.MoveTowards(transform.position, _enemy.transform.position, step * speed);
     }
     
     private void MoveTowardsPosition(Vector3 _lastEnemyPosition) {

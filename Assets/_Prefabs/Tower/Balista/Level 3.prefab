@@ -924,6 +924,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
     type: 3}
+  damage: 1
+  projectileSpeed: 2
   attackSpeed: 1
 --- !u!1 &5178499239899876846
 GameObject:
@@ -1049,6 +1051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
     type: 3}
+  damage: 1
+  projectileSpeed: 1.4
   attackSpeed: 2
 --- !u!1 &8289768417275125345
 GameObject:
@@ -1095,6 +1099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
     type: 3}
+  damage: 1
+  projectileSpeed: 2
   attackSpeed: 1
 --- !u!1 &8690628369447733444
 GameObject:
@@ -1141,6 +1147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
     type: 3}
+  damage: 1
+  projectileSpeed: 1.4
   attackSpeed: 1
 --- !u!1 &9189595597496862052
 GameObject:
