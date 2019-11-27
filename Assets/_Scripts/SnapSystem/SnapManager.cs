@@ -132,6 +132,9 @@ namespace SnapSystem {
 
             // Check if we can select it..
             if ( !_currentTarget.IsEmpty ) {
+                if(HasOneSelected())
+                    _lastSelected.IsSelected = false;
+                
                 _lastSelected            = _currentTarget;
                 _lastSelected.IsSelected = true;
                 onSelect?.Invoke();
