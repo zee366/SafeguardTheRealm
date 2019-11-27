@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 3565099394172681923}
   m_Layer: 0
   m_Name: Level 1
-  m_TagString: Untagged
+  m_TagString: balista_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,9 +528,6 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 1.2
   attackSpeed: 1
-  modifier:
-    speedModifier: 1
-    damageModifier: 1
 --- !u!1001 &588394512767973397
 PrefabInstance:
   m_ObjectHideFlags: 0

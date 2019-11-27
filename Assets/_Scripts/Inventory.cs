@@ -1,4 +1,5 @@
-﻿using SnapSystem;
+﻿using Events;
+using SnapSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,7 @@ public class Inventory : MonoBehaviour {
     private int            _size;     // The number of taken slots
 
     public UnityEvent onSizeChanged;
-
+    public GUnityEvent onAdd;
 
     private void Awake() {
         // References are taken, and never changed at runtime in our case
@@ -39,6 +40,7 @@ public class Inventory : MonoBehaviour {
         foreach ( SnapLocation location in _locations ) {
             if ( location.IsEmpty ) {
                 location.ReplaceObject(toAdd);
+                onAdd.Invoke(toAdd);
                 return true;
             }
         }

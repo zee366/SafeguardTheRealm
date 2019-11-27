@@ -6,6 +6,15 @@ TagManager:
   tags:
   - weapon
   - Projectile
+  - balista_1
+  - balista_2
+  - balista_3
+  - laser_1
+  - laser_2
+  - laser_3
+  - crystal_1
+  - crystal_2
+  - crystal_3
   layers:
   - Default
   - TransparentFX

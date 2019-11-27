@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 3565099394172681923}
   m_Layer: 0
   m_Name: Level 3
-  m_TagString: Untagged
+  m_TagString: balista_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -929,9 +929,6 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 2
   attackSpeed: 1
-  modifier:
-    speedModifier: 1
-    damageModifier: 1
 --- !u!1 &5178499239899876846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,9 +1056,6 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 1.4
   attackSpeed: 2
-  modifier:
-    speedModifier: 1
-    damageModifier: 1
 --- !u!1 &8289768417275125345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,9 +1104,6 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 2
   attackSpeed: 1
-  modifier:
-    speedModifier: 1
-    damageModifier: 1
 --- !u!1 &8690628369447733444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,9 +1152,6 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 1.4
   attackSpeed: 1
-  modifier:
-    speedModifier: 1
-    damageModifier: 1
 --- !u!1 &9189595597496862052
 GameObject:
   m_ObjectHideFlags: 0
