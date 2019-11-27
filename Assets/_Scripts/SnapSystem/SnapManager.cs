@@ -12,11 +12,11 @@ namespace SnapSystem {
         public UnityEvent onTransfer;
         public UnityEvent onCancel;
 
-        private        Camera       _cam;
-        private        SnapLocation _currentTarget;
-        private        SnapLocation _lastSelected;
-        private        Transform    _inBetweenRef;
-        private static bool         _locked = false;
+        private Camera       _cam;
+        private SnapLocation _currentTarget;
+        private SnapLocation _lastSelected;
+        private Transform    _inBetweenRef;
+        private bool         _locked = false;
 
 
         private void Awake() {
@@ -36,18 +36,19 @@ namespace SnapSystem {
             CheckCurrentTarget(Input.mousePosition);
 
             // Left click
-            if ( Input.GetMouseButtonDown(0) )
-                CheckLocationSelection();
+            if ( Input.GetMouseButtonDown(0) ) CheckLocationSelection();
 
             // Player may cancel an action with the Esc. Button or the right mouse button right now
-            if ( Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape) )
-                CancelAction();
+            if ( Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape) ) CancelAction();
         }
 
 
-        public static void LockGrid() { _locked = true; }
+        public void LockGrid() { _locked = true; }
 
-        public static void UnlockGrid() { _locked = false; }
+        public void UnlockGrid() { _locked = false; }
+
+        public bool IsLocked() { return _locked; }
+
 
         /// <summary>
         /// Cancel current movement action
@@ -74,14 +75,12 @@ namespace SnapSystem {
                 SnapLocation newRef = hit.transform.GetComponent<SnapLocation>();
 
                 // Change state of older one
-                if ( _currentTarget != null && _currentTarget != newRef )
-                    _currentTarget.IsLit = false;
+                if ( _currentTarget != null && _currentTarget != newRef ) _currentTarget.IsLit = false;
 
                 _currentTarget = newRef;
 
                 // Make sure the new reference was indeed a SnapLocation.. maybe not
-                if ( _currentTarget == null )
-                    return;
+                if ( _currentTarget == null ) return;
 
                 // Here the current target is a valid SnapLocation
                 _currentTarget.IsLit = true;
@@ -115,8 +114,7 @@ namespace SnapSystem {
 
             Vector3 norm = Vector3.Cross(Vector3.up, diff).normalized;
 
-            if ( norm.magnitude > 0 )
-                _inBetweenRef.rotation = Quaternion.LookRotation(norm, Vector3.up);
+            if ( norm.magnitude > 0 ) _inBetweenRef.rotation = Quaternion.LookRotation(norm, Vector3.up);
 
             _inBetweenRef.gameObject.SetActive(true);
         }
@@ -139,8 +137,7 @@ namespace SnapSystem {
 
             // Check if we can select it..
             if ( !_currentTarget.IsEmpty ) {
-                if ( HasOneSelected() )
-                    _lastSelected.IsSelected = false;
+                if ( HasOneSelected() ) _lastSelected.IsSelected = false;
 
                 _lastSelected            = _currentTarget;
                 _lastSelected.IsSelected = true;

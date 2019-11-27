@@ -71,5 +71,4 @@ public class Inventory : MonoBehaviour {
 
 
     public int GetSize() { return _size; }
-
 }

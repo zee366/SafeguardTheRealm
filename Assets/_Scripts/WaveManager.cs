@@ -18,10 +18,12 @@ public class WaveManager : MonoBehaviour {
 
     private int _waveNumber = 1;
     private int _unitsSpawned;
-    bool        waveStopped;
+    private bool        waveStopped;
+    private SnapManager _snapManager;
 
 
     void Start() {
+        _snapManager = FindObjectOfType<SnapManager>();
         _spawner = GameObject.Find("Spawner");
         _spline  = GameObject.Find("Spline");
     }
@@ -40,7 +42,7 @@ public class WaveManager : MonoBehaviour {
         if ( waveStopped ) {
             if ( _spline.transform.childCount == 0 ) {
                 onRoundEnd?.Invoke();
-                SnapManager.UnlockGrid();
+                _snapManager.UnlockGrid();
             }
         }
     }
@@ -61,7 +63,7 @@ public class WaveManager : MonoBehaviour {
         _maxUnitsPerWave += unitsPerWaveIncrement;
         waveStopped      =  false;
         onWaveStart?.Invoke();
-        SnapManager.LockGrid();
+        _snapManager.LockGrid();
         InvokeRepeating("SpawnEnemy", 0f, 1f);
     }
 
