@@ -9,6 +9,7 @@ public class Attacker : MonoBehaviour {
     private Enemy _currentEnemy;
     private Coroutine _currentCoroutine;
     private bool _projectileCoroutineStarted = false;
+
     public void Attack(Enemy enemy) {
         if (_projectileCoroutineStarted && enemy != _currentEnemy) StopCoroutine(_currentCoroutine);
         _currentEnemy = enemy;

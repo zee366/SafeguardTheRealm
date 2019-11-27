@@ -15,12 +15,13 @@ public class Projectile : MonoBehaviour {
             if ( transform.position == _lastEnemyPosition ) {
                 Destroy(gameObject);
             }
-        };
+
+            return;
+        }
         
         MoveTowardsEnemy();
     }
     private void MoveTowardsEnemy() {
-//        float step =  speed * Time.deltaTime; // calculate distance to move
         float step = 0.1f;
         _lastEnemyPosition = _enemy.transform.position;
         transform.position = Vector3.MoveTowards(transform.position, _enemy.transform.position, step);
