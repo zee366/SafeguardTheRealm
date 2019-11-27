@@ -32,9 +32,9 @@ public class Projectile : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, _lastEnemyPosition, step);
     }
 
-    
-    private void OnTriggerEnter(Collider other) {
-        Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
+
+    public void EnemyHit(Transform t) {
+        Enemy enemy = t.parent.GetComponent<Enemy>();
         if ( enemy ) {
             enemy.TakeDamage(damage);
         }
