@@ -71,7 +71,10 @@ namespace SnapSystem {
         /// <summary>
         /// Internal event logic for state change
         /// </summary>
-        private void OnHighlightStateChange() { highlightGameObject.SetActive(_isLit); }
+        private void OnHighlightStateChange() {
+            highlightGameObject.SetActive(_isLit);
+            BroadcastMessage("OnSnapLocationStateChange", _isLit);
+        }
 
 
         private void OnSelectChange() {

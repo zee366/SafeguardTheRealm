@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
+  thumbnail: {fileID: 0}
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +579,7 @@ PrefabInstance:
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
@@ -650,6 +651,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1646162738681572867}
     m_Modifications:
+    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker
+      objectReference: {fileID: 0}
     - target: {fileID: 6296000620147951571, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -705,11 +711,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
 --- !u!4 &828284157324867379 stripped
@@ -725,6 +726,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1646162739171394739}
     m_Modifications:
+    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker
+      objectReference: {fileID: 0}
     - target: {fileID: 6296000620147951571, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -779,11 +785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
