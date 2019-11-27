@@ -73,7 +73,7 @@ namespace SnapSystem {
         /// </summary>
         private void OnHighlightStateChange() {
             highlightGameObject.SetActive(_isLit);
-            BroadcastMessage("OnSnapLocationStateChange", _isLit);
+            BroadcastMessage("OnSnapLocationStateChange", _isLit, SendMessageOptions.DontRequireReceiver);
         }
 
 
