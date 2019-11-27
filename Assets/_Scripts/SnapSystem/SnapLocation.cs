@@ -92,7 +92,7 @@ namespace SnapSystem {
         /// <param name="toAdd"></param>
         public void ReplaceObject(GameObject toAdd) {
             // Remove if one
-            if ( !IsEmpty ) Destroy(_innerObjectTransform);
+            if ( !IsEmpty ) DestroyImmediate(_innerObjectTransform.gameObject);
 
             _innerObjectTransform          = toAdd.transform;
             _innerObjectTransform.position = container.position;
@@ -107,7 +107,7 @@ namespace SnapSystem {
         /// Remove objects that might be present in that location container
         /// </summary>
         public void Clear() {
-            if ( !IsEmpty ) Destroy(_innerObjectTransform.gameObject);
+            if ( !IsEmpty ) DestroyImmediate(_innerObjectTransform.gameObject);
 
             _innerObjectTransform = null;
             onContentChange?.Invoke(this);

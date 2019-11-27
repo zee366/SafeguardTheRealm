@@ -59,11 +59,13 @@ public class Inventory : MonoBehaviour {
     /// </summary>
     /// <param name="location">The SnapLocation that triggered the event, and has changed</param>
     private void OnLocationContentChanged(SnapLocation location) {
+        // Debug.Log(location.gameObject.name);
         if ( location.IsEmpty )
             _size--;
         else
             _size++;
 
+        // Debug.Log(_size);
         onSizeChanged?.Invoke();
     }
 
