@@ -17,13 +17,18 @@ public class TowerUpgrader : MonoBehaviour {
     public  UnityEvent             onUpgrade;
     public  List<TowerUpgradeLink> upgrades;
     private Inventory              _inventory;
-    private List<GameObject>       _toProcess;
+    private List<string>           _toProcess;
     private SnapManager            _snapManager;
+    private WaveManager            _waveManager;
 
 
     void Awake() {
+        _toProcess = new List<string>();
         _snapManager = FindObjectOfType<SnapManager>();
-        _inventory   = GetComponent<Inventory>();
+        _waveManager = FindObjectOfType<WaveManager>();
+        _waveManager.onRoundEnd.AddListener(ProcessBuffer);
+
+        _inventory = GetComponent<Inventory>();
         _inventory.onAdd.AddListener(OnInventoryAdded);
     }
 
@@ -38,23 +43,19 @@ public class TowerUpgrader : MonoBehaviour {
 
 
     public void ProcessBuffer() {
-        foreach ( GameObject obj in _toProcess ) OnInventoryAdded(obj);
+        foreach ( string tagToProcess in _toProcess ) UpgradeWithTag(tagToProcess);
+
+        _toProcess.Clear();
     }
 
 
-    void OnInventoryAdded(GameObject gameObject) {
-        if ( _snapManager.IsLocked() ) {
-            // To process later (After unlocked)
-            _toProcess.Add(gameObject);
-            return;
-        }
-
-        GameObject[] list = GameObject.FindGameObjectsWithTag(gameObject.tag);
+    void UpgradeWithTag(string tag) {
+        GameObject[] list = GameObject.FindGameObjectsWithTag(tag);
 
         if ( list.Length >= 3 ) {
-            GameObject yield = GetYieldFor(gameObject.tag);
+            GameObject yield = GetYieldFor(tag);
             if ( yield == null ) {
-                Debug.LogWarning("Could not get yield for tag: " + gameObject.tag);
+                Debug.LogWarning("Could not get yield for tag: " + tag);
                 return;
             }
 
@@ -71,6 +72,17 @@ public class TowerUpgrader : MonoBehaviour {
                 }
             }
         }
+    }
+
+
+    void OnInventoryAdded(GameObject gameObject) {
+        if ( _snapManager.IsLocked() ) {
+            // To process later (After unlocked)
+            _toProcess.Add(gameObject.tag);
+            return;
+        }
+
+        UpgradeWithTag(gameObject.tag);
     }
 
 }

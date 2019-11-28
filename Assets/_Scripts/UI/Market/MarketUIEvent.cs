@@ -87,13 +87,4 @@ public class MarketUIEvent : MonoBehaviour {
         }
     }
 
-
-    // TODO
-    // Is following function to be handled here or in gamecontroller?
-    // Function for when player is done using the market UI
-    public void SelectedDone() {
-        // Logic for when button done is pressed
-        // Handle here or in game controller?
-    }
-
 }

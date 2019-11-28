@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Utils;
-using SplineMesh;
 
 public class WaveManager : MonoBehaviour {
 

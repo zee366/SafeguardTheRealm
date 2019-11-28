@@ -72,6 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5225ca039fa77be408eb30a0e24a0aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onUpgrade:
+    m_PersistentCalls:
+      m_Calls: []
   upgrades:
   - sourceTagName: balista_1
     yield: {fileID: 3565099394172681925, guid: 97218a8659808c44d91cd0231dbebde5, type: 3}
@@ -85,6 +88,10 @@ MonoBehaviour:
     yield: {fileID: 3565099394172681925, guid: f89695ae9a8485d4f839b8f2378ee94e, type: 3}
   - sourceTagName: crystal_2
     yield: {fileID: 3565099394172681925, guid: 8a40bc182b7657344abc92e00560c396, type: 3}
+  - sourceTagName: speedsupport_1
+    yield: {fileID: 3565099394172681925, guid: 9127e88186f78314fb6bf5fc06c90387, type: 3}
+  - sourceTagName: speedsupport_2
+    yield: {fileID: 3565099394172681925, guid: 2926a1369358e8442a786b0890845560, type: 3}
 --- !u!1001 &205536804068106692
 PrefabInstance:
   m_ObjectHideFlags: 0

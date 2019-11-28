@@ -15,6 +15,12 @@ TagManager:
   - crystal_1
   - crystal_2
   - crystal_3
+  - speedsupport_1
+  - speedsupport_2
+  - speedsupport_3
+  - damagesupport_1
+  - damagesupport_2
+  - damagesupport_3
   layers:
   - Default
   - TransparentFX
