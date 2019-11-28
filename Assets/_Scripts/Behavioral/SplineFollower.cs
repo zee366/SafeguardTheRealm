@@ -33,7 +33,8 @@ namespace Behavioral {
 
             // Add Spline object position offset
             transform.position = sample.location + _splineRef.transform.position;
-            transform.rotation = sample.Rotation;
+            if(gameObject.tag != "Projectile")
+                transform.rotation = sample.Rotation;
         }
 
 
