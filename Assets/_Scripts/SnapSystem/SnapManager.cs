@@ -110,7 +110,10 @@ namespace SnapSystem {
 
             if(norm.magnitude > 0)
                 _inBetweenRef.rotation = Quaternion.LookRotation(norm, Vector3.up);
-
+            if(lastPos.y > 10f) {
+                float angle = Mathf.Rad2Deg * Mathf.Asin(lastPos.y / diff.magnitude);
+                _inBetweenRef.rotation = Quaternion.AngleAxis(angle, norm);
+            }
             _inBetweenRef.gameObject.SetActive(true);
         }
 
