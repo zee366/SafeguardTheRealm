@@ -21,7 +21,6 @@ public class Tower : MonoBehaviour {
 
 
     void Awake() {
-        
         _attackers = new List<Attacker>(GetComponentsInChildren<Attacker>());
         _radiusObjet                      = transform.Find("Range").gameObject;
         _radiusObjet.transform.localScale = new Vector3(radius, 0.1f, radius);
@@ -100,6 +99,8 @@ public class Tower : MonoBehaviour {
     }
     
     private void LookAtEnemy() {
+        if ( _enemyBeingTargetted == null ) return;
+
         Vector3 enemyPosition = _enemyBeingTargetted.transform.position;
         foreach ( Transform weapon in _towerWeaponVisuals ) {
             Vector3 targetPostition = new Vector3( enemyPosition.x, 
@@ -108,5 +109,4 @@ public class Tower : MonoBehaviour {
             weapon.LookAt( targetPostition ) ;
         }
     }
-    
 }

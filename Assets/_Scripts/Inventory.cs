@@ -1,4 +1,5 @@
-﻿using SnapSystem;
+﻿using Events;
+using SnapSystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,7 @@ public class Inventory : MonoBehaviour {
     private int            _size;     // The number of taken slots
 
     public UnityEvent onSizeChanged;
-
+    public GUnityEvent onAdd;
 
     private void Awake() {
         // References are taken, and never changed at runtime in our case
@@ -20,7 +21,11 @@ public class Inventory : MonoBehaviour {
         _capacity  = _locations.Length;
 
         // Register events to all of the child Locations
-        foreach ( SnapLocation location in _locations ) location.onContentChange.AddListener(OnLocationContentChanged);
+        foreach ( SnapLocation location in _locations ) {
+            if ( !location.IsEmpty )
+                _size++;// Starting size while testing
+            location.onContentChange.AddListener(OnLocationContentChanged);
+        }
     }
 
 
@@ -35,6 +40,7 @@ public class Inventory : MonoBehaviour {
         foreach ( SnapLocation location in _locations ) {
             if ( location.IsEmpty ) {
                 location.ReplaceObject(toAdd);
+                onAdd.Invoke(toAdd);
                 return true;
             }
         }
@@ -53,15 +59,16 @@ public class Inventory : MonoBehaviour {
     /// </summary>
     /// <param name="location">The SnapLocation that triggered the event, and has changed</param>
     private void OnLocationContentChanged(SnapLocation location) {
+        // Debug.Log(location.gameObject.name);
         if ( location.IsEmpty )
             _size--;
         else
             _size++;
 
+        // Debug.Log(_size);
         onSizeChanged?.Invoke();
     }
 
 
     public int GetSize() { return _size; }
-
 }

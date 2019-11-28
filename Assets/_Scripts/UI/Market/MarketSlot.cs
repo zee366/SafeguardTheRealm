@@ -24,7 +24,11 @@ public class MarketSlot : MonoBehaviour {
     /// <summary>
     /// Wraps button event to give reference to entire market slot
     /// </summary>
-    private void SelfClicked() { onTryBuying?.Invoke(this); }
+    private void SelfClicked() {
+        Inventory inv = FindObjectOfType<Inventory>();
+        if ( inv != null && !inv.IsFull() )
+            onTryBuying?.Invoke(this);
+    }
 
 
     public void Disable() { GetComponent<Button>().interactable = false; }
