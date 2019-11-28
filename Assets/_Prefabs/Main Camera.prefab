@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def0b38e2d536a54cbd3b33549702e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 2.5
+  transitionTime: 5
   posOnMarket: {x: 7.8, y: 14.04, z: -8.5}
   rotationOnMarket: {x: 52, y: -39.82, z: 0}
   posOnBattle: {x: 10.23, y: 10.2, z: -5.31}

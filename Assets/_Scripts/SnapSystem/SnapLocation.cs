@@ -71,7 +71,10 @@ namespace SnapSystem {
         /// <summary>
         /// Internal event logic for state change
         /// </summary>
-        private void OnHighlightStateChange() { highlightGameObject.SetActive(_isLit); }
+        private void OnHighlightStateChange() {
+            highlightGameObject.SetActive(_isLit);
+            BroadcastMessage("OnSnapLocationStateChange", _isLit, SendMessageOptions.DontRequireReceiver);
+        }
 
 
         private void OnSelectChange() {
@@ -89,7 +92,7 @@ namespace SnapSystem {
         /// <param name="toAdd"></param>
         public void ReplaceObject(GameObject toAdd) {
             // Remove if one
-            if ( !IsEmpty ) Destroy(_innerObjectTransform);
+            if ( !IsEmpty ) DestroyImmediate(_innerObjectTransform.gameObject);
 
             _innerObjectTransform          = toAdd.transform;
             _innerObjectTransform.position = container.position;
@@ -104,9 +107,7 @@ namespace SnapSystem {
         /// Remove objects that might be present in that location container
         /// </summary>
         public void Clear() {
-            if ( !IsEmpty )
-                foreach ( Transform t in transform )
-                    Destroy(t);
+            if ( !IsEmpty ) DestroyImmediate(_innerObjectTransform.gameObject);
 
             _innerObjectTransform = null;
             onContentChange?.Invoke(this);

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4977523258307842936}
   - component: {fileID: 4977523258307842937}
+  - component: {fileID: 960630130298471824}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -53,6 +54,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f556a6f5243347a3aef0cce97f72e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSizeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onAdd:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &960630130298471824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977523258307842939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5225ca039fa77be408eb30a0e24a0aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpgrade:
+    m_PersistentCalls:
+      m_Calls: []
+  upgrades:
+  - sourceTagName: balista_1
+    yield: {fileID: 3565099394172681925, guid: 97218a8659808c44d91cd0231dbebde5, type: 3}
+  - sourceTagName: balista_2
+    yield: {fileID: 3565099394172681925, guid: a33697414ad9349488dc2383ef07b97a, type: 3}
+  - sourceTagName: laser_1
+    yield: {fileID: 3565099394172681925, guid: 073f0933d6c7bc841ab199df3b091ab4, type: 3}
+  - sourceTagName: laser_2
+    yield: {fileID: 3565099394172681925, guid: ca96888caf822eb4a903b5850ecf7444, type: 3}
+  - sourceTagName: crystal_1
+    yield: {fileID: 3565099394172681925, guid: f89695ae9a8485d4f839b8f2378ee94e, type: 3}
+  - sourceTagName: crystal_2
+    yield: {fileID: 3565099394172681925, guid: 8a40bc182b7657344abc92e00560c396, type: 3}
+  - sourceTagName: speedsupport_1
+    yield: {fileID: 3565099394172681925, guid: 9127e88186f78314fb6bf5fc06c90387, type: 3}
+  - sourceTagName: speedsupport_2
+    yield: {fileID: 3565099394172681925, guid: 2926a1369358e8442a786b0890845560, type: 3}
 --- !u!1001 &205536804068106692
 PrefabInstance:
   m_ObjectHideFlags: 0
