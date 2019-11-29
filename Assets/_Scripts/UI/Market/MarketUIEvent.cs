@@ -60,6 +60,13 @@ public class MarketUIEvent : MonoBehaviour {
             // TODO: Cant reroll
         }
     }
+     
+    // Renew the market when each round ends
+    public void RenewMarket()
+    {
+            market.GenerateTowersList();
+            UpdateMarketSlots(market.GetTowers());     
+    }
 
 
     /// <summary>
