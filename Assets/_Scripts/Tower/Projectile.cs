@@ -6,11 +6,25 @@ public class Projectile : MonoBehaviour {
     public int damage =1 ;
     private Enemy _enemy;
     private Vector3 _lastEnemyPosition;
-    public void SetEnemy(Enemy go) { _enemy = go; }
+    private Transform _target;
+
+
+    public void SetEnemy(Enemy go) {
+        _enemy = go;
+        _target = go.transform;
+        foreach( Transform t in go.transform)
+        {
+            if(t.tag == "EnemyCollider")
+            {
+                _target = t;
+                break;
+            }
+        }
+    }
 
 
     void FixedUpdate() {
-        if ( _enemy == null ) {
+        if ( _target == null ) {
             MoveTowardsPosition(_lastEnemyPosition);
             if ( transform.position == _lastEnemyPosition ) {
                 Destroy(gameObject);
@@ -22,8 +36,8 @@ public class Projectile : MonoBehaviour {
     private void MoveTowardsEnemy() {
 //        float step =  speed * Time.deltaTime; // calculate distance to move
         float step = 0.1f;
-        _lastEnemyPosition = _enemy.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, _enemy.transform.position, step);
+        _lastEnemyPosition = _target.position;
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
     }
     
     private void MoveTowardsPosition(Vector3 _lastEnemyPosition) {
@@ -33,9 +47,8 @@ public class Projectile : MonoBehaviour {
 
     
     private void OnTriggerEnter(Collider other) {
-        Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
-        if ( enemy ) {
-            enemy.TakeDamage(damage);
+        if ( _enemy ) {
+            _enemy.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

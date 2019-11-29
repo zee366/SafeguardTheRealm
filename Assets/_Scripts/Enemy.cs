@@ -18,16 +18,22 @@ public class Enemy : MonoBehaviour {
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
 
+    Animator _animator;
+
+    bool isKilledByTowerProjectile;
+
     private const float EPSILON = 0.0001f;
 	
     void Awake() {
         _castle = GameObject.Find("Castle").GetComponent<Castle>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
+        _animator = GetComponent<Animator>();
     }
 
     void LateUpdate() {
         CheckProgress();
+        _animator.SetBool("isKilledByTower", isKilledByTowerProjectile);
     }
 
 
@@ -51,7 +57,8 @@ public class Enemy : MonoBehaviour {
 
     void CheckHealth() {
         if(_health <= 0) {
-            Die();
+            isKilledByTowerProjectile = true;
+            _splineFollower.speedInUnitsPerSecond = 0.0f;
         }
     }
 
@@ -61,7 +68,7 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    void Die() {
+    public void Die() {
         if(_golden)
             _player.GainGold(_goldValue);
         onDeath?.Invoke();
