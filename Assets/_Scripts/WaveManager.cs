@@ -18,6 +18,7 @@ public class WaveManager : MonoBehaviour {
     private int _waveNumber = 1;
     private int _unitsSpawned;
     private bool        waveStopped;
+    private bool _roundEnded = true;
     private SnapManager _snapManager;
 
 
@@ -34,13 +35,15 @@ public class WaveManager : MonoBehaviour {
                 CancelInvoke("SpawnEnemy");
                 onWaveEnd?.Invoke();
                 waveStopped = true;
+                _roundEnded = false;
             }
         }
 
         // if no enemies left on the map, end the round -> go to market phase
         if ( waveStopped ) {
-            if ( _spline.transform.childCount == 0 ) {
+            if ( _spline.transform.childCount == 0 && !_roundEnded ) {
                 onRoundEnd?.Invoke();
+                _roundEnded = true;
                 _snapManager.UnlockGrid();
             }
         }
