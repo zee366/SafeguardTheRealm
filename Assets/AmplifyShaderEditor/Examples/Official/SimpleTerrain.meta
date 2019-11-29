@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: e14f9199031928442a76fcb851644355
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1512654691
 licenseType: Store
 DefaultImporter:
+=======
+DefaultImporter:
+  externalObjects: {}
+>>>>>>> feature/boomerangTower
   userData: 
   assetBundleName: 
   assetBundleVariant: 
