@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7844059211303347358}
   - component: {fileID: 7844059211303347359}
+  - component: {fileID: 1041070973971121681}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -52,3 +53,15 @@ MonoBehaviour:
   onGoldChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1041070973971121681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844059211303347297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a492451f6a99ae4b95a4c281531893f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

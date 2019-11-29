@@ -2,6 +2,8 @@
 
 public class MoneyYielder : MonoBehaviour
 {
+    const float INTEREST = 0.25f;
+
     int _winStreak { get; set; } = 0;
     int _loseStreak { get; set; } = 0;
 
@@ -29,6 +31,10 @@ public class MoneyYielder : MonoBehaviour
     }
 
     public void EndOfRoundWinnings() {
-        GiveGoldToPlayer((_winStreak + 1) * END_OF_ROUND_WINNINGS);
+        //GiveGoldToPlayer((++_winStreak) * END_OF_ROUND_WINNINGS);
+
+        // Calculate the interest then give the total to the player
+        int gold = _player.GetPlayerGold() + ((++_winStreak) * END_OF_ROUND_WINNINGS);
+        GiveGoldToPlayer(Mathf.RoundToInt(gold * INTEREST) + ((_winStreak) * END_OF_ROUND_WINNINGS));
     }
 }
