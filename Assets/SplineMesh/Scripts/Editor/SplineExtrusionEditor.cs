@@ -12,6 +12,7 @@ namespace SplineMesh {
         private SerializedProperty sampleSpacing;
         private SerializedProperty material;
         private SerializedProperty vertices;
+        private SerializedProperty customName;
 
         private SplineExtrusion se;
         private ExtrusionSegment.Vertex selection = null;
@@ -19,6 +20,7 @@ namespace SplineMesh {
         private void OnEnable() {
             se = (SplineExtrusion)target;
             textureScale = serializedObject.FindProperty("textureScale");
+            customName = serializedObject.FindProperty("nameOfDataContainer");
             sampleSpacing = serializedObject.FindProperty("sampleSpacing");
             material = serializedObject.FindProperty("material");
             vertices = serializedObject.FindProperty("shapeVertices");
@@ -144,6 +146,7 @@ namespace SplineMesh {
             GUI.enabled = true;
 
             // Properties
+            EditorGUILayout.PropertyField(customName, true);
             EditorGUILayout.PropertyField(textureScale, true);
             EditorGUILayout.PropertyField(sampleSpacing, true);
             EditorGUILayout.PropertyField(material, true);
