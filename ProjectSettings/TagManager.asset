@@ -6,6 +6,8 @@ TagManager:
   tags:
   - weapon
   - Projectile
+  - Spawner
+  - Spline
   - balista_1
   - balista_2
   - balista_3
