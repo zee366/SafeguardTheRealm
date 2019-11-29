@@ -72,6 +72,16 @@ PrefabInstance:
       propertyPath: _health
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
+        type: 3}
+      propertyPath: _golden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
+        type: 3}
+      propertyPath: _goldValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5734303168535400721, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
