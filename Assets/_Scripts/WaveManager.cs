@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using SnapSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using Utils;
-using SplineMesh;
-
-
 
 public class WaveManager : MonoBehaviour {
 
@@ -27,11 +25,13 @@ public class WaveManager : MonoBehaviour {
     bool         waveStopped;
 
     private bool _roundEnded = true;
+    private SnapManager _snapManager;
 
     private int numOfStoppedWaves = 0;
 
 
     void Start() {
+        _snapManager = FindObjectOfType<SnapManager>();
         _spawners = GameObject.FindGameObjectsWithTag("Spawner");
         _splines  = GameObject.FindGameObjectsWithTag("Spline");
 
@@ -71,6 +71,7 @@ public class WaveManager : MonoBehaviour {
             if(numOfStoppedWaves == waves.Count) {
                 _roundEnded = true;
                 onRoundEnd?.Invoke();
+                _snapManager.UnlockGrid();
             }
             else {
                 numOfStoppedWaves = 0;
@@ -91,6 +92,6 @@ public class WaveManager : MonoBehaviour {
         }
         _waveNumber++;
         onWaveStart?.Invoke();
+        _snapManager.LockGrid();
     }
-
 }
