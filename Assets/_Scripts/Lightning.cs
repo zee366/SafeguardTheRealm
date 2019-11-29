@@ -20,17 +20,17 @@ public class Lightning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        angle += 1080 * Time.deltaTime;
+        angle += 1600 * Time.deltaTime;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         t += Time.deltaTime;
-        if(t > 1.2f)
+        if(t > 1.5f)
             t = 0.0f;
         Debug.Log(t);
         ShowBolt(t);
     }
 
     void ShowBolt(float t) {
-        if(t > 0.0f && t < 0.2f) {
+        if(t > 0.0f && t < 0.25f) {
             _bolts[0].GetComponent<Renderer>().enabled = true;
             _bolts[1].GetComponent<Renderer>().enabled = false;
             _bolts[2].GetComponent<Renderer>().enabled = false;
@@ -38,7 +38,7 @@ public class Lightning : MonoBehaviour
             _bolts[4].GetComponent<Renderer>().enabled = false;
             _bolts[5].GetComponent<Renderer>().enabled = false;
         }
-        else if(t > 0.2f && t < 0.4f) {
+        else if(t > 0.2f && t < 0.5f) {
             _bolts[0].GetComponent<Renderer>().enabled = false;
             _bolts[1].GetComponent<Renderer>().enabled = true;
             _bolts[2].GetComponent<Renderer>().enabled = false;
@@ -46,7 +46,7 @@ public class Lightning : MonoBehaviour
             _bolts[4].GetComponent<Renderer>().enabled = false;
             _bolts[5].GetComponent<Renderer>().enabled = false;
         }
-        else if(t > 0.4f && t < 0.6f) {
+        else if(t > 0.4f && t < 0.75f) {
             _bolts[0].GetComponent<Renderer>().enabled = false;
             _bolts[1].GetComponent<Renderer>().enabled = false;
             _bolts[2].GetComponent<Renderer>().enabled = true;
@@ -54,7 +54,7 @@ public class Lightning : MonoBehaviour
             _bolts[4].GetComponent<Renderer>().enabled = false;
             _bolts[5].GetComponent<Renderer>().enabled = false;
         }
-        else if(t > 0.6f && t < 0.8f) {
+        else if(t > 0.6f && t < 1.0f) {
             _bolts[0].GetComponent<Renderer>().enabled = false;
             _bolts[1].GetComponent<Renderer>().enabled = false;
             _bolts[2].GetComponent<Renderer>().enabled = false;
@@ -62,7 +62,7 @@ public class Lightning : MonoBehaviour
             _bolts[4].GetComponent<Renderer>().enabled = false;
             _bolts[5].GetComponent<Renderer>().enabled = false;
         }
-        else if(t > 0.8f && t < 1.0f) {
+        else if(t > 0.8f && t < 1.25f) {
             _bolts[0].GetComponent<Renderer>().enabled = false;
             _bolts[1].GetComponent<Renderer>().enabled = false;
             _bolts[2].GetComponent<Renderer>().enabled = false;
@@ -70,7 +70,7 @@ public class Lightning : MonoBehaviour
             _bolts[4].GetComponent<Renderer>().enabled = true;
             _bolts[5].GetComponent<Renderer>().enabled = false;
         }
-        else if(t > 1.0f && t < 1.2f) {
+        else if(t > 1.0f && t < 1.5f) {
             _bolts[0].GetComponent<Renderer>().enabled = false;
             _bolts[1].GetComponent<Renderer>().enabled = false;
             _bolts[2].GetComponent<Renderer>().enabled = false;
