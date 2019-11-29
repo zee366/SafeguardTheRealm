@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Behavioral;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] int _health;
