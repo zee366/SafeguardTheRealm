@@ -6,6 +6,12 @@ TagManager:
   tags:
   - weapon
   - Projectile
+  - crystal_1
+  - balista_1
+  - laser_1
+  - speedsupport_1
+  - Spawner
+  - Spline
   layers:
   - Default
   - TransparentFX

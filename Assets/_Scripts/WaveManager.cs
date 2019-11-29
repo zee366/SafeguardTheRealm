@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 using Utils;
 using SplineMesh;
+
+
 
 public class WaveManager : MonoBehaviour {
 
@@ -9,36 +12,68 @@ public class WaveManager : MonoBehaviour {
     [SerializeField] private int _maxUnitsPerWave;
     [SerializeField] private int unitsPerWaveIncrement = 5;
 
-    GameObject        _spawner;
-    GameObject        _spline;
+    GameObject[]      _spawners;
+    GameObject[]      _splines;
+
+    [SerializeField]
+    public List<Wave> waves;
+
     public UnityEvent onWaveStart;
     public UnityEvent onWaveEnd;
     public UnityEvent onRoundEnd;
 
-    private int _waveNumber = 1;
-    private int _unitsSpawned;
-    bool        waveStopped;
+    private int  _waveNumber = 1;
+    private int  _unitsSpawned;
+    bool         waveStopped;
+
+    private bool _roundEnded = true;
+
+    private int numOfStoppedWaves = 0;
 
 
     void Start() {
-        _spawner = GameObject.Find("Spawner");
-        _spline  = GameObject.Find("Spline");
+        _spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        _splines  = GameObject.FindGameObjectsWithTag("Spline");
+
+        foreach(GameObject spawner in _spawners) {
+            Wave w = spawner.GetComponent<Wave>();
+            w._maxWaves = _maxWaves;
+            w._maxUnitsPerWave = _maxUnitsPerWave;
+            w._unitsPerWaveIncrement = unitsPerWaveIncrement;
+            w._unitsSpawned = 0;
+            w._waveStopped = true;
+            
+            waves.Add(w);
+        }
     }
 
 
     void Update() {
-        if ( !waveStopped ) {
-            if ( _unitsSpawned >= _maxUnitsPerWave ) {
-                CancelInvoke("SpawnEnemy");
-                onWaveEnd?.Invoke();
-                waveStopped = true;
+        foreach(Wave w in waves) {
+            if(!w._waveStopped) {
+                if(w._unitsSpawned >= w._maxUnitsPerWave) {
+                    w.CancelSpawn();
+                    onWaveEnd?.Invoke();
+                    w._waveStopped = true;
+                }
             }
         }
 
         // if no enemies left on the map, end the round -> go to market phase
-        if ( waveStopped ) {
-            if ( (_spline.transform.childCount - 1) == 0 ) {
+        if(!_roundEnded) {
+            foreach(Wave w in waves) {
+                if(!w._waveStopped && (w._spline.transform.childCount - 1) != 0)
+                    break;
+                else
+                    numOfStoppedWaves++;
+            }
+
+            if(numOfStoppedWaves == waves.Count) {
+                _roundEnded = true;
                 onRoundEnd?.Invoke();
+            }
+            else {
+                numOfStoppedWaves = 0;
             }
         }
     }
@@ -46,20 +81,16 @@ public class WaveManager : MonoBehaviour {
 
     public int GetWaveNumber() { return _waveNumber; }
 
-
-    public void SpawnEnemy() {
-        _spawner.GetComponent<Spawner>().SpawnOne();
-        _unitsSpawned++;
-    }
-
-
     public void StartWave() {
-        _unitsSpawned = 0;
+        int offset = 0;
+        foreach(Wave w in waves) {
+            w._maxUnitsPerWave += w._unitsPerWaveIncrement;
+            w._waveStopped = false;
+            w.InvokeSpawn(0 + offset, waves.Count + offset);
+            offset++;
+        }
         _waveNumber++;
-        _maxUnitsPerWave += unitsPerWaveIncrement;
-        waveStopped      =  false;
         onWaveStart?.Invoke();
-        InvokeRepeating("SpawnEnemy", 0f, 1f);
     }
 
 }

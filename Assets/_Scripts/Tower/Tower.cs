@@ -100,12 +100,14 @@ public class Tower : MonoBehaviour {
     }
     
     private void LookAtEnemy() {
-        Vector3 enemyPosition = _enemyBeingTargetted.transform.position;
-        foreach ( Transform weapon in _towerWeaponVisuals ) {
-            Vector3 targetPostition = new Vector3( enemyPosition.x, 
-                                                   weapon.position.y, 
-                                                   enemyPosition.z ) ;
-            weapon.LookAt( targetPostition ) ;
+        if(_enemyBeingTargetted) {
+            Vector3 enemyPosition = _enemyBeingTargetted.transform.position;
+            foreach(Transform weapon in _towerWeaponVisuals) {
+                Vector3 targetPostition = new Vector3(enemyPosition.x,
+                                                       weapon.position.y,
+                                                       enemyPosition.z);
+                weapon.LookAt(targetPostition);
+            }
         }
     }
     

@@ -4,9 +4,9 @@ using Behavioral;
 public class Boomerang : MonoBehaviour
 {
     [SerializeField]
-    int damage;
+    int damage = 1;
     [SerializeField]
-    float rotationSpeed;
+    float rotationSpeed = 1080;
 
     private float _angle;
     //private Enemy _enemy;
