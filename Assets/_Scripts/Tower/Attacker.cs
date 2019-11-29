@@ -8,10 +8,10 @@ public class Attacker : MonoBehaviour {
     public                   int           damage          = 1;
     [Range(0.1f, 4f)] public float         projectileSpeed = 2;
     public                   float         attackSpeed     = 1;
-    private                  Enemy         _currentEnemy;
-    private                  Coroutine     _currentCoroutine;
-    private                  bool          _projectileCoroutineStarted = false;
-    private                  TowerModifier modifier = new TowerModifier(1,1);
+    protected                Enemy         _currentEnemy;
+    protected                Coroutine     _currentCoroutine;
+    protected                bool          _projectileCoroutineStarted = false;
+    protected                TowerModifier modifier = new TowerModifier(1,1);
 
 
     public void Attack(Enemy enemy) {
@@ -28,7 +28,7 @@ public class Attacker : MonoBehaviour {
     }
 
 
-    private void SendProjectile() {
+    protected virtual void SendProjectile() {
         if ( _currentEnemy == null ) {
             return;
         }
@@ -40,7 +40,7 @@ public class Attacker : MonoBehaviour {
     }
 
 
-    private IEnumerator ProjectileCoroutine() {
+    protected virtual IEnumerator ProjectileCoroutine() {
         _projectileCoroutineStarted = true;
         SendProjectile();
         while ( true ) {

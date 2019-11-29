@@ -7,6 +7,7 @@ namespace Behavioral {
         public float speedInUnitsPerSecond = 1.0f;
 
         private Spline _splineRef;
+        private Transform _splineParent;
         private float  _posOnSpline = 0.0f;
         private bool   _isOk        = true;
 
@@ -18,6 +19,10 @@ namespace Behavioral {
                 Debug.LogWarning("Not child of a Spline. Can't follow...'");
                 _isOk = false;
             }
+
+            _splineParent = _splineRef.transform.parent.transform;
+            if(!_splineParent)
+                Debug.LogWarning("Spline has no parent. Cannot rotate properly");
         }
 
 
@@ -32,9 +37,13 @@ namespace Behavioral {
             CurveSample sample = _splineRef.GetSampleAtDistance(_posOnSpline * _splineRef.Length);
 
             // Add Spline object position offset
-            transform.position = sample.location + _splineRef.transform.position;
-            if(gameObject.tag != "Projectile")
-                transform.rotation = sample.Rotation;
+            if(_splineParent)
+                transform.position = (_splineParent.rotation * sample.location) + _splineRef.transform.position;
+            else
+                transform.position = sample.location + _splineRef.transform.position;
+            
+            //if(gameObject.tag != "Projectile")
+            //    transform.rotation = sample.Rotation;
         }
 
 

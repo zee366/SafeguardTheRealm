@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SplineMesh;
 
-public class SplineAttacker : MonoBehaviour
+public class SplineAttacker : Attacker
 {
-    [SerializeField] private Boomerang projectile;
+    [SerializeField] private Boomerang boomerang;
+    public Transform spawnParent;
+    private SplineNode _firstNode;
+    /*
     public int damage = 1;
     [Range(0.1f, 4f)] public float projectileSpeed = 2;
     public float attackSpeed = 1;
@@ -12,32 +16,39 @@ public class SplineAttacker : MonoBehaviour
     private Coroutine _currentCoroutine;
     private bool _projectileCoroutineStarted = false;
     private TowerModifier modifier = new TowerModifier(1, 1);
+    */
 
-    public void Attack(Enemy enemy) {
+    /*
+    public override void Attack(Enemy enemy) {
         if(_projectileCoroutineStarted && enemy != _currentEnemy) StopCoroutine(_currentCoroutine);
         _currentEnemy = enemy;
         _currentCoroutine = StartCoroutine(ProjectileCoroutine());
     }
 
 
-    public void Stop(Enemy enemy) {
+    public override void Stop(Enemy enemy) {
         if(enemy == _currentEnemy) {
             StopCoroutine(_currentCoroutine);
         }
     }
+    */
 
-    private void SendProjectile() {
-        if(_currentEnemy == null) {
+    void Start() {
+        _firstNode = spawnParent.GetComponent<Spline>().nodes[0];
+    }
+
+    protected override void SendProjectile() {
+        if(_currentEnemy == null)
             return;
-        }
 
-        Boomerang p = Instantiate(projectile, transform.position, transform.rotation);
+        Debug.Log(_firstNode.Position);
+        Boomerang p = Instantiate(boomerang, transform.TransformPoint(_firstNode.Position), transform.rotation, spawnParent);
         p.SetEnemy(_currentEnemy);
         p.damage = Mathf.FloorToInt(damage * modifier.damageModifier);
         p.speed = projectileSpeed;
     }
 
-    private IEnumerator ProjectileCoroutine() {
+    protected override IEnumerator ProjectileCoroutine() {
         _projectileCoroutineStarted = true;
         SendProjectile();
         while(true) {
