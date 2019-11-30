@@ -42,8 +42,8 @@ namespace Behavioral {
             else
                 transform.position = sample.location + _splineRef.transform.position;
 
-            //if(gameObject.tag != "Projectile")
-            //    transform.rotation = sample.Rotation;
+            if(gameObject.tag != "Projectile")
+                transform.rotation = sample.Rotation;
         }
 
 
