@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLevel: 5
   playerLevel: 1
-  playerGold: 0
+  playerGold: 2
   onLevelUp:
     m_PersistentCalls:
       m_Calls: []
