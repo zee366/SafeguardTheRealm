@@ -7,7 +7,7 @@ using System;
 public struct TowerTier
 {
     //public TowerTier(int prob, int price2) { probability = prob; price = price2; }
-    public List<GameObject> towers;
+    public List<Tower> towers;
 	public int price;
 
 }
