@@ -2,12 +2,14 @@
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-    [SerializeField]
+
     public float translationSpeed = 12;
-    [SerializeField]
     public float rotationSpeed = 1;
-    [SerializeField]
     public float zoomSpeed = 3.0f;
+    public float minZoom = 3.0f;
+    public float maxZoom = 3.0f;
+
+
 
     private float mRotationMax = 90.0f;
     private float t;
@@ -16,7 +18,8 @@ public class CameraController : MonoBehaviour {
     private float transitionTime = 1f;
     private bool mRotating;
 
-    private GameObject mCameraRef;
+    private GameObject mCameraObj;
+    private Camera mCameraRef;
 
     private Vector3 mRight;
     private Vector3 mForward;
@@ -31,8 +34,9 @@ public class CameraController : MonoBehaviour {
         mRotating = false;
         mRight = transform.GetChild(0).transform.right;
         mForward = Vector3.Cross(mRight, Vector3.up);
-        mCameraRef = GameObject.Find("Main Camera");
-        mZoomDirection = (transform.position - mCameraRef.transform.position).normalized;
+        mCameraRef = Camera.main;
+        mCameraObj = Camera.main.gameObject;
+        mZoomDirection = (transform.position - mCameraObj.transform.position).normalized;
     }
 
     void Update() {
@@ -81,10 +85,11 @@ public class CameraController : MonoBehaviour {
         if(Input.GetKey(KeyCode.D))
             move += mRight;
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
-            move += zoomSpeed * mZoomDirection;
-        if(Input.GetAxis("Mouse ScrollWheel") < 0f)
-            move += zoomSpeed * -mZoomDirection;
+        // Zooming for orthographic Cam now
+        if ( Input.GetAxis("Mouse ScrollWheel") > 0f && mCameraRef.orthographicSize >= minZoom )
+            mCameraRef.orthographicSize -= zoomSpeed;
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f && mCameraRef.orthographicSize <= maxZoom)
+            mCameraRef.orthographicSize += zoomSpeed;
 
         transform.Translate(translationSpeed * move * Time.deltaTime);
     }
