@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SplineMesh;
 
-public class SplineAttacker : Attacker
-{
+public class SplineAttacker : Attacker {
     [SerializeField] private Boomerang boomerang;
     public Transform spawnParent;
     private SplineNode _firstNode;
@@ -24,8 +23,6 @@ public class SplineAttacker : Attacker
         _currentEnemy = enemy;
         _currentCoroutine = StartCoroutine(ProjectileCoroutine());
     }
-
-
     public override void Stop(Enemy enemy) {
         if(enemy == _currentEnemy) {
             StopCoroutine(_currentCoroutine);
@@ -41,7 +38,6 @@ public class SplineAttacker : Attacker
         if(_currentEnemy == null)
             return;
 
-        Debug.Log(_firstNode.Position);
         Boomerang p = Instantiate(boomerang, transform.TransformPoint(_firstNode.Position), transform.rotation, spawnParent);
         p.SetEnemy(_currentEnemy);
         p.damage = Mathf.FloorToInt(damage * modifier.damageModifier);

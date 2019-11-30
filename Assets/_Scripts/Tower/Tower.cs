@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +13,5 @@ public class Tower : MonoBehaviour
     public Sprite thumbnail;
     public Classifier attack_descriptor;
     public Classifier speed_descriptor;
-
 
 }
