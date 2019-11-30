@@ -2,30 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lightning : MonoBehaviour
+public class Lightning : Beam
 {
     private List<GameObject> _bolts;
     private float t = 0.0f;
     private float angle = 0.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
+        base.Init();
         _bolts = new List<GameObject>();
         foreach(Transform child in transform) {
             _bolts.Add(child.gameObject);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         angle += 1600 * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation *= Quaternion.Euler(0, 0, angle);
         t += Time.deltaTime;
         if(t > 1.5f)
             t = 0.0f;
-        Debug.Log(t);
         ShowBolt(t);
     }
 

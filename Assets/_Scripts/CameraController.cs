@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
+public class CameraController : MonoBehaviour {
     [SerializeField]
     public float translationSpeed = 12;
     [SerializeField]
     public float rotationSpeed = 1;
+    [SerializeField]
+    public float zoomSpeed = 3.0f;
 
     private float mRotationMax = 90.0f;
     private float t;
@@ -15,23 +16,26 @@ public class CameraController : MonoBehaviour
     private float transitionTime = 1f;
     private bool mRotating;
 
+    private GameObject mCameraRef;
+
     private Vector3 mRight;
     private Vector3 mForward;
+    private Vector3 mZoomDirection;
 
     private const float MIN_X = -10f;
     private const float MAX_X = 10f;
     private const float MIN_Z = -10f;
     private const float MAX_Z = 10f;
 
-    void Start()
-    {
+    void Start() {
         mRotating = false;
         mRight = transform.GetChild(0).transform.right;
         mForward = Vector3.Cross(mRight, Vector3.up);
+        mCameraRef = GameObject.Find("Main Camera");
+        mZoomDirection = (transform.position - mCameraRef.transform.position).normalized;
     }
 
-    void Update()
-    {
+    void Update() {
         if(Input.GetKeyDown(KeyCode.R)) {
             transform.position = Vector3.zero;
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -76,6 +80,12 @@ public class CameraController : MonoBehaviour
             move += -mForward;
         if(Input.GetKey(KeyCode.D))
             move += mRight;
-        transform.Translate(translationSpeed * move.normalized * Time.deltaTime);
+
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+            move += zoomSpeed * mZoomDirection;
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+            move += zoomSpeed * -mZoomDirection;
+
+        transform.Translate(translationSpeed * move * Time.deltaTime);
     }
 }
