@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2319313474589864705}
   - component: {fileID: 2319313474589864706}
   m_Layer: 0
-  m_Name: MoveableCameraWithInventory
+  m_Name: CameraFocus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   translationSpeed: 12
   rotationSpeed: 1
-  zoomSpeed: 3
 --- !u!1 &2319313475908791363
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,12 +145,12 @@ PrefabInstance:
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.839999
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.099998
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
@@ -161,22 +160,22 @@ PrefabInstance:
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.020295156
+      value: 0.020295132
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.2876128
+      value: -0.28761283
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0060961237
+      value: 0.0060961507
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9575123
+      value: 0.9575124
       objectReference: {fileID: 0}
     - target: {fileID: 4977523258307842936, guid: f1d9b83e0f50dca499d5e18490dc7ba3,
         type: 3}

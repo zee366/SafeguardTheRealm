@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using Behavioral;
 
-public class Boomerang : MonoBehaviour
-{
+public class Boomerang : MonoBehaviour {
     public float speed;
     public int damage = 1;
     float rotationSpeed = 1080;

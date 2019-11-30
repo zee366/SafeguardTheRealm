@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
+public class CameraController : MonoBehaviour {
     [SerializeField]
     public float translationSpeed = 12;
     [SerializeField]
@@ -28,8 +27,7 @@ public class CameraController : MonoBehaviour
     private const float MIN_Z = -10f;
     private const float MAX_Z = 10f;
 
-    void Start()
-    {
+    void Start() {
         mRotating = false;
         mRight = transform.GetChild(0).transform.right;
         mForward = Vector3.Cross(mRight, Vector3.up);
@@ -37,8 +35,7 @@ public class CameraController : MonoBehaviour
         mZoomDirection = (transform.position - mCameraRef.transform.position).normalized;
     }
 
-    void Update()
-    {
+    void Update() {
         if(Input.GetKeyDown(KeyCode.R)) {
             transform.position = Vector3.zero;
             transform.rotation = Quaternion.Euler(0, 0, 0);
