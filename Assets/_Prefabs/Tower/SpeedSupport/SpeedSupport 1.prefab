@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4
   thumbnail: {fileID: 21300000, guid: 4118ea8a03a29814e987cd7fc4eb67ed, type: 3}
+  attack_descriptor: 3
+  speed_descriptor: 3
   speedModifier: 1.2
   damageModifier: 1
 --- !u!1 &3565099394211463872

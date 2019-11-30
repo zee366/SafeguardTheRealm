@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 5992237023386912483}
   m_Layer: 0
   m_Name: Boomerang 1
-  m_TagString: Untagged
+  m_TagString: boomerang_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   thumbnail: {fileID: 21300000, guid: a1e069afc5922e242ab36239995c735e, type: 3}
+  attack_descriptor: 1
+  speed_descriptor: 1
 --- !u!1 &5992237024820890176
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +249,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5992237023386912482}
     m_Modifications:
+    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
+        type: 3}
+      propertyPath: m_Name
+      value: AffectedVisuals
+      objectReference: {fileID: 0}
     - target: {fileID: 8112878987466925088, guid: e8a50b00903c4dd48a3ea62290f65cae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -301,11 +308,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
-        type: 3}
-      propertyPath: m_Name
-      value: AffectedVisuals
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a50b00903c4dd48a3ea62290f65cae, type: 3}
@@ -532,11 +534,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6684772435192802620}
     m_Modifications:
-    - target: {fileID: 3173656510168324504, guid: f64aeade656aa7e45aa21e4b761ae2d3,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker
-      objectReference: {fileID: 0}
     - target: {fileID: 8850681522490620933, guid: f64aeade656aa7e45aa21e4b761ae2d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,6 +589,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3173656510168324504, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker
+      objectReference: {fileID: 0}
     - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
         type: 3}
       propertyPath: boomerang
@@ -618,11 +620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3025112871225475002}
     m_Modifications:
-    - target: {fileID: 3867965627052504536, guid: be5e92f7cc011e542a0f52c486a3e0d6,
-        type: 3}
-      propertyPath: m_Name
-      value: BoomerangSpline
-      objectReference: {fileID: 0}
     - target: {fileID: 3867965627052504537, guid: be5e92f7cc011e542a0f52c486a3e0d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,6 +674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867965627052504536, guid: be5e92f7cc011e542a0f52c486a3e0d6,
+        type: 3}
+      propertyPath: m_Name
+      value: BoomerangSpline
       objectReference: {fileID: 0}
     - target: {fileID: 3867965627052504542, guid: be5e92f7cc011e542a0f52c486a3e0d6,
         type: 3}

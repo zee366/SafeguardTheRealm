@@ -8,14 +8,14 @@ namespace Behavioral {
 
         private Spline _splineRef;
         private Transform _splineParent;
-        private float  _posOnSpline = 0.0f;
-        private bool   _isOk        = true;
+        private float _posOnSpline = 0.0f;
+        private bool _isOk = true;
 
 
         private void Awake() {
             _splineRef = transform.parent.GetComponent<Spline>();
 
-            if ( !_splineRef ) {
+            if(!_splineRef) {
                 Debug.LogWarning("Not child of a Spline. Can't follow...'");
                 _isOk = false;
             }
@@ -27,7 +27,7 @@ namespace Behavioral {
 
 
         void Update() {
-            if ( !_isOk ) return;
+            if(!_isOk) return;
 
             _posOnSpline += Time.deltaTime * (speedInUnitsPerSecond / _splineRef.Length);
 
@@ -41,7 +41,7 @@ namespace Behavioral {
                 transform.position = (_splineParent.rotation * sample.location) + _splineRef.transform.position;
             else
                 transform.position = sample.location + _splineRef.transform.position;
-            
+
             //if(gameObject.tag != "Projectile")
             //    transform.rotation = sample.Rotation;
         }
