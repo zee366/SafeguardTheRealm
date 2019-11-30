@@ -39,15 +39,16 @@ public class Beam : MonoBehaviour
 
     protected void AlignToEnemy() {
         Vector3 targetDirection = (mEnemy.transform.position - transform.parent.position);
-        
-        if(targetDirection.magnitude < mTower.radius) {
+        float distanceToEnemy = targetDirection.magnitude;
+
+
+        if(distanceToEnemy < mTower.radius) {
             Vector3 midPoint = targetDirection / 2.0f;
 
             transform.position = transform.parent.position + midPoint;
             transform.LookAt(mEnemy.transform.position);
 
-            float scaleFactor = midPoint.magnitude;
-            transform.localScale = Vector3.one * scaleFactor;
+            transform.localScale = Vector3.one * midPoint.magnitude;
         }
         else {
             mBeamAttacker.activeBeams--;
