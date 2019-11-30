@@ -3,13 +3,12 @@ using Behavioral;
 
 public class Boomerang : MonoBehaviour
 {
-    [SerializeField]
-    int damage = 1;
-    [SerializeField]
+    public float speed;
+    public int damage = 1;
     float rotationSpeed = 1080;
 
     private float _angle;
-    //private Enemy _enemy;
+    private Enemy _enemy;
     private SplineFollower _splineFollower;
 
     private const float EPSILON = 0.0001f;
@@ -29,12 +28,19 @@ public class Boomerang : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
         if(enemy) {
-            enemy.TakeDamage(damage);
+            EnemyHit(other.gameObject.transform);
         }
+    }
+
+    public void EnemyHit(Transform t) {
+        Enemy enemy = t.parent.GetComponent<Enemy>();
+        enemy.TakeDamage(damage);
     }
 
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON)
             Destroy(this.gameObject);
     }
+
+    public void SetEnemy(Enemy go) { _enemy = go; }
 }

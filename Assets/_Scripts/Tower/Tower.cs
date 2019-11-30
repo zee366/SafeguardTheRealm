@@ -87,6 +87,7 @@ public class Tower : MonoBehaviour {
 
     private void AlertAttacker(Enemy enemy) {
         foreach (Attacker attacker in _attackers ) {
+            LookAtEnemy();
             attacker.Attack(enemy);
         }
     }

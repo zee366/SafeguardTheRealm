@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
     public float translationSpeed = 12;
     [SerializeField]
     public float rotationSpeed = 1;
+    [SerializeField]
+    public float zoomSpeed = 3.0f;
 
     private float mRotationMax = 90.0f;
     private float t;
@@ -15,8 +17,11 @@ public class CameraController : MonoBehaviour
     private float transitionTime = 1f;
     private bool mRotating;
 
+    private GameObject mCameraRef;
+
     private Vector3 mRight;
     private Vector3 mForward;
+    private Vector3 mZoomDirection;
 
     private const float MIN_X = -10f;
     private const float MAX_X = 10f;
@@ -28,6 +33,8 @@ public class CameraController : MonoBehaviour
         mRotating = false;
         mRight = transform.GetChild(0).transform.right;
         mForward = Vector3.Cross(mRight, Vector3.up);
+        mCameraRef = GameObject.Find("Main Camera");
+        mZoomDirection = (transform.position - mCameraRef.transform.position).normalized;
     }
 
     void Update()
@@ -76,6 +83,12 @@ public class CameraController : MonoBehaviour
             move += -mForward;
         if(Input.GetKey(KeyCode.D))
             move += mRight;
-        transform.Translate(translationSpeed * move.normalized * Time.deltaTime);
+
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+            move += zoomSpeed * mZoomDirection;
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+            move += zoomSpeed * -mZoomDirection;
+
+        transform.Translate(translationSpeed * move * Time.deltaTime);
     }
 }
