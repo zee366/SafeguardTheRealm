@@ -26,6 +26,9 @@ TagManager:
   - lightning_1
   - lightning_2
   - lightning_3
+  - boomerang_1
+  - boomerang_2
+  - boomerang_3
   layers:
   - Default
   - TransparentFX
