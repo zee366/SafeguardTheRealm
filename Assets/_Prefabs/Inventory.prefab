@@ -85,13 +85,25 @@ MonoBehaviour:
   - sourceTagName: laser_2
     yield: {fileID: 3565099394172681925, guid: ca96888caf822eb4a903b5850ecf7444, type: 3}
   - sourceTagName: crystal_1
-    yield: {fileID: 3565099394172681925, guid: f89695ae9a8485d4f839b8f2378ee94e, type: 3}
+    yield: {fileID: 3565099394172681925, guid: e77a774fa5d19d54daa11cf4a83ce892, type: 3}
   - sourceTagName: crystal_2
     yield: {fileID: 3565099394172681925, guid: 8a40bc182b7657344abc92e00560c396, type: 3}
   - sourceTagName: speedsupport_1
     yield: {fileID: 3565099394172681925, guid: 9127e88186f78314fb6bf5fc06c90387, type: 3}
   - sourceTagName: speedsupport_2
     yield: {fileID: 3565099394172681925, guid: 2926a1369358e8442a786b0890845560, type: 3}
+  - sourceTagName: damagesupport_1
+    yield: {fileID: 3565099394172681925, guid: df32c31ea1fdf2e4abcda9096ab8aab5, type: 3}
+  - sourceTagName: damagesupport_2
+    yield: {fileID: 3565099394172681925, guid: 87a8afb40909c894887576ce114f15fd, type: 3}
+  - sourceTagName: boomerang_1
+    yield: {fileID: 793173960076928725, guid: e9a90b5336e5ade42ab6a751213229ac, type: 3}
+  - sourceTagName: boomerang_2
+    yield: {fileID: 5733147850924542833, guid: b58a887497c98eb44a3a1ce980a57072, type: 3}
+  - sourceTagName: lightning_1
+    yield: {fileID: 4137946802051586029, guid: b7d18461d34883949929f131e817988a, type: 3}
+  - sourceTagName: lightning_2
+    yield: {fileID: 7586717914594141575, guid: 895ae8e6765e41d4c8fa133b08ec542f, type: 3}
 --- !u!1001 &205536804068106692
 PrefabInstance:
   m_ObjectHideFlags: 0

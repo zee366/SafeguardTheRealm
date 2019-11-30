@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 5992237023386912483}
   m_Layer: 0
   m_Name: Boomerang 1
-  m_TagString: Untagged
+  m_TagString: boomerang_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,11 +324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5992237023386912482}
     m_Modifications:
-    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
-        type: 3}
-      propertyPath: m_Name
-      value: PhysicsDetector
-      objectReference: {fileID: 0}
     - target: {fileID: 2220481215087809008, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +379,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
+        type: 3}
+      propertyPath: m_Name
+      value: PhysicsDetector
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a93ff2a37ccf54d9c51bca8dc89242, type: 3}
 --- !u!4 &5780864350750078587 stripped
@@ -399,11 +399,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5992237023386912482}
     m_Modifications:
-    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,6 +453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
       objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
@@ -534,11 +534,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6684772435192802620}
     m_Modifications:
-    - target: {fileID: 3173656510168324504, guid: f64aeade656aa7e45aa21e4b761ae2d3,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker
-      objectReference: {fileID: 0}
     - target: {fileID: 8850681522490620933, guid: f64aeade656aa7e45aa21e4b761ae2d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -594,6 +589,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3173656510168324504, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker
+      objectReference: {fileID: 0}
     - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
         type: 3}
       propertyPath: boomerang
@@ -620,11 +620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3025112871225475002}
     m_Modifications:
-    - target: {fileID: 3867965627052504536, guid: be5e92f7cc011e542a0f52c486a3e0d6,
-        type: 3}
-      propertyPath: m_Name
-      value: BoomerangSpline
-      objectReference: {fileID: 0}
     - target: {fileID: 3867965627052504537, guid: be5e92f7cc011e542a0f52c486a3e0d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -679,6 +674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867965627052504536, guid: be5e92f7cc011e542a0f52c486a3e0d6,
+        type: 3}
+      propertyPath: m_Name
+      value: BoomerangSpline
       objectReference: {fileID: 0}
     - target: {fileID: 3867965627052504542, guid: be5e92f7cc011e542a0f52c486a3e0d6,
         type: 3}

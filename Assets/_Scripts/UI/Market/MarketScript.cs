@@ -28,7 +28,6 @@ public class MarketScript : MonoBehaviour {
         for ( int i = 0; i < 3; i++ ) {
             int index            = GetTowerLevel();
             int tiersTowerRandom = Random.Range(0, tiers[index].towers.Count);
-            Debug.Log(tiers[index].towers[tiersTowerRandom].radius);
             MarketProduct p = new MarketProduct(tiers[index].towers[tiersTowerRandom], index, tiers[index].price);
             _products.Add(p);
         }
