@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MarketUIEvent : MonoBehaviour {
@@ -13,6 +14,8 @@ public class MarketUIEvent : MonoBehaviour {
     const  int  REROLL_COST = 1;
     public Text mRerollButtonText;
     public Text mLevelUpAmountText;
+
+    public UnityEvent onBuy;
 
     // Attributes associated with cost of gaining a level
     int _gainLevelCost = 2;
@@ -81,6 +84,8 @@ public class MarketUIEvent : MonoBehaviour {
             // Need to Instantiate the product first (Not Inventory's job)
             GameObject yield = Instantiate(clicked.GetProduct().product.gameObject, Vector3.zero, Quaternion.identity);
             inventory.Add(yield);
+
+            onBuy.Invoke();
         }
     }
 
