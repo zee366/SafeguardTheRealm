@@ -79,7 +79,7 @@ public class MarketUIEvent : MonoBehaviour {
             player.RemoveGold(clicked.GetProduct().price);
 
             // Need to Instantiate the product first (Not Inventory's job)
-            GameObject yield = Instantiate(clicked.GetProduct().product, Vector3.zero, Quaternion.identity);
+            GameObject yield = Instantiate(clicked.GetProduct().product.gameObject, Vector3.zero, Quaternion.identity);
             inventory.Add(yield);
         }
     }

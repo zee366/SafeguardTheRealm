@@ -2,10 +2,8 @@
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class TowerAffector : MonoBehaviour {
-
-    [Range(2f, 20f)] public float radius = 1;
-    public Sprite thumbnail;
+public class TowerAffector : Tower {
+    
 
     public float speedModifier  = 1f;
     public float damageModifier = 1f;
