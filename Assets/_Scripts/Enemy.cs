@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
 
+    Rigidbody _rigidbody;
     Animator _animator;
 
     bool isKilledByTowerProjectile;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour {
         _castle = GameObject.Find("Castle").GetComponent<Castle>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
+        _rigidbody = GetComponentInChildren<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
 
@@ -59,6 +61,7 @@ public class Enemy : MonoBehaviour {
         if(_health <= 0) {
             isKilledByTowerProjectile = true;
             _splineFollower.speedInUnitsPerSecond = 0.0f;
+            _rigidbody.transform.position = new Vector3(_rigidbody.transform.position.x, -30.0f, _rigidbody.transform.position.z);
         }
     }
 
