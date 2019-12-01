@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public int sceneIndex;
     Animator animator;
+    Boolean mAnimation = false;
     void Start()
     {
         animator = transform.GetComponent<Animator>();
@@ -13,22 +15,29 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         //change scene when user presses Space key
-        
+        animator.SetBool("animateOut", mAnimation);
     }
-    private IEnumerator LoadSceneAFterTransition()
+    public void changeLevel(string sceneName) {
+        Debug.Log("boolean");
+        mAnimation = true;
+        
+        StartCoroutine(LoadSceneAFterTransition(sceneName));
+    }
+    IEnumerator LoadSceneAFterTransition(string sceneName)
     {
-        //show animate out animation
-        animator.SetBool("animateOut", true);
-        yield return new WaitForSeconds(1f);
-        //load the scene we want
-        //SceneManager.LoadScene(sceneIndex);
+        Debug.Log("2secs");
+        yield return new WaitForSeconds(1);
+        Debug.Log("2secs");
+        
+        LoadLevel(sceneName);
     }
 
+    
     // Load scene based on name passed; register in console
     public void LoadLevel(string sceneName)
     {
         Debug.Log("New Level Load: " + sceneName);
-        StartCoroutine(LoadSceneAFterTransition());
+        mAnimation = false;
         SceneManager.LoadScene(sceneName);
     }
 
