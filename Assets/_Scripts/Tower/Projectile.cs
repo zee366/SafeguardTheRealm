@@ -49,10 +49,12 @@ public class Projectile : MonoBehaviour {
 
     
     private void OnTriggerEnter(Collider other) {
-        if ( _enemy ) {
-            _enemy.TakeDamage(damage);
+        if(other.gameObject.tag == "EnemyCollider") {
+            if(_enemy) {
+                _enemy.TakeDamage(damage);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
 }
