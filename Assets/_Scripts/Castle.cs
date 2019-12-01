@@ -11,7 +11,7 @@ public class Castle : MonoBehaviour
     public UnityEvent onCastleHit;
     public UnityEvent onCastleDie;
 
-    private void Start()
+private void Start()
     {
         hpSlider = GameObject.Find("HealthBar(Castle)").GetComponent<Slider>();
         hpSlider.maxValue = _health;
@@ -27,5 +27,11 @@ public class Castle : MonoBehaviour
 
         if (_health <= 0)
             onCastleDie?.Invoke();
+    }
+
+    // Get health
+    public int GetHealth()
+    {
+        return _health;
     }
 }
