@@ -1,9 +1,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Behavioral;
+using System;
 
 public class Enemy : MonoBehaviour {
-    [SerializeField] int _health;
+    // For Enemy health
+    public static event Action<Enemy> OnHealthAdded = delegate { };
+    public static event Action<Enemy> OnHealtRemoved = delegate { };
+
+    [SerializeField] int _maxHealth;
+    public int _currentHealth { get; private set; }
+
+    public event Action<float> OnHealthChangedPercentage = delegate { };
+
+
+
     [SerializeField] int _attackDamage;
     [SerializeField] int _xpValue;
     [SerializeField] int _goldValue;
@@ -36,9 +47,23 @@ public class Enemy : MonoBehaviour {
         _animator.SetBool("isKilledByTower", isKilledByTowerProjectile);
     }
 
+    private void OnEnable()
+    {
+        _currentHealth = _maxHealth;
+        OnHealthAdded(this);
+    }
+
+    private void OnDisable()
+    {
+        OnHealtRemoved(this);
+    }
 
     public void TakeDamage(int value) {
-        _health -= value;
+        //_health -= value;
+        _currentHealth -= value;
+
+        float _currentHealthPercentage = (float)_currentHealth / (float)_maxHealth;
+        OnHealthAdded(this);
         CheckHealth();
     }
 
@@ -56,7 +81,8 @@ public class Enemy : MonoBehaviour {
     }
 
     void CheckHealth() {
-        if(_health <= 0) {
+        //if(_health <= 0) {
+        if(_currentHealth <= 0) {
             isKilledByTowerProjectile = true;
             _splineFollower.speedInUnitsPerSecond = 0.0f;
             _rigidbody.transform.position = new Vector3(_rigidbody.transform.position.x, -30.0f, _rigidbody.transform.position.z);
