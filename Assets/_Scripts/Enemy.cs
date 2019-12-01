@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using Behavioral;
 
 public class Enemy : MonoBehaviour {
-    [SerializeField] int _health;
+    [SerializeField] public int _health { get; set; }
     [SerializeField] int _attackDamage;
     [SerializeField] int _xpValue;
     [SerializeField] int _goldValue;

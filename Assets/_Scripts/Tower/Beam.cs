@@ -9,6 +9,7 @@ public class Beam : MonoBehaviour
 
     protected Enemy mEnemy;
     protected Vector3 mLastEnemyPosition;
+    protected Vector3 mInitialScale;
 
     protected Tower mTower;
     protected BeamAttacker mBeamAttacker;
@@ -18,6 +19,7 @@ public class Beam : MonoBehaviour
         if(!mTower)
             Debug.Log("Tower not found");
         mBeamAttacker = transform.GetComponentInParent<BeamAttacker>();
+        mInitialScale = transform.localScale;
         StartCoroutine(LateStart(0.5f));
     }
 
@@ -26,8 +28,7 @@ public class Beam : MonoBehaviour
             AlignToEnemy();
         }
         else {
-            mBeamAttacker.activeBeams--;
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -48,11 +49,11 @@ public class Beam : MonoBehaviour
             transform.position = transform.parent.position + midPoint;
             transform.LookAt(mEnemy.transform.position);
 
-            transform.localScale = Vector3.one * midPoint.magnitude;
+            //transform.localScale = Vector3.one * midPoint.magnitude;
+            transform.localScale = mInitialScale * distanceToEnemy;
         }
         else {
-            mBeamAttacker.activeBeams--;
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -74,6 +75,9 @@ public class Beam : MonoBehaviour
     public void EnemyHit(Transform t) {
         Enemy enemy = t.gameObject.GetComponent<Enemy>();
         enemy.TakeDamage(damage);
+        if(enemy._health <= 0) {
+            Die();
+        }
     }
 
     public void SetTickRate(float rate) {
@@ -81,4 +85,9 @@ public class Beam : MonoBehaviour
     }
 
     public void SetEnemy(Enemy go) { mEnemy = go; }
+
+    void Die() {
+        mBeamAttacker.activeBeams--;
+        Destroy(gameObject);
+    }
 }
