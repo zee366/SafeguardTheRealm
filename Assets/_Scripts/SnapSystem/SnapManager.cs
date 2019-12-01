@@ -179,7 +179,9 @@ namespace SnapSystem {
             int towersOnGround = _totalTowerCount - _inventory.GetSize();
 
             // Check if player have already placed all his towers
-            if ( towersOnGround >= _player.GetPlayerLevel() ) {
+            // Still allow transfers inside the inventory itself.
+            if ( moveToTarget.transform.GetComponentInParent<Inventory>() == null
+                 && towersOnGround >= _player.GetPlayerLevel() ) {
                 CancelAction();
                 return;
             }
