@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace SnapSystem {
@@ -12,11 +13,15 @@ namespace SnapSystem {
         public UnityEvent onTransfer;
         public UnityEvent onCancel;
 
-        private Camera       _cam;
-        private SnapLocation _currentTarget;
-        private SnapLocation _lastSelected;
-        private Transform    _inBetweenRef;
-        private bool         _locked = false;
+        private Camera        _cam;
+        private SnapLocation  _currentTarget;
+        private SnapLocation  _lastSelected;
+        private Transform     _inBetweenRef;
+        private Player        _player;
+        private Inventory     _inventory;
+        private TowerUpgrader _upgrader;
+        private bool          _locked = false;
+        private int           _totalTowerCount;
 
 
         private void Awake() {
@@ -25,6 +30,19 @@ namespace SnapSystem {
             // Create between selection panel right away
             _inBetweenRef = Instantiate(inBetweenSelectionVisual, transform.position, Quaternion.identity, transform).transform;
             _inBetweenRef.gameObject.SetActive(false);
+
+            // Get a reference to player/inventory to be able to query for level and prevent placement accordingly.
+            _player    = FindObjectOfType<Player>();
+            _inventory = FindObjectOfType<Inventory>();
+            _upgrader  = FindObjectOfType<TowerUpgrader>();
+
+            _inventory.onAdd.AddListener(gObj => { _totalTowerCount++; });
+            _upgrader.onUpgrade.AddListener(() => { _totalTowerCount -= 2; });
+        }
+
+
+        private void Start() {
+            _totalTowerCount = _inventory.GetSize(); // Initial state of inventory (not counting on grind tho)
         }
 
 
@@ -114,12 +132,13 @@ namespace SnapSystem {
 
             Vector3 norm = Vector3.Cross(Vector3.up, diff).normalized;
 
-            if(norm.magnitude > 0) {
+            if ( norm.magnitude > 0 ) {
                 // Rotate for height difference
-                float angle = Mathf.Rad2Deg * -Mathf.Asin(diff.y / diff.magnitude);
+                float   angle     = Mathf.Rad2Deg * -Mathf.Asin(diff.y / diff.magnitude);
                 Vector3 rotatedUp = Quaternion.AngleAxis(angle, norm) * Vector3.up;
                 _inBetweenRef.rotation = Quaternion.LookRotation(norm, rotatedUp);
             }
+
             _inBetweenRef.gameObject.SetActive(true);
         }
 
@@ -157,6 +176,14 @@ namespace SnapSystem {
         /// </summary>
         /// <param name="moveToTarget"></param>
         private void TransferAction(SnapLocation moveToTarget) {
+            int towersOnGround = _totalTowerCount - _inventory.GetSize();
+
+            // Check if player have already placed all his towers
+            if ( towersOnGround >= _player.GetPlayerLevel() ) {
+                CancelAction();
+                return;
+            }
+
             _currentTarget.ReplaceObject(_lastSelected.GetObject());
 
             // Simply for good practice... this will trigger some event as well
