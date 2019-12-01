@@ -3,7 +3,7 @@
 public class Projectile : MonoBehaviour {
 
     public float speed;
-    public int damage =1 ;
+    public int damage = 1;
     private Enemy _enemy;
     private Vector3 _lastEnemyPosition;
     private Transform _target;
@@ -29,13 +29,15 @@ public class Projectile : MonoBehaviour {
             if ( transform.position == _lastEnemyPosition ) {
                 Destroy(gameObject);
             }
-        };
+
+            return;
+        }
         
         MoveTowardsEnemy();
     }
     private void MoveTowardsEnemy() {
-//        float step =  speed * Time.deltaTime; // calculate distance to move
         float step = 0.1f;
+      
         _lastEnemyPosition = _target.position;
         transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
     }

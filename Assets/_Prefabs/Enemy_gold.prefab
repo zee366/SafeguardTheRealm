@@ -79,18 +79,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
         type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: _golden
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
         type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      propertyPath: _goldValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5734303168535400721, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 55bf181b08bf4494fa30e5e052292752, type: 2}
+    - target: {fileID: 8726858880436788884, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8779793eb0f394ea0a1da1f7f0a112, type: 3}

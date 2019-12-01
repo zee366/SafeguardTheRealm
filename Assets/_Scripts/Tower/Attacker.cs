@@ -5,39 +5,66 @@ using UnityEngine;
 public class Attacker : MonoBehaviour {
 
     [SerializeField] private Projectile projectile;
-    [Range(0.1f, 4f)] public float attackSpeed = 1;
-    private Enemy _currentEnemy;
-    private Coroutine _currentCoroutine;
-    private bool _projectileCoroutineStarted = false;
+    public int damage = 1;
+    [Range(0.1f, 4f)] public float projectileSpeed = 2;
+    public float attackSpeed = 1;
+    protected Enemy _currentEnemy;
+    protected Coroutine _currentCoroutine;
+    protected bool _projectileCoroutineStarted = false;
+    protected TowerModifier modifier = new TowerModifier(1, 1);
+
+
     public void Attack(Enemy enemy) {
-        if (_projectileCoroutineStarted && enemy != _currentEnemy) StopCoroutine(_currentCoroutine);
+        if(_projectileCoroutineStarted && enemy != _currentEnemy) StopCoroutine(_currentCoroutine);
         _currentEnemy = enemy;
         _currentCoroutine = StartCoroutine(ProjectileCoroutine());
     }
 
 
     public void Stop(Enemy enemy) {
-        if ( enemy == _currentEnemy ) {
+        if(enemy == _currentEnemy) {
             StopCoroutine(_currentCoroutine);
         }
     }
-    
-    private void SendProjectile() {
-        if ( _currentEnemy == null ) {
-            return; 
+
+
+    protected virtual void SendProjectile() {
+        if(_currentEnemy == null) {
+            return;
         }
+
         Projectile p = Instantiate(projectile, transform.position, transform.rotation);
         p.SetEnemy(_currentEnemy);
+        p.damage = Mathf.FloorToInt(damage * modifier.damageModifier);
+        p.speed = projectileSpeed;
     }
 
 
-    private IEnumerator ProjectileCoroutine() {
+    protected virtual IEnumerator ProjectileCoroutine() {
         _projectileCoroutineStarted = true;
         SendProjectile();
-        while ( true ) {
-            yield return new WaitForSeconds(attackSpeed);
+        while(true) {
+            float speed = attackSpeed * modifier.speedModifier;
+            if(Mathf.Approximately(speed, 0.0f))
+                yield return new WaitForSeconds(1);
+            else
+                yield return new WaitForSeconds(1 / speed);
+
             SendProjectile();
         }
     }
-    
+
+
+    /// <summary>
+    /// Will be called by the supports towers
+    /// </summary>
+    /// <param name="modifier"></param>
+    public void ApplyAttackerModifier(TowerModifier modifier) {
+        this.modifier.damageModifier += modifier.damageModifier - 1;
+        this.modifier.speedModifier += modifier.speedModifier - 1;
+    }
+
+
+    public TowerModifier GetModifier() { return modifier; }
+
 }

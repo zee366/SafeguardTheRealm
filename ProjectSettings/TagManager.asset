@@ -6,7 +6,29 @@ TagManager:
   tags:
   - weapon
   - Projectile
-  - EnemyCollider
+  - Spawner
+  - Spline
+  - balista_1
+  - balista_2
+  - balista_3
+  - laser_1
+  - laser_2
+  - laser_3
+  - crystal_1
+  - crystal_2
+  - crystal_3
+  - speedsupport_1
+  - speedsupport_2
+  - speedsupport_3
+  - damagesupport_1
+  - damagesupport_2
+  - damagesupport_3
+  - lightning_1
+  - lightning_2
+  - lightning_3
+  - boomerang_1
+  - boomerang_2
+  - boomerang_3
   layers:
   - Default
   - TransparentFX
@@ -19,7 +41,7 @@ TagManager:
   - Enemy
   - 
   - Selectable
-  - 
+  - Tower
   - 
   - 
   - 

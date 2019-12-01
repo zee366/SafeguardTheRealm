@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MarketUIEvent : MonoBehaviour {
@@ -13,6 +14,8 @@ public class MarketUIEvent : MonoBehaviour {
     const  int  REROLL_COST = 1;
     public Text mRerollButtonText;
     public Text mLevelUpAmountText;
+
+    public UnityEvent onBuy;
 
     // Attributes associated with cost of gaining a level
     int _gainLevelCost = 2;
@@ -60,6 +63,13 @@ public class MarketUIEvent : MonoBehaviour {
             // TODO: Cant reroll
         }
     }
+     
+    // Renew the market when each round ends
+    public void RenewMarket()
+    {
+            market.GenerateTowersList();
+            UpdateMarketSlots(market.GetTowers());     
+    }
 
 
     /// <summary>
@@ -72,8 +82,10 @@ public class MarketUIEvent : MonoBehaviour {
             player.RemoveGold(clicked.GetProduct().price);
 
             // Need to Instantiate the product first (Not Inventory's job)
-            GameObject yield = Instantiate(clicked.GetProduct().product, Vector3.zero, Quaternion.identity);
+            GameObject yield = Instantiate(clicked.GetProduct().product.gameObject, Vector3.zero, Quaternion.identity);
             inventory.Add(yield);
+
+            onBuy.Invoke();
         }
     }
 
@@ -85,15 +97,6 @@ public class MarketUIEvent : MonoBehaviour {
             player.GainLevel(_gainLevelCost);
             _gainLevelCost++;
         }
-    }
-
-
-    // TODO
-    // Is following function to be handled here or in gamecontroller?
-    // Function for when player is done using the market UI
-    public void SelectedDone() {
-        // Logic for when button done is pressed
-        // Handle here or in game controller?
     }
 
 }
