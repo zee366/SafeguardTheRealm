@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using Utils;
 
+enum Phase {
+    Market,
+    Battle
+};
+
 public class WaveManager : MonoBehaviour {
 
     [SerializeField] private int _maxWaves;
@@ -24,16 +29,19 @@ public class WaveManager : MonoBehaviour {
     private int  _unitsSpawned;
     bool         waveStopped;
 
-    private bool _roundEnded = true;
+    private bool _roundEnded = false;
     private SnapManager _snapManager;
 
     private int numOfStoppedWaves = 0;
+    private int completedWaves = 0;
+    private Phase phase;
 
 
     void Start() {
         _snapManager = FindObjectOfType<SnapManager>();
         _spawners = GameObject.FindGameObjectsWithTag("Spawner");
         _splines  = GameObject.FindGameObjectsWithTag("Spline");
+        phase = Phase.Market;
 
         foreach(GameObject spawner in _spawners) {
             Wave w = spawner.GetComponent<Wave>();
@@ -49,32 +57,39 @@ public class WaveManager : MonoBehaviour {
 
 
     void Update() {
-        foreach(Wave w in waves) {
-            if(!w._waveStopped) {
-                if(w._unitsSpawned >= w._maxUnitsPerWave) {
-                    w.CancelSpawn();
-                    onWaveEnd?.Invoke();
-                    w._waveStopped = true;
+        if(phase == Phase.Battle) {
+            foreach(Wave w in waves) {
+                if(!w._waveStopped) {
+                    if(w._unitsSpawned >= w._maxUnitsPerWave) {
+                        w.CancelSpawn();
+                        onWaveEnd?.Invoke();
+                        w._waveStopped = true;
+                        completedWaves++;
+                    }
+                }
+                else {
+                    if(w._spline.transform.childCount == 0)
+                        numOfStoppedWaves++;
                 }
             }
-        }
 
-        // if no enemies left on the map, end the round -> go to market phase
-        if(!_roundEnded) {
-            foreach(Wave w in waves) {
-                if(!w._waveStopped && (w._spline.transform.childCount - 1) != 0)
-                    break;
-                else
-                    numOfStoppedWaves++;
+            // if no enemies left on the map, end the round -> go to market phase
+            if(!_roundEnded) {
+                if(numOfStoppedWaves == waves.Count) {
+                    numOfStoppedWaves = 0;
+                    _roundEnded = true;
+                    phase = Phase.Market;
+                    onRoundEnd?.Invoke();
+                    _snapManager.UnlockGrid();
+                }
+                else {
+                    numOfStoppedWaves = 0;
+                }
             }
 
-            if(numOfStoppedWaves == waves.Count) {
-                _roundEnded = true;
-                onRoundEnd?.Invoke();
-                _snapManager.UnlockGrid();
-            }
-            else {
-                numOfStoppedWaves = 0;
+            // transition to next level
+            if(_roundEnded && completedWaves == _maxWaves) {
+                Debug.Log("rdy for level transition");
             }
         }
     }
@@ -83,8 +98,10 @@ public class WaveManager : MonoBehaviour {
     public int GetWaveNumber() { return _waveNumber; }
 
     public void StartWave() {
+        phase = Phase.Battle;
         int offset = 0;
         foreach(Wave w in waves) {
+            w._unitsSpawned = 0;
             w._maxUnitsPerWave += w._unitsPerWaveIncrement;
             w._waveStopped = false;
             w.InvokeSpawn(0 + offset, waves.Count + offset);
@@ -93,5 +110,6 @@ public class WaveManager : MonoBehaviour {
         _waveNumber++;
         onWaveStart?.Invoke();
         _snapManager.LockGrid();
+        _roundEnded = false;
     }
 }
