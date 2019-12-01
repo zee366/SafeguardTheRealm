@@ -52,11 +52,6 @@ public class MoneyYielder : MonoBehaviour
         int new_castleHP = c.GetHealth();
         int x = old_castleHP - new_castleHP;
 
-        Debug.Log("old hp =" + old_castleHP);
-        Debug.Log("new hp =" + new_castleHP);
-        Debug.Log("X =" + x);
-        Debug.Log("% =" + (x * 1.0) / (castle_MAX_HP * 1.0));
-
         // If at the end of the round, castle's hp does not lose more than 10% of total hp, increments win streak and reset lose streak
         if ((x * 1.0) / (castle_MAX_HP * 1.0) < 0.1f)
         {
@@ -72,16 +67,12 @@ public class MoneyYielder : MonoBehaviour
     public void EndOfRoundWinnings() {
         // Check streak first
         CheckStreak();
-        Debug.Log("Win =" + _winStreak);
-        Debug.Log("Lose =" + _loseStreak);
 
         // Calculate the interest then give the total to the player
         int bonus = Mathf.Abs(_winStreak - _loseStreak) * END_OF_ROUND_WINNINGS;
-        Debug.Log("Bonus =" + bonus);
         int total = _player.GetPlayerGold() + bonus;
-        Debug.Log("Total =" + total);
         int interest = Mathf.RoundToInt(total * INTEREST_RATE);
-        Debug.Log("Intereset =" + interest);
+
         GiveGoldToPlayer(interest + bonus);
     }
 }
