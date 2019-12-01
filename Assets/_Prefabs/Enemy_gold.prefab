@@ -69,6 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
         type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798863198406611205, guid: 4e8779793eb0f394ea0a1da1f7f0a112,
+        type: 3}
       propertyPath: _health
       value: 4
       objectReference: {fileID: 0}
