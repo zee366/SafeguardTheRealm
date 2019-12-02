@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handle higher level event for the Market UI.
+/// Includes rerolling button event and product updates
+/// </summary>
 public class MarketUIEvent : MonoBehaviour {
 
     // Get associated player, inventory, and market objects
@@ -22,8 +26,6 @@ public class MarketUIEvent : MonoBehaviour {
 
     private MarketSlot[] _slots;
 
-
-    // Start is called before the first frame update
     private void Start() {
         // References to slots + events
         _slots = GetComponentsInChildren<MarketSlot>();
@@ -50,9 +52,10 @@ public class MarketUIEvent : MonoBehaviour {
         }
     }
 
-
-    // Allows player to generate a new list of towers to choose from
-    // Called from button event
+    /// <summary>
+    /// Allows player to generate a new list of towers to choose from
+    /// Called from button event
+    /// </summary>
     public void RerollTheMarket() {
         if ( player.CheckGold(REROLL_COST) ) // check if player has enough gold to do this, if not, do nothing
         {
@@ -73,7 +76,8 @@ public class MarketUIEvent : MonoBehaviour {
 
 
     /// <summary>
-    /// When a market product button is clicked
+    /// When a market product button is clicked.
+    /// If enough money and buying, instantiate and add to inventory
     /// </summary>
     /// <param name="clicked"></param>
     private void OnSlotClicked(MarketSlot clicked) {
@@ -89,8 +93,9 @@ public class MarketUIEvent : MonoBehaviour {
         }
     }
 
-
-    // Allows player to buy a new level
+    /// <summary>
+    /// When a player wants to upgrade his level
+    /// </summary>
     public void BuyPlayerLevel() {
         if ( player.CheckGold(_gainLevelCost) ) //check if player has enough gold to do this, if not, do nothing
         {

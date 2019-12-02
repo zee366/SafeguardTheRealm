@@ -1,23 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A kind of projectile with different behavior that regular projectiles.
+/// </summary>
 public class Beam : MonoBehaviour
 {
     public int damage = 1;
     protected float mTickRate = 1.0f; // damage over time tick rate
 
     protected Enemy mEnemy;
-    protected Vector3 mLastEnemyPosition;
     protected Vector3 mInitialScale;
 
     protected Tower mTower;
     protected BeamAttacker mBeamAttacker;
 
+
     protected void Init() {
         mTower = transform.GetComponentInParent<Tower>();
         if(!mTower)
-            Debug.Log("Tower not found");
+            Debug.LogWarning("Tower not found");
         mBeamAttacker = transform.GetComponentInParent<BeamAttacker>();
         mInitialScale = transform.localScale;
         StartCoroutine(LateStart(0.5f));
@@ -57,21 +59,18 @@ public class Beam : MonoBehaviour
         }
     }
 
-    /*
-    protected void OnTriggerEnter(Collider other) {
-        mEnemyTransform = other.gameObject.transform;
-        Enemy e = mEnemyTransform.parent.GetComponent<Enemy>();
-        if(e) {
-            InvokeRepeating("DamageOverTime", 0.0f, mTickRate);
-        }
-    }
-    */
-
+    /// <summary>
+    /// Based on tick rate, with be called multiple time as long as enemy target exist and in range
+    /// </summary>
     protected void DamageOverTime() {
         if(mEnemy)
             EnemyHit(mEnemy.transform);
     }
 
+    /// <summary>
+    /// Deal damage to enemy target
+    /// </summary>
+    /// <param name="t"></param>
     public void EnemyHit(Transform t) {
         Enemy enemy = t.gameObject.GetComponent<Enemy>();
         enemy.TakeDamage(damage);
@@ -86,6 +85,9 @@ public class Beam : MonoBehaviour
 
     public void SetEnemy(Enemy go) { mEnemy = go; }
 
+    /// <summary>
+    /// Destroys the beam correctly
+    /// </summary>
     void Die() {
         mBeamAttacker.activeBeams--;
         Destroy(gameObject);

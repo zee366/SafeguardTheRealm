@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Rarity level struct to list towers corresponding to tier & their price
+/// </summary>
 [Serializable]
 public struct TowerTier
 {
-    //public TowerTier(int prob, int price2) { probability = prob; price = price2; }
     public List<Tower> towers;
 	public int price;
 

@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// Struct sent from affectors to modify target tower stats at runtime
+/// </summary>
 [Serializable]
 public struct TowerModifier {
 

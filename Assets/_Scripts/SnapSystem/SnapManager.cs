@@ -1,8 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace SnapSystem {
+    /// <summary>
+    /// Manages the grid and moveable towers and gameobject.
+    /// Uses physics ray from camera to determine mouse selection
+    /// </summary>
     public class SnapManager : MonoBehaviour {
 
         [SerializeField] private LayerMask  selectableLayerMask;

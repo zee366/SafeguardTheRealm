@@ -1,6 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Toggle visual cues based on current modifier of the tower's attacker.
+/// </summary>
 public class ModifierDisplayToggle : MonoBehaviour {
 
     private                  Attacker   _attacker;

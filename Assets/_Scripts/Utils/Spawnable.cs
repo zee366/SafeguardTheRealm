@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Used as a Spawner entry to contain object to spawn with his probability of spawning
+/// </summary>
 [Serializable]
 public struct Spawnable {
 

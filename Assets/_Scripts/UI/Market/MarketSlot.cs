@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handle events and display of a single button for a product
+/// </summary>
 public class MarketSlot : MonoBehaviour {
 
-
-
-    
     public                   MarketSlotEvent onTryBuying;
     [SerializeField] private Color[]         rarityColor;
     private                  MarketProduct   _product;
@@ -46,6 +46,10 @@ public class MarketSlot : MonoBehaviour {
     public void Enable() { GetComponent<Button>().interactable = true; }
 
 
+    /// <summary>
+    /// Receiving a product data struct to display info in template
+    /// </summary>
+    /// <param name="product"></param>
     public void SetProduct(MarketProduct product) {
         _product        = product;
         _priceText.text = _product.price.ToString();
@@ -68,7 +72,10 @@ public class MarketSlot : MonoBehaviour {
         GetComponent<Image>().color = rarityColor[_product.rarity];
     }
 
-
+    /// <summary>
+    /// Get current displaying product's struct
+    /// </summary>
+    /// <returns></returns>
     public MarketProduct GetProduct() { return _product; }
 
 }

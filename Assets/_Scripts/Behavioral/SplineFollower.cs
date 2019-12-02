@@ -2,6 +2,11 @@
 using UnityEngine;
 
 namespace Behavioral {
+
+    /// <summary>
+    /// Follows a spline position and rotation at a given speed.
+    /// Spline must be in parent's transform object
+    /// </summary>
     public class SplineFollower : MonoBehaviour {
 
         public float speedInUnitsPerSecond = 1.0f;
@@ -25,7 +30,9 @@ namespace Behavioral {
                 Debug.LogWarning("Spline has no parent. Cannot rotate properly");
         }
 
-
+        /// <summary>
+        /// Following spline progressively.
+        /// </summary>
         void Update() {
             if(!_isOk) return;
 

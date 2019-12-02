@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System;
 
+/// <summary>
+/// Struct to store information of a product that will be present in the store
+/// All meta data assigned to product
+/// </summary>
 [Serializable]
 public struct MarketProduct {
 

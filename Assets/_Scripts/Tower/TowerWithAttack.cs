@@ -1,9 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Events;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
+/// <summary>
+///
+/// </summary>
 public class TowerWithAttack : Tower {
 
     private List<Attacker> _attackers;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using Behavioral;
 
+/// <summary>
+/// Acts like a SplineFollower but deals damage on hit
+/// </summary>
 public class Boomerang : MonoBehaviour {
     public float speed;
     public int damage = 1;
