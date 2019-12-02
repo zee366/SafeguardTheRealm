@@ -2,16 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using Behavioral;
 using System;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
-    // For Enemy health
-    public static event Action<Enemy> OnHealthAdded = delegate { };
-    public static event Action<Enemy> OnHealtRemoved = delegate { };
 
     [SerializeField] int _maxHealth;
-    public int _currentHealth { get; private set; }
+    private int _currentHealth;
 
-    public event Action<float> OnHealthChangedPercentage = delegate { };
+    public Image _healthBarBackground;
+    public Image _healthBar;
 
 
 
@@ -35,6 +34,7 @@ public class Enemy : MonoBehaviour {
     private const float EPSILON = 0.0001f;
 	
     void Awake() {
+        _currentHealth = _maxHealth;
         _castle = GameObject.Find("Castle").GetComponent<Castle>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
@@ -46,24 +46,10 @@ public class Enemy : MonoBehaviour {
         CheckProgress();
         _animator.SetBool("isKilledByTower", isKilledByTowerProjectile);
     }
-
-    private void OnEnable()
-    {
-        _currentHealth = _maxHealth;
-        OnHealthAdded(this);
-    }
-
-    private void OnDisable()
-    {
-        OnHealtRemoved(this);
-    }
-
+    
     public void TakeDamage(int value) {
-        //_health -= value;
         _currentHealth -= value;
-
-        float _currentHealthPercentage = (float)_currentHealth / (float)_maxHealth;
-        OnHealthAdded(this);
+        _healthBar.fillAmount = (float)_currentHealth / (float)_maxHealth;
         CheckHealth();
     }
 
@@ -81,8 +67,8 @@ public class Enemy : MonoBehaviour {
     }
 
     void CheckHealth() {
-        //if(_health <= 0) {
         if(_currentHealth <= 0) {
+            Destroy(_healthBarBackground);
             isKilledByTowerProjectile = true;
             _splineFollower.speedInUnitsPerSecond = 0.0f;
             _rigidbody.transform.position = new Vector3(_rigidbody.transform.position.x, -30.0f, _rigidbody.transform.position.z);
