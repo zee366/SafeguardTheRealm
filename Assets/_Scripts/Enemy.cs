@@ -1,9 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Behavioral;
+using System;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] public int _health;
+    [SerializeField] public int _maxHealth;
+
+    public Image _healthBarBackground;
+    public Image _healthBar;
+
     [SerializeField] int _attackDamage;
     [SerializeField] int _goldValue;
     [SerializeField] bool _golden;
@@ -24,6 +31,7 @@ public class Enemy : MonoBehaviour {
     private const float EPSILON = 0.0001f;
 	
     void Awake() {
+        _health = _maxHealth;
         _castle = GameObject.Find("Castle").GetComponent<Castle>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
@@ -45,6 +53,7 @@ public class Enemy : MonoBehaviour {
 
     public void TakeDamage(int value) {
         _health -= value;
+        _healthBar.fillAmount = (float)_health / (float)_maxHealth;
         CheckHealth();
     }
 
@@ -63,6 +72,7 @@ public class Enemy : MonoBehaviour {
 
     void CheckHealth() {
         if(_health <= 0) {
+            Destroy(_healthBarBackground);
             isKilledByTowerProjectile = true;
             _splineFollower.speedInUnitsPerSecond = 0.0f;
             _rigidbody.transform.position = new Vector3(_rigidbody.transform.position.x, -30.0f, _rigidbody.transform.position.z);
