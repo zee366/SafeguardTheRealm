@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Hovering projectile behaviour that with go towards his target.
+/// On hit try to deal damage
+/// </summary>
 public class Projectile : MonoBehaviour {
 
     public float speed;
@@ -22,7 +26,6 @@ public class Projectile : MonoBehaviour {
         }
     }
 
-
     void FixedUpdate() {
         if ( _target == null ) {
             MoveTowardsPosition(_lastEnemyPosition);
@@ -35,13 +38,14 @@ public class Projectile : MonoBehaviour {
         
         MoveTowardsEnemy();
     }
+
     private void MoveTowardsEnemy() {
         float step = 0.1f;
       
         _lastEnemyPosition = _target.position;
         transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
     }
-    
+
     private void MoveTowardsPosition(Vector3 _lastEnemyPosition) {
         float step = 0.1f;
         transform.position = Vector3.MoveTowards(transform.position, _lastEnemyPosition, step);

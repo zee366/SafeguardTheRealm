@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace SnapSystem {
+    /// <summary>
+    /// A single location on the grid where the player can pick & place objects
+    /// </summary>
     [Serializable]
     public class SnapEvent : UnityEvent<SnapLocation> { }
 

@@ -1,7 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handle market refreshing mechanics and product data for UI to display.
+/// Propability based and vary with player's level. (Values from inspector)
+/// Dont display anything itself, container for current product in store.
+/// </summary>
 public class MarketScript : MonoBehaviour {
 
     public Player playerReference;
@@ -22,7 +26,9 @@ public class MarketScript : MonoBehaviour {
     void Start() { GenerateTowersList(); }
 
 
-    // will add the towers
+    /// <summary>
+    /// Generate 3 new towers products that can be available.
+    /// </summary>
     public void GenerateTowersList() {
         _products = new List<MarketProduct>();
         for ( int i = 0; i < 3; i++ ) {
@@ -33,7 +39,10 @@ public class MarketScript : MonoBehaviour {
         }
     }
 
-    // tells which tower tier was weighted choosen
+    /// <summary>
+    /// Tells which tower tier was choosen base on weight
+    /// </summary>
+    /// <returns></returns>
     private int GetTowerLevel() {
         int playaLevel    = GetPlayerLevel() - 1;    // Starts at 1
         int wRandomNumber = randomValue();
@@ -62,7 +71,10 @@ public class MarketScript : MonoBehaviour {
 
     private int GetPlayerLevel() { return playerReference.playerLevel; }
 
-
+    /// <summary>
+    /// Return the current product's data in the market
+    /// </summary>
+    /// <returns></returns>
     public List<MarketProduct> GetTowers() { return _products; }
 
 }

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Displays player information in the UI.
+/// Triggered by external UnityEvents
+/// </summary>
 public class PlayerUIEvent : MonoBehaviour {
 
     // Associated game attribute value members

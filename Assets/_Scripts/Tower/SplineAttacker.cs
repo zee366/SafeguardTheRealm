@@ -1,34 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SplineMesh;
 
+/// <summary>
+/// Attacker used to have a projectile created to follow a spline
+/// </summary>
 public class SplineAttacker : Attacker {
     [SerializeField] private Boomerang boomerang;
     public Transform spawnParent;
     private SplineNode _firstNode;
-    /*
-    public int damage = 1;
-    [Range(0.1f, 4f)] public float projectileSpeed = 2;
-    public float attackSpeed = 1;
-    private Enemy _currentEnemy;
-    private Coroutine _currentCoroutine;
-    private bool _projectileCoroutineStarted = false;
-    private TowerModifier modifier = new TowerModifier(1, 1);
-    */
-
-    /*
-    public override void Attack(Enemy enemy) {
-        if(_projectileCoroutineStarted && enemy != _currentEnemy) StopCoroutine(_currentCoroutine);
-        _currentEnemy = enemy;
-        _currentCoroutine = StartCoroutine(ProjectileCoroutine());
-    }
-    public override void Stop(Enemy enemy) {
-        if(enemy == _currentEnemy) {
-            StopCoroutine(_currentCoroutine);
-        }
-    }
-    */
 
     void Start() {
         _firstNode = spawnParent.GetComponent<Spline>().nodes[0];
@@ -44,6 +24,10 @@ public class SplineAttacker : Attacker {
         p.speed = projectileSpeed;
     }
 
+    /// <summary>
+    /// Projectile creation based on speed of attacker
+    /// </summary>
+    /// <returns></returns>
     protected override IEnumerator ProjectileCoroutine() {
         _projectileCoroutineStarted = true;
         SendProjectile();

@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// NOTE: Not used in final version
+///
+/// Was used for prototype + demo purpose to move camera in different states based on action or market phases
+/// </summary>
 public class CameraTilter : MonoBehaviour {
 
     public float   transitionTime = 1.5f;

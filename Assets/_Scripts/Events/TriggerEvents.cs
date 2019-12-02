@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 namespace Events {
+
+    /// <summary>
+    /// Allow interface for collision event on trigger 3D collider
+    /// </summary>
     public class TriggerEvents : MonoBehaviour {
 
         public LayerMask layerMask;

@@ -1,7 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Visual representation behavior for lightning asset
+/// </summary>
 public class Lightning : Beam
 {
     private List<GameObject> _bolts;
@@ -17,6 +19,9 @@ public class Lightning : Beam
         }
     }
 
+    /// <summary>
+    /// Change active bolt after fixed time loop
+    /// </summary>
     void Update()
     {
         angle += 1600 * Time.deltaTime;
@@ -27,6 +32,10 @@ public class Lightning : Beam
         ShowBolt(t);
     }
 
+    /// <summary>
+    /// Display corresponding beam
+    /// </summary>
+    /// <param name="t"></param>
     void ShowBolt(float t) {
         if(t > 0.0f && t < 0.25f) {
             _bolts[0].GetComponent<Renderer>().enabled = true;

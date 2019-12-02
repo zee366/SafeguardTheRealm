@@ -2,6 +2,9 @@
 using UnityEngine.Events;
 
 namespace Events {
+    /// <summary>
+    /// Generic timer mechanics for general event raising
+    /// </summary>
     public class Timer : MonoBehaviour {
 
         [SerializeField] private bool  startOnAwake = true;

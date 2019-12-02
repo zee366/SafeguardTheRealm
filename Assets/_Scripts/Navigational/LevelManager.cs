@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Used for transitioning between scenes
+/// </summary>
 public class LevelManager : MonoBehaviour
 {
     Animator animator;

@@ -3,6 +3,11 @@ using SplineMesh;
 using UnityEngine;
 
 namespace Behavioral {
+
+    /// <summary>
+    /// Separate behavior for spline following in loop
+    /// Will go back to beginning of loop once it reachs the end of the spline.
+    /// </summary>
     public class SplineFollowerLoop : MonoBehaviour {
 
         public float speedInUnitsPerSecond = 1.0f;

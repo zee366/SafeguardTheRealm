@@ -1,7 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Player script is holding informations regarding the player state, not behaviors.
+/// Money, level, and events
+/// </summary>
 public class Player : MonoBehaviour {
 
     public int        maxLevel    = 5;
@@ -18,7 +21,10 @@ public class Player : MonoBehaviour {
     }
 
 
-    //Gain level
+    /// <summary>
+    /// Buy a level, and deduct money
+    /// </summary>
+    /// <param name="cost"></param>
     public void GainLevel(int cost) {
         //Check if Player's level is MAX
         if ( CheckLevel() ) {
@@ -40,7 +46,11 @@ public class Player : MonoBehaviour {
     }
 
 
-    //method: check if gold is enough
+    /// <summary>
+    /// Check if has enough gold
+    /// </summary>
+    /// <param name="gold"></param>
+    /// <returns></returns>
     public bool CheckGold(int gold) {
         if ( playerGold >= gold )
             return true;
@@ -49,21 +59,30 @@ public class Player : MonoBehaviour {
     }
 
 
-    //method: Gain gold
+    /// <summary>
+    /// Add gold to the player
+    /// </summary>
+    /// <param name="gold"></param>
     public void GainGold(int gold) {
         playerGold += gold;
         onGoldChange.Invoke();
     }
 
 
-    //method: remove gold
+    /// <summary>
+    /// Deduct gold to player
+    /// </summary>
+    /// <param name="gold"></param>
     public void RemoveGold(int gold) {
         playerGold -= gold;
         onGoldChange.Invoke();
     }
 
 
-    //method: check is player level is max
+    /// <summary>
+    /// Check if reached max level
+    /// </summary>
+    /// <returns></returns>
     public bool CheckLevel() {
         if ( playerLevel < maxLevel )
             return true;
@@ -71,19 +90,17 @@ public class Player : MonoBehaviour {
         return false;
     }
 
-
-    //method: increase level by 1
     public void AddOneLevel() {
         playerLevel++;
         onLevelUp.Invoke();
     }
 
 
-    //Getter for Return Player's level
+    // Getter for Return Player's level
     public int GetPlayerLevel() { return playerLevel; }
 
 
-    //Getter for Return Player's gold
+    // Getter for Return Player's gold
     public int GetPlayerGold() { return playerGold; }
 
 }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Specific attacker for the laser tower and his beam projectile
+/// </summary>
 public class BeamAttacker : Attacker
 {
     [SerializeField]
@@ -16,6 +19,9 @@ public class BeamAttacker : Attacker
         activeBeams = 0;
     }
 
+    /// <summary>
+    /// Sends a beam instead
+    /// </summary>
     protected override void SendProjectile() {
         if(_currentEnemy == null || activeBeams >= maxBeams)
             return;
@@ -36,16 +42,5 @@ public class BeamAttacker : Attacker
         _projectileCoroutineStarted = true;
         SendProjectile();
         yield return new WaitForSeconds(1);
-        /*
-        while(true) {
-            float speed = attackSpeed * modifier.speedModifier;
-            if(Mathf.Approximately(speed, 0.0f))
-                yield return new WaitForSeconds(1);
-            else
-                yield return new WaitForSeconds(1 / speed);
-
-            SendProjectile();
-        }
-        */
     }
 }

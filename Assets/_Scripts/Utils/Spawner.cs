@@ -3,6 +3,10 @@ using UnityEngine;
 using SplineMesh;
 
 namespace Utils {
+    /// <summary>
+    /// Handle the spawn probability an distribution.
+    /// Spawns proper Prefab
+    /// </summary>
     public class Spawner : MonoBehaviour {
 
         public  List<Spawnable> spawnables;
@@ -11,7 +15,9 @@ namespace Utils {
 
         List<Vector2> probabilitiesOfSpawnableObjects = new List<Vector2>();
 
-
+        /// <summary>
+        /// Run spawn lotery to spawn one of the spawnable
+        /// </summary>
         public void SpawnOne() {
             // Create a random number between 0 and 100
             float RandomProbability = Random.Range(0.0f, 100.0f);
@@ -28,6 +34,9 @@ namespace Utils {
             }
         }
 
+        /// <summary>
+        /// Instantiate Boss
+        /// </summary>
         public void SpawnBoss() {
             Instantiate(spawnables[spawnables.Count - 1].prefab, _firstNode.Position, Quaternion.identity, spawnParent);
         }

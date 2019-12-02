@@ -12,6 +12,10 @@ public struct TowerUpgradeLink {
 
 }
 
+/// <summary>
+/// Upgrade tower automatically on different moments and events.
+/// Holds how the tower will upgrade and to what tower.
+/// </summary>
 public class TowerUpgrader : MonoBehaviour {
 
     public  UnityEvent             onUpgrade;
@@ -41,14 +45,22 @@ public class TowerUpgrader : MonoBehaviour {
         return null;
     }
 
-
+    /// <summary>
+    /// Upgrade buffer to check.
+    /// Used for preventing upgrades during battle and process it after battle.
+    /// </summary>
     public void ProcessBuffer() {
-        foreach ( string tagToProcess in _toProcess ) UpgradeWithTag(tagToProcess);
-
-        _toProcess.Clear();
+        lock ( _toProcess ) {
+            foreach ( string tagToProcess in _toProcess ) UpgradeWithTag(tagToProcess);
+            _toProcess.Clear();
+        }
     }
 
-
+    /// <summary>
+    /// With an Gameobject tag, remove towers to replace with upgraded one.
+    /// Check if upgrade possible first.
+    /// </summary>
+    /// <param name="tag"></param>
     void UpgradeWithTag(string tag) {
         GameObject[] list = GameObject.FindGameObjectsWithTag(tag);
 
@@ -74,12 +86,18 @@ public class TowerUpgrader : MonoBehaviour {
         }
     }
 
-
+    /// <summary>
+    /// Triggered when an item is added to the inventory
+    /// Maybe trigger upgrade
+    /// </summary>
+    /// <param name="gameObject"></param>
     void OnInventoryAdded(GameObject gameObject) {
-        if ( _snapManager.IsLocked() ) {
-            // To process later (After unlocked)
-            _toProcess.Add(gameObject.tag);
-            return;
+        lock ( _toProcess ) {
+            if ( _snapManager.IsLocked() ) {
+                // To process later (After unlocked)
+                _toProcess.Add(gameObject.tag);
+                return;
+            }
         }
 
         UpgradeWithTag(gameObject.tag);
