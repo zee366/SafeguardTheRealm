@@ -20,7 +20,7 @@ namespace Utils {
             int i = 0;
             foreach ( Vector2 prob in probabilitiesOfSpawnableObjects ) {
                 if ( RandomProbability >= prob.x && RandomProbability <= prob.y ) {
-                    Instantiate(spawnables[i].prefab, _firstNode.Position, Quaternion.identity, spawnParent);
+                    Instantiate(spawnables[i].prefab, new Vector3(0.0f, -100.0f, 0.0f), Quaternion.identity, spawnParent);
                     break;
                 }
 
