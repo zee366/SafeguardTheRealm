@@ -4,7 +4,8 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-///
+/// This is main behaviour for attack towers
+/// Modify towers in range with modifier.
 /// </summary>
 public class TowerWithAttack : Tower {
 

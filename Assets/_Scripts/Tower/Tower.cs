@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// This is parent class for the the different towers
+/// </summary>
 public class Tower : MonoBehaviour
 {
 
