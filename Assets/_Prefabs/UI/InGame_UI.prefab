@@ -177,6 +177,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onMapLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7423259348324633004}
+        m_MethodName: ChangeGameRound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1271035749}
+          m_ObjectArgumentAssemblyTypeName: WaveManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &157838396554008545
 GameObject:
   m_ObjectHideFlags: 0

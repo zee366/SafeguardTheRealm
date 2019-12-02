@@ -648,6 +648,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1829279665197379873, guid: 85547d51aefb45b48a5257e8718bf4bc,
         type: 3}
+    - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64aeade656aa7e45aa21e4b761ae2d3, type: 3}
 --- !u!4 &8201622752043032463 stripped
@@ -809,6 +819,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1829279665197379873, guid: 85547d51aefb45b48a5257e8718bf4bc,
         type: 3}
+    - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695502345258323316, guid: f64aeade656aa7e45aa21e4b761ae2d3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64aeade656aa7e45aa21e4b761ae2d3, type: 3}
 --- !u!4 &7101777131284985194 stripped
@@ -824,11 +844,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 793173960076928727}
     m_Modifications:
-    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
-        type: 3}
-      propertyPath: m_Name
-      value: AffectedVisuals
-      objectReference: {fileID: 0}
     - target: {fileID: 8112878987466925088, guid: e8a50b00903c4dd48a3ea62290f65cae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -883,6 +898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
+        type: 3}
+      propertyPath: m_Name
+      value: AffectedVisuals
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a50b00903c4dd48a3ea62290f65cae, type: 3}

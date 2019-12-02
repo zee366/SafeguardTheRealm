@@ -96,6 +96,7 @@ public class MarketUIEvent : MonoBehaviour {
         {
             player.GainLevel(_gainLevelCost);
             _gainLevelCost++;
+            mLevelUpAmountText.text = _gainLevelCost.ToString();
         }
     }
 

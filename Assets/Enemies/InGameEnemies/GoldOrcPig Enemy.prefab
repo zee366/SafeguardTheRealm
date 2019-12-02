@@ -1458,11 +1458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8e02883f0c27b4b8cd76d34e463438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
-  _attackDamage: 2
-  _xpValue: 0
+  _health: 5
+  _attackDamage: 1
   _goldValue: 1
-  _golden: 0
+  _golden: 1
   onDeath:
     m_PersistentCalls:
       m_Calls: []
