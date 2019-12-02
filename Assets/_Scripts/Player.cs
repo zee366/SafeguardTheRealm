@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         // Trigger some of of the events to update UI
+        onLevelUp.Invoke();
         onGoldChange.Invoke();
     }
 

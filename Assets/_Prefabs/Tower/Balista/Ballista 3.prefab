@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 3565099394172681924}
   - component: {fileID: 3565099394172681923}
   m_Layer: 0
-  m_Name: Level 3
+  m_Name: Ballista 3
   m_TagString: balista_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,6 +847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   thumbnail: {fileID: 0}
+  attack_descriptor: 0
+  speed_descriptor: 2
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,10 +926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2e6b24d3860bd488a1b2997cfe77a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
+  projectile: {fileID: 4274077051482124288, guid: 4ae18bae6da724e48825e41b414e19b7,
     type: 3}
   damage: 1
-  projectileSpeed: 2
+  projectileSpeed: 1.2
   attackSpeed: 1
 --- !u!1 &5178499239899876846
 GameObject:
@@ -1054,8 +1056,8 @@ MonoBehaviour:
   projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
     type: 3}
   damage: 1
-  projectileSpeed: 1.4
-  attackSpeed: 2
+  projectileSpeed: 1.2
+  attackSpeed: 1
 --- !u!1 &8289768417275125345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,10 +1101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2e6b24d3860bd488a1b2997cfe77a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
+  projectile: {fileID: 4274077051482124288, guid: 4ae18bae6da724e48825e41b414e19b7,
     type: 3}
   damage: 1
-  projectileSpeed: 2
+  projectileSpeed: 1.2
   attackSpeed: 1
 --- !u!1 &8690628369447733444
 GameObject:
@@ -1147,11 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2e6b24d3860bd488a1b2997cfe77a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 5288307979392762991, guid: f27340ce3b4541442a58a4ae00f98d74,
+  projectile: {fileID: 4274077051482124288, guid: 4ae18bae6da724e48825e41b414e19b7,
     type: 3}
   damage: 1
-  projectileSpeed: 1.4
-  attackSpeed: 1
+  projectileSpeed: 1.2
+  attackSpeed: 2.5
 --- !u!1 &9189595597496862052
 GameObject:
   m_ObjectHideFlags: 0

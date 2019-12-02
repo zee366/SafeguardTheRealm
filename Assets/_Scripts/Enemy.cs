@@ -12,16 +12,14 @@ public class Enemy : MonoBehaviour {
     public Image _healthBarBackground;
     public Image _healthBar;
 
-
-
     [SerializeField] int _attackDamage;
-    [SerializeField] int _xpValue;
     [SerializeField] int _goldValue;
     [SerializeField] bool _golden;
 
     Castle _castle;
     Player _player;
     SplineFollower _splineFollower;
+    WaveManager _waveManager;
     
     public UnityEvent onDeath;
     public UnityEvent onCastleHit;
@@ -38,8 +36,14 @@ public class Enemy : MonoBehaviour {
         _castle = GameObject.Find("Castle").GetComponent<Castle>();
         _player = GameObject.Find("Player").GetComponent<Player>();
         _splineFollower = GetComponent<SplineFollower>();
+        _waveManager = GameObject.Find("WaveManager").GetComponent<WaveManager>();
         _rigidbody = GetComponentInChildren<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        // increase health every 2 rounds
+        int waveNumber = _waveManager.GetWaveNumber();
+        if(waveNumber % 2 == 1)
+            _health += (_waveManager.GetWaveNumber() - 1) * 3;
     }
 
     void LateUpdate() {

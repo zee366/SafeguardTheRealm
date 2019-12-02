@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 3565099394172681924}
   - component: {fileID: 3565099394172681923}
   m_Layer: 0
-  m_Name: Level 2
+  m_Name: Ballista 2
   m_TagString: balista_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,6 +527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6
   thumbnail: {fileID: 0}
+  attack_descriptor: 0
+  speed_descriptor: 2
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,13 +843,24 @@ PrefabInstance:
     - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: projectileSpeed
-      value: 1.6
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: damage
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 4274077051482124288, guid: 4ae18bae6da724e48825e41b414e19b7,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
 --- !u!4 &828284157324867379 stripped
@@ -997,6 +1010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}

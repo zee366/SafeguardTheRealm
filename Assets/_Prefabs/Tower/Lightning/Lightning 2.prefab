@@ -287,6 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 7
   thumbnail: {fileID: 0}
+  attack_descriptor: 2
+  speed_descriptor: 1
 --- !u!1 &4137946802086194152
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,11 +412,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7885300373404930546}
     m_Modifications:
-    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
-        type: 3}
-      propertyPath: m_Name
-      value: AttackerRight
-      objectReference: {fileID: 0}
     - target: {fileID: 5105494989748300780, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -470,12 +467,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackerRight
+      objectReference: {fileID: 0}
     - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: beam
       value: 
       objectReference: {fileID: 5590366545943456376, guid: 83ed076d8f163ae4e95f244d8a4e53e0,
         type: 3}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5629b429961b744af0317638aee1f3, type: 3}
 --- !u!4 &5678875401681256628 stripped
@@ -491,11 +503,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7885300373404930546}
     m_Modifications:
-    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
-        type: 3}
-      propertyPath: m_Name
-      value: AttackerLeft
-      objectReference: {fileID: 0}
     - target: {fileID: 5105494989748300780, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -551,12 +558,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackerLeft
+      objectReference: {fileID: 0}
     - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: beam
       value: 
       objectReference: {fileID: 5590366545943456376, guid: 83ed076d8f163ae4e95f244d8a4e53e0,
         type: 3}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5629b429961b744af0317638aee1f3, type: 3}
 --- !u!4 &5678875402164847107 stripped
@@ -572,11 +594,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4137946802051586028}
     m_Modifications:
-    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
-        type: 3}
-      propertyPath: m_Name
-      value: PhysicsDetector
-      objectReference: {fileID: 0}
     - target: {fileID: 2220481215087809008, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -632,6 +649,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
+        type: 3}
+      propertyPath: m_Name
+      value: PhysicsDetector
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a93ff2a37ccf54d9c51bca8dc89242, type: 3}
 --- !u!4 &1482451998584552903 stripped
@@ -647,11 +669,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4137946802051586028}
     m_Modifications:
-    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -706,6 +723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
       objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128153, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
@@ -782,11 +804,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4137946802051586028}
     m_Modifications:
-    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
-        type: 3}
-      propertyPath: m_Name
-      value: AffectedVisuals
-      objectReference: {fileID: 0}
     - target: {fileID: 8112878987466925088, guid: e8a50b00903c4dd48a3ea62290f65cae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -841,6 +858,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
+        type: 3}
+      propertyPath: m_Name
+      value: AffectedVisuals
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a50b00903c4dd48a3ea62290f65cae, type: 3}

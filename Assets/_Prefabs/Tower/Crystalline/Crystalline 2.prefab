@@ -206,6 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   thumbnail: {fileID: 0}
+  attack_descriptor: 2
+  speed_descriptor: 0
 --- !u!1 &3911615819366629425
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,11 +454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3565099394172681924}
     m_Modifications:
-    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
-        type: 3}
-      propertyPath: m_Name
-      value: Range
-      objectReference: {fileID: 0}
     - target: {fileID: 1660913033763128157, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660913033763128146, guid: b9c61004d54b72341ada963d2316caad,
+        type: 3}
+      propertyPath: m_Name
+      value: Range
       objectReference: {fileID: 0}
     - target: {fileID: 4031631481788134361, guid: b9c61004d54b72341ada963d2316caad,
         type: 3}
@@ -597,11 +599,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6384214179670222944}
     m_Modifications:
-    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
-        type: 3}
-      propertyPath: m_Name
-      value: Attacker
-      objectReference: {fileID: 0}
     - target: {fileID: 6296000620147951571, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -672,12 +669,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.72642744
       objectReference: {fileID: 0}
+    - target: {fileID: 2646457747154745380, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: m_Name
+      value: Attacker
+      objectReference: {fileID: 0}
     - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
         type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 5288307979392762991, guid: 6f3cc4205231f1d4b8c6b880610ffbb2,
         type: 3}
+    - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552709886751121273, guid: 974faf1a6343c484e8935947e7b0b144,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974faf1a6343c484e8935947e7b0b144, type: 3}
 --- !u!4 &6724756956075197968 stripped
@@ -693,11 +705,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3565099394172681924}
     m_Modifications:
-    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
-        type: 3}
-      propertyPath: m_Name
-      value: AffectedVisuals
-      objectReference: {fileID: 0}
     - target: {fileID: 8112878987466925088, guid: e8a50b00903c4dd48a3ea62290f65cae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -753,6 +760,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5420336503029877103, guid: e8a50b00903c4dd48a3ea62290f65cae,
+        type: 3}
+      propertyPath: m_Name
+      value: AffectedVisuals
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a50b00903c4dd48a3ea62290f65cae, type: 3}
 --- !u!4 &7081754266651416993 stripped
@@ -768,11 +780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3565099394172681924}
     m_Modifications:
-    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
-        type: 3}
-      propertyPath: m_Name
-      value: PhysicsDetector
-      objectReference: {fileID: 0}
     - target: {fileID: 2220481215087809008, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -827,6 +834,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649924758469503356, guid: d6a93ff2a37ccf54d9c51bca8dc89242,
+        type: 3}
+      propertyPath: m_Name
+      value: PhysicsDetector
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a93ff2a37ccf54d9c51bca8dc89242, type: 3}

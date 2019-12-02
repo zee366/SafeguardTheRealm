@@ -8,7 +8,8 @@ public class BeamAttacker : Attacker
     private Beam beam;
     public Transform spawnParent;
 
-    public const int MAX_BEAMS = 1;
+    [SerializeField]
+    public int maxBeams = 1;
     public int activeBeams { get; set; }
 
     private void Start() {
@@ -16,15 +17,16 @@ public class BeamAttacker : Attacker
     }
 
     protected override void SendProjectile() {
-        if(_currentEnemy == null || activeBeams >= MAX_BEAMS)
+        if(_currentEnemy == null || activeBeams >= maxBeams)
             return;
 
         Vector3 midPoint = _currentEnemy.transform.position - transform.position;
         
 
         Beam b = Instantiate(beam, transform.position + midPoint, Quaternion.identity, spawnParent);
-        b.transform.LookAt(_currentEnemy.transform.position);
         b.SetEnemy(_currentEnemy);
+        b.transform.LookAt(_currentEnemy.transform.position);
+        b.transform.localScale /= transform.parent.transform.localScale.x;
         b.damage = Mathf.FloorToInt(damage * modifier.damageModifier);
         activeBeams++;
         

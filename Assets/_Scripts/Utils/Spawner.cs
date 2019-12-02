@@ -20,7 +20,6 @@ namespace Utils {
             int i = 0;
             foreach ( Vector2 prob in probabilitiesOfSpawnableObjects ) {
                 if ( RandomProbability >= prob.x && RandomProbability <= prob.y ) {
-                    //Instantiate(spawnables[i].prefab, spawnParent.position, Quaternion.identity, spawnParent);
                     Instantiate(spawnables[i].prefab, _firstNode.Position, Quaternion.identity, spawnParent);
                     break;
                 }
@@ -29,6 +28,9 @@ namespace Utils {
             }
         }
 
+        public void SpawnBoss() {
+            Instantiate(spawnables[spawnables.Count - 1].prefab, _firstNode.Position, Quaternion.identity, spawnParent);
+        }
 
         private void Start() {
             // Initialize the list of probabilities with the ranges of probabilities 

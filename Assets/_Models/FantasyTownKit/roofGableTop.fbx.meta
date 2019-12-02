@@ -3,7 +3,22 @@ guid: 132317c3b87024f918ad23ca0e29cb57
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: 9788d36dd99e88947b937638a31894e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone
+    second: {fileID: 2100000, guid: 873de7cd74b3ba643ab7359be144c5d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 5b0fa41920e6b4b448d9776f73eaf355, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
