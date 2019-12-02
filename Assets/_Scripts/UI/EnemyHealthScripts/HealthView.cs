@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Ensuring the health bar UI is always looking at the camera
+/// </summary>
 public class HealthView : MonoBehaviour
 {
     private Transform target;
