@@ -8,26 +8,25 @@ public class LevelManager : MonoBehaviour
 {
     Animator animator;
     Boolean mAnimation = false;
+
+    
+
     void Start()
     {
         animator = transform.GetComponent<Animator>();
     }
     void Update()
     {
-        //change scene when user presses Space key
         animator.SetBool("animateOut", mAnimation);
     }
     public void changeLevel(string sceneName) {
-        Debug.Log("boolean");
         mAnimation = true;
         
         StartCoroutine(LoadSceneAFterTransition(sceneName));
     }
     IEnumerator LoadSceneAFterTransition(string sceneName)
     {
-        Debug.Log("2secs");
         yield return new WaitForSeconds(1);
-        Debug.Log("2secs");
         
         LoadLevel(sceneName);
     }
@@ -36,7 +35,6 @@ public class LevelManager : MonoBehaviour
     // Load scene based on name passed; register in console
     public void LoadLevel(string sceneName)
     {
-        Debug.Log("New Level Load: " + sceneName);
         mAnimation = false;
         SceneManager.LoadScene(sceneName);
     }
