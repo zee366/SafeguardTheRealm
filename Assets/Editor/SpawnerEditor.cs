@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Utils {
     /// <summary>
+    /// Editor Class specifically for the spawner MonoBehaviour
     /// Ensure that the spawner inspector UI limits the probabilities
     /// to sum up to 100.
     /// </summary>

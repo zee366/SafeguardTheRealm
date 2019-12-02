@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Instance used as interface to yield proper money to player.
+/// Used by different mechanics and features.
+/// Computes win/lose steak and money interest.
+/// </summary>
 public class MoneyYielder : MonoBehaviour
 {
     const float INTEREST_RATE = 0.25f;
@@ -25,8 +30,10 @@ public class MoneyYielder : MonoBehaviour
         castle_MAX_HP = c.GetHealth();
     }
 
-    // Set castleHP at begging of the round
-    // Call this method on "On Start Wave" Unity Event
+    /// <summary>
+    /// Set castleHP at begging of the round
+    /// Call this method on "On Start Wave" Unity Event
+    /// </summary>
     public void SetCastleHP()
     {
         old_castleHP = c.GetHealth();
@@ -46,7 +53,9 @@ public class MoneyYielder : MonoBehaviour
         _winStreak++;
     }
 
-    // Determine WinStreak/LoseStreak
+    /// <summary>
+    /// Determine WinStreak/LoseStreak values
+    /// </summary>
     public void CheckStreak()
     {
         int new_castleHP = c.GetHealth();
@@ -64,6 +73,10 @@ public class MoneyYielder : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates money yielded to player based on interest and steaks.
+    /// Higher streak (lose/win) gives more money.
+    /// </summary>
     public void EndOfRoundWinnings() {
         // Check streak first
         CheckStreak();

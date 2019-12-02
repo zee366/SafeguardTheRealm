@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Camera control by player with rotation handling
+/// </summary>
 public class CameraController : MonoBehaviour {
 
     public float translationSpeed = 12;
@@ -8,8 +11,6 @@ public class CameraController : MonoBehaviour {
     public float zoomSpeed = 3.0f;
     public float minZoom = 3.0f;
     public float maxZoom = 3.0f;
-
-
 
     private float mRotationMax = 90.0f;
     private float t;
@@ -60,8 +61,13 @@ public class CameraController : MonoBehaviour {
             }
         }
         Translate();
+        HandleZoom();
     }
 
+    /// <summary>
+    /// Coroutine for smooth rotation around focus point
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Rotate() {
         t = 0.0f;
         while(t < transitionTime) {
@@ -74,6 +80,9 @@ public class CameraController : MonoBehaviour {
         mRotating = false;
     }
 
+    /// <summary>
+    /// Moving in x-z plane
+    /// </summary>
     private void Translate() {
         Vector3 move = Vector3.zero;
         if(Input.GetKey(KeyCode.W))
@@ -85,12 +94,16 @@ public class CameraController : MonoBehaviour {
         if(Input.GetKey(KeyCode.D))
             move += mRight;
 
-        // Zooming for orthographic Cam now
+        transform.Translate(translationSpeed * move * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Handling orthographic camera zoom with scroll wheel
+    /// </summary>
+    private void HandleZoom() {
         if ( Input.GetAxis("Mouse ScrollWheel") > 0f && mCameraRef.orthographicSize >= minZoom )
             mCameraRef.orthographicSize -= zoomSpeed;
         if(Input.GetAxis("Mouse ScrollWheel") < 0f && mCameraRef.orthographicSize <= maxZoom)
             mCameraRef.orthographicSize += zoomSpeed;
-
-        transform.Translate(translationSpeed * move * Time.deltaTime);
     }
 }

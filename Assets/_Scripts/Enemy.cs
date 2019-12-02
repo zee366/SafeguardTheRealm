@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using Behavioral;
 
+/// <summary>
+/// Main state checking and behaviour for all ennemies
+/// </summary>
 public class Enemy : MonoBehaviour {
     [SerializeField] public int _health;
     [SerializeField] int _attackDamage;
@@ -43,11 +46,18 @@ public class Enemy : MonoBehaviour {
     }
 
 
+    /// <summary>
+    /// Entry point to deal damage to entity
+    /// </summary>
+    /// <param name="value"></param>
     public void TakeDamage(int value) {
         _health -= value;
         CheckHealth();
     }
 
+    /// <summary>
+    /// Internal state checking to know if reached end of spline to deal damage to castle
+    /// </summary>
     void CheckProgress() {
         if(Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f) < EPSILON) {
             _castle.TakeDamage(_attackDamage);
@@ -56,11 +66,17 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-
+    /// <summary>
+    /// Simple getter for % of progress along his spline path
+    /// </summary>
+    /// <returns></returns>
     public float GetProgress() {
         return Mathf.Abs(_splineFollower.GetPercentageOfSplineProgress() - 1.0f);
     }
 
+    /// <summary>
+    /// Internal check for health and state
+    /// </summary>
     void CheckHealth() {
         if(_health <= 0) {
             isKilledByTowerProjectile = true;
@@ -75,6 +91,9 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Killing the enemy and triggering related events
+    /// </summary>
     public void Die() {
         if(_golden)
             _player.GainGold(_goldValue);

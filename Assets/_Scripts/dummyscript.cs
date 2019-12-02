@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Simply for testing purpose
+/// </summary>
 public class dummyscript : MonoBehaviour
 {
 
