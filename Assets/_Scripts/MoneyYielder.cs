@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Instance used as interface to yield proper money to player.
@@ -9,7 +10,8 @@ public class MoneyYielder : MonoBehaviour
 {
     const float INTEREST_RATE = 0.25f;
     int castle_MAX_HP;
-    GameObject castle;
+    GameObject castle, winObj, lossObj;
+    Text winTxt, lossTxt;
     Castle c;
 
     int _winStreak { get; set; } = 0;
@@ -25,9 +27,15 @@ public class MoneyYielder : MonoBehaviour
     void Start()
     {
         _player = GetComponent<Player>();
+
         castle = GameObject.Find("Castle");
         c = castle.GetComponent<Castle>();
         castle_MAX_HP = c.GetHealth();
+
+        winObj = GameObject.Find("WinText");
+        winTxt = winObj.GetComponent<Text>();
+        lossObj = GameObject.Find("LossText");
+        lossTxt = lossObj.GetComponent<Text>();
     }
 
     /// <summary>
@@ -87,5 +95,9 @@ public class MoneyYielder : MonoBehaviour
         int interest = Mathf.RoundToInt(total * INTEREST_RATE);
 
         GiveGoldToPlayer(interest + bonus);
+
+        // Output win/loss streak to HUD
+        winTxt.text = _winStreak.ToString();
+        lossTxt.text = _loseStreak.ToString();
     }
 }
