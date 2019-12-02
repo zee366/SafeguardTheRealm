@@ -1459,13 +1459,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8e02883f0c27b4b8cd76d34e463438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 2
+  _maxHealth: 10
   _healthBarBackground: {fileID: 8427314610243452121}
   _healthBar: {fileID: 2166642237788091590}
-  _attackDamage: 2
+  _attackDamage: 1
   _xpValue: 0
   _goldValue: 1
-  _golden: 0
+  _golden: 1
   onDeath:
     m_PersistentCalls:
       m_Calls: []
