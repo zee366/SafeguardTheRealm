@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using Behavioral;
-using System;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {

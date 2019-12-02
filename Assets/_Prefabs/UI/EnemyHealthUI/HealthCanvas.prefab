@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6607619759640503492}
   - component: {fileID: 3913435610325414773}
   - component: {fileID: 3594119613919569002}
+  - component: {fileID: 1958117632703678843}
   m_Layer: 5
-  m_Name: HealthCanvas 1
+  m_Name: HealthCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1958117632703678843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337168844670404650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157c03a1819395f4e9d89741447a4527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3349786251735812049
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +124,6 @@ GameObject:
   - component: {fileID: 6875012807214093987}
   - component: {fileID: 3592565904639559403}
   - component: {fileID: 2007792791035522200}
-  - component: {fileID: 3044126482844926942}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -174,18 +186,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3044126482844926942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3349786251735812049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157c03a1819395f4e9d89741447a4527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8473080543651599838
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 4539675759118428497}
   - component: {fileID: 5621207014275408621}
   - component: {fileID: 8160448556548842631}
-  - component: {fileID: 6019177505738988578}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -260,15 +259,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6019177505738988578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473080543651599838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157c03a1819395f4e9d89741447a4527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
