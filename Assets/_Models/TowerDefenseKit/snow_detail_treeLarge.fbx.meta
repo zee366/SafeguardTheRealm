@@ -3,7 +3,27 @@ guid: 8e9d3d0ae875443928c3a20b70bc0887
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 4962b1b683030c44ebf675d91661a3d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foliage
+    second: {fileID: 2100000, guid: 730fe59285effc24aa89eed0bc1c4929, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: snow
+    second: {fileID: 2100000, guid: bfd9423e49b6d1547bd0e907cf7b4e8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 59ef3a6f4002e664e9f878f8227aff62, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
