@@ -28,6 +28,8 @@ public class Boomerang : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if ( other.gameObject.transform.parent == null ) return;
+
         Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
         if(enemy) {
             EnemyHit(other.gameObject.transform);
