@@ -24,7 +24,7 @@ public class MarketUIEvent : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    private void Awake() {
+    private void Start() {
         // References to slots + events
         _slots = GetComponentsInChildren<MarketSlot>();
         foreach ( MarketSlot slot in _slots ) {
