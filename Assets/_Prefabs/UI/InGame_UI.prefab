@@ -94,7 +94,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onWaveEnd:
+  onMapEnd:
     m_PersistentCalls:
       m_Calls: []
   onRoundEnd:
@@ -403,11 +403,11 @@ MonoBehaviour:
     price: 1
   - towers:
     - {fileID: 5992237023386912483, guid: 2184c3cc976f93c40a95b555dbce3db1, type: 3}
-    - {fileID: 6413105631260757523, guid: 65a7d9c437136024aac5860f100b9c8c, type: 3}
+    - {fileID: 6784485984623561150, guid: f7ba8f5a0f25a024db6997da940b0085, type: 3}
     price: 2
   - towers:
     - {fileID: 6784485984623561150, guid: 00444b9d739411c4bac0bf5d512327ed, type: 3}
-    - {fileID: 6784485984623561150, guid: f7ba8f5a0f25a024db6997da940b0085, type: 3}
+    - {fileID: 6413105631260757523, guid: 65a7d9c437136024aac5860f100b9c8c, type: 3}
     price: 3
 --- !u!1 &1194264112122302460
 GameObject:

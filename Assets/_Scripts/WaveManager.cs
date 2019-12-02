@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour {
     public List<Wave> waves;
 
     public UnityEvent onWaveStart;
-    public UnityEvent onWaveEnd;
+    public UnityEvent onMapEnd;
     public UnityEvent onRoundEnd;
     public UnityEvent onMapLoad;
 
@@ -33,6 +33,7 @@ public class WaveManager : MonoBehaviour {
 
     private bool _roundEnded = false;
     private SnapManager _snapManager;
+    //private LevelManager _levelManager;
 
     private int numOfStoppedWaves = 0;
     private int completedWaves = 0;
@@ -43,6 +44,7 @@ public class WaveManager : MonoBehaviour {
         _waveNumber = 1;
         onMapLoad.Invoke();
         _snapManager = FindObjectOfType<SnapManager>();
+        //_levelManager = FindObjectOfType<LevelManager>();
         _spawners = GameObject.FindGameObjectsWithTag("Spawner");
         _splines  = GameObject.FindGameObjectsWithTag("Spline");
         _maxWaves *= _spawners.Length;
@@ -67,7 +69,6 @@ public class WaveManager : MonoBehaviour {
                 if(!w._waveStopped) {
                     if(w._unitsSpawned >= w._maxUnitsPerWave) {
                         w.CancelSpawn();
-                        onWaveEnd?.Invoke();
                         w._waveStopped = true;
                         completedWaves++;
                     }
@@ -95,7 +96,7 @@ public class WaveManager : MonoBehaviour {
 
             // transition to next level
             if(_roundEnded && completedWaves == _maxWaves) {
-                Debug.Log("rdy for level transition");
+                onMapEnd?.Invoke();
             }
         }
     }
