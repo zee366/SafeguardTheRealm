@@ -26,4 +26,8 @@ public class Wave : MonoBehaviour{
     public void CancelSpawn() {
         CancelInvoke("SpawnEnemy");
     }
+
+    public void SpawnBoss() {
+        _spawner.GetComponent<Spawner>().SpawnBoss();
+    }
 };

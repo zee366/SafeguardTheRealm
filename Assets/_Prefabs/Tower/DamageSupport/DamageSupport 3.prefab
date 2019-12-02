@@ -126,8 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 6
-  speedModifier: 1.2
-  damageModifier: 3
+  thumbnail: {fileID: 0}
+  attack_descriptor: 0
+  speed_descriptor: 0
+  speedModifier: 1
+  damageModifier: 4
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0

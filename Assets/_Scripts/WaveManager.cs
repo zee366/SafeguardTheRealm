@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using SnapSystem;
 using UnityEngine;
@@ -24,8 +25,9 @@ public class WaveManager : MonoBehaviour {
     public UnityEvent onWaveStart;
     public UnityEvent onWaveEnd;
     public UnityEvent onRoundEnd;
+    public UnityEvent onMapLoad;
 
-    private int  _waveNumber = 1;
+    private int  _waveNumber;
     private int  _unitsSpawned;
     bool         waveStopped;
 
@@ -38,9 +40,12 @@ public class WaveManager : MonoBehaviour {
 
 
     void Start() {
+        _waveNumber = 1;
+        onMapLoad.Invoke();
         _snapManager = FindObjectOfType<SnapManager>();
         _spawners = GameObject.FindGameObjectsWithTag("Spawner");
         _splines  = GameObject.FindGameObjectsWithTag("Spline");
+        _maxWaves *= _spawners.Length;
         phase = Phase.Market;
 
         foreach(GameObject spawner in _spawners) {
@@ -78,8 +83,9 @@ public class WaveManager : MonoBehaviour {
                 if(numOfStoppedWaves == waves.Count) {
                     numOfStoppedWaves = 0;
                     _roundEnded = true;
-                    phase = Phase.Market;
+                    _waveNumber++;
                     onRoundEnd?.Invoke();
+                    phase = Phase.Market;
                     _snapManager.UnlockGrid();
                 }
                 else {
@@ -99,17 +105,33 @@ public class WaveManager : MonoBehaviour {
 
     public void StartWave() {
         phase = Phase.Battle;
+
+        StartCoroutine(StartSpawners());
+
+        onWaveStart?.Invoke();
+        _snapManager.LockGrid();
+        _roundEnded = false;
+
+        
+    }
+
+    private IEnumerator StartSpawners() {
         int offset = 0;
+
+        // Spawn boss every 5th wave
+        if(_waveNumber % 5 == 0) {
+            waves[0].SpawnBoss();
+            yield return new WaitForSeconds(1);
+        }
+
         foreach(Wave w in waves) {
             w._unitsSpawned = 0;
             w._maxUnitsPerWave += w._unitsPerWaveIncrement;
             w._waveStopped = false;
-            w.InvokeSpawn(0 + offset, waves.Count + offset);
+            w.InvokeSpawn(0 + offset, waves.Count);
             offset++;
         }
-        _waveNumber++;
-        onWaveStart?.Invoke();
-        _snapManager.LockGrid();
-        _roundEnded = false;
+
+        yield return null;
     }
 }

@@ -51,7 +51,7 @@ MonoBehaviour:
   attack_descriptor: 3
   speed_descriptor: 3
   speedModifier: 1
-  damageModifier: 1.5
+  damageModifier: 2
 --- !u!1 &3565099394211463872
 GameObject:
   m_ObjectHideFlags: 0

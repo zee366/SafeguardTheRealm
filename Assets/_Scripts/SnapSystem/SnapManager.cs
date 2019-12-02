@@ -37,7 +37,7 @@ namespace SnapSystem {
             _upgrader  = FindObjectOfType<TowerUpgrader>();
 
             _inventory.onAdd.AddListener(gObj => { _totalTowerCount++; });
-            _upgrader.onUpgrade.AddListener(() => { _totalTowerCount -= 2; });
+            _upgrader.onUpgrade.AddListener(() => { _totalTowerCount -= 3; });
         }
 
 
@@ -180,8 +180,9 @@ namespace SnapSystem {
 
             // Check if player have already placed all his towers
             // Still allow transfers inside the inventory itself.
+            // Player can place level + 2 amount of towers.
             if ( moveToTarget.transform.GetComponentInParent<Inventory>() == null
-                 && towersOnGround >= _player.GetPlayerLevel() ) {
+                 && towersOnGround >= _player.GetPlayerLevel() + 2 ) {
                 CancelAction();
                 return;
             }

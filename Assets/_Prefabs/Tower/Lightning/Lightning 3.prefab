@@ -324,8 +324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 8
   thumbnail: {fileID: 0}
-  attack_descriptor: 0
-  speed_descriptor: 0
+  attack_descriptor: 2
+  speed_descriptor: 1
 --- !u!1 &8471486276549190087
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,11 +413,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4416810670474404760}
     m_Modifications:
-    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
-        type: 3}
-      propertyPath: m_Name
-      value: AttackerRight
-      objectReference: {fileID: 0}
     - target: {fileID: 5105494989748300780, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -473,12 +468,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackerRight
+      objectReference: {fileID: 0}
     - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: beam
       value: 
       objectReference: {fileID: 5590366545943456376, guid: 83ed076d8f163ae4e95f244d8a4e53e0,
         type: 3}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5629b429961b744af0317638aee1f3, type: 3}
 --- !u!4 &7605720916834154316 stripped
@@ -494,11 +504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4416810670474404760}
     m_Modifications:
-    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
-        type: 3}
-      propertyPath: m_Name
-      value: AttackerLeft
-      objectReference: {fileID: 0}
     - target: {fileID: 5105494989748300780, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -554,12 +559,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724308452666381668, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackerLeft
+      objectReference: {fileID: 0}
     - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
         type: 3}
       propertyPath: beam
       value: 
       objectReference: {fileID: 5590366545943456376, guid: 83ed076d8f163ae4e95f244d8a4e53e0,
         type: 3}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738119751778120663, guid: 8f5629b429961b744af0317638aee1f3,
+        type: 3}
+      propertyPath: damage
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5629b429961b744af0317638aee1f3, type: 3}
 --- !u!4 &8549193881721337470 stripped
