@@ -183,8 +183,9 @@ namespace SnapSystem {
 
             // Check if player have already placed all his towers
             // Still allow transfers inside the inventory itself.
+            // Still allow movement inside grid itself.
             // Player can place level + 2 amount of towers.
-            if ( moveToTarget.transform.GetComponentInParent<Inventory>() == null
+            if ( FromInventoryToGrid(_lastSelected, moveToTarget)
                  && towersOnGround >= _player.GetPlayerLevel() + 2 ) {
                 CancelAction();
                 return;
@@ -206,6 +207,11 @@ namespace SnapSystem {
         /// </summary>
         /// <returns></returns>
         private bool HasOneSelected() { return _lastSelected != null; }
+
+
+        private bool FromInventoryToGrid(SnapLocation from, SnapLocation to) {
+            return from.transform.GetComponentInParent<Inventory>() != null && to.transform.GetComponentInParent<Inventory>() == null;
+        }
 
     }
 }
