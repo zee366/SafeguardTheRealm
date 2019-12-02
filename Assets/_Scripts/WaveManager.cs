@@ -88,9 +88,9 @@ public class WaveManager : MonoBehaviour {
                     numOfStoppedWaves = 0;
                     _roundEnded = true;
                     _waveNumber++;
+                    _snapManager.UnlockGrid();
                     onRoundEnd?.Invoke();
                     phase = Phase.Market;
-                    _snapManager.UnlockGrid();
                 }
                 else {
                     numOfStoppedWaves = 0;
@@ -118,8 +118,6 @@ public class WaveManager : MonoBehaviour {
         onWaveStart?.Invoke();
         _snapManager.LockGrid();
         _roundEnded = false;
-
-        
     }
 
     /// <summary>
