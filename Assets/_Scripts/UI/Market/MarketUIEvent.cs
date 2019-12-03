@@ -97,7 +97,7 @@ public class MarketUIEvent : MonoBehaviour {
     /// When a player wants to upgrade his level
     /// </summary>
     public void BuyPlayerLevel() {
-        if ( player.CheckGold(_gainLevelCost) ) //check if player has enough gold to do this, if not, do nothing
+        if ( player.CheckGold(_gainLevelCost) && player.GetPlayerLevel() < 5 ) //check if player has enough gold to do this, if not, do nothing
         {
             player.GainLevel(_gainLevelCost);
             _gainLevelCost++;
