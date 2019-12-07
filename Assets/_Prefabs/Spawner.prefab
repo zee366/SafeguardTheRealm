@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2755364333215886680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2755364333215886682}
+  - component: {fileID: 2755364333215886683}
+  - component: {fileID: 6007922475698778998}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2755364333215886682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755364333215886680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2755364333215886683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755364333215886680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2c44ad698e14562ac676e6c64374db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnables:
+  - prefab: {fileID: 3939252112283867927, guid: 28770b08cbd9b2644b8fd48aab976a76,
+      type: 3}
+    probability: 49
+  - prefab: {fileID: 3097671887947498914, guid: 03ca7bed698c0bf4db0803662283a380,
+      type: 3}
+    probability: 48
+  - prefab: {fileID: 169710, guid: 825fc6c553ccbf04184f5f6fc8c74c30, type: 3}
+    probability: 3
+  - prefab: {fileID: 3155058319838657794, guid: 0e29ead836f869a43a6395d97af705d8,
+      type: 3}
+    probability: 0
+  spawnParent: {fileID: 0}
+--- !u!114 &6007922475698778998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755364333215886680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81309031001427c44b5f9ec9cc965be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxWaves: 0
+  _maxUnitsPerWave: 0
+  _unitsPerWaveIncrement: 0
+  _unitsSpawned: 0
+  _spawner: {fileID: 0}
+  _spline: {fileID: 0}

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - weapon
+  - Projectile
+  - Spawner
+  - Spline
+  - balista_1
+  - balista_2
+  - balista_3
+  - laser_1
+  - laser_2
+  - laser_3
+  - crystal_1
+  - crystal_2
+  - crystal_3
+  - speedsupport_1
+  - speedsupport_2
+  - speedsupport_3
+  - damagesupport_1
+  - damagesupport_2
+  - damagesupport_3
+  - lightning_1
+  - lightning_2
+  - lightning_3
+  - boomerang_1
+  - boomerang_2
+  - boomerang_3
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Enemy
+  - 
+  - Selectable
+  - Tower
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
